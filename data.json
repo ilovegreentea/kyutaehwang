@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "title": "KyuTae Hwang | Cancer Immunology & Genomics",
+    "description": "KyuTae Hwang — PhD student and cancer immunology researcher studying immunotherapy response using single-cell, TCR, and spatial genomics.",
+    "ogDescription": "PhD researcher studying immunotherapy response through longitudinal single-cell, TCR, and spatial genomics."
+  },
+  "hero": {
+    "pill": "Cancer Immunology · Single-Cell & Spatial Genomics",
+    "name": "KyuTae Hwang",
+    "summary": "PhD student and computational cancer immunology researcher studying how systemic and intratumoral immune states shape response to immunotherapy, with a focus on longitudinal single-cell genomics, T-cell receptor biology, and spatial tumor–immune organization.",
+    "email": "khwang@coh.org",
+    "cv": "KyuTae_Hwang_CV.docx"
+  },
+  "profile": {
+    "position": "PhD Student · Biological Sciences",
+    "institution": "City of Hope · Irell & Manella Graduate School of Biological Sciences",
+    "research": "Cancer immunology & translational genomics",
+    "methods": "Single-cell RNA/TCR sequencing, spatial transcriptomics, clinical cohort analysis",
+    "location": "Duarte, California"
+  },
+  "about": {
+    "headline": "I study immunotherapy response as a dynamic, multi-compartment immune-system problem.",
+    "text": "My work connects peripheral blood and tumor immune states to identify cellular programs, clonal behavior, and spatial organization associated with treatment response. I am especially interested in translational questions where high-dimensional genomic measurements can be distilled into biologically interpretable and clinically testable signals."
+  },
+  "researchThemes": [
+    {
+      "label": "Systemic response",
+      "title": "Early peripheral immune dynamics",
+      "text": "Characterizing early on-treatment T/NK-cell changes and signaling programs in peripheral blood and asking how these dynamics relate to later clinical response.",
+      "tags": [
+        "PBMC",
+        "Longitudinal",
+        "ICI"
+      ]
+    },
+    {
+      "label": "T-cell biology",
+      "title": "Cell state, clonotype, and treatment outcome",
+      "text": "Integrating transcriptional states with TCR clonotypes to study expansion, persistence, cross-compartment relationships, and response-associated exhausted CD8 T-cell programs.",
+      "tags": [
+        "scRNA-seq",
+        "scTCR-seq",
+        "CD8 T cells"
+      ]
+    },
+    {
+      "label": "Tumor ecosystem",
+      "title": "Spatial myeloid–T-cell organization",
+      "text": "Studying how macrophage and T-cell programs are arranged within renal cell carcinoma and how local tissue architecture associates with immunotherapy phenotypes.",
+      "tags": [
+        "Xenium",
+        "Visium",
+        "TME"
+      ]
+    }
+  ],
+  "selectedWork": {
+    "label": "Metastatic renal cell carcinoma",
+    "title": "Early peripheral T-cell dynamics and pretreatment intratumoral stress-adapted exhausted T cells",
+    "paragraphs": [
+      "Longitudinal single-cell multi-omics profiling of paired tumor and peripheral blood samples from patients with metastatic renal cell carcinoma treated with immune checkpoint inhibitor–based therapy.",
+      "The study integrates scRNA-seq, scTCR-seq, independent cohort validation, and spatial transcriptomics to examine early peripheral T/NK-cell activation, an ATF3-linked stress-adapted exhausted CD8 T-cell program, clonotype dynamics, and macrophage–T-cell niches."
+    ],
+    "tags": [
+      "mRCC",
+      "Immunotherapy",
+      "Single-cell multi-omics",
+      "Spatial genomics"
+    ],
+    "status": "Under revision · Nature Communications",
+    "year": "2026",
+    "citation": "Hwang K, et al. Early peripheral T cell dynamics and pretreatment intratumoral stress-adapted exhausted T cells associated with ICI response in metastatic renal cell carcinoma.",
+    "journalText": "Manuscript under revision at Nature Communications.",
+    "badge": "First-author manuscript"
+  },
+  "trajectoryHeadline": "Research training across Korea, UNC Lineberger, and City of Hope.",
+  "trajectory": [
+    {
+      "when": "Aug 2026 — Present",
+      "title": "City of Hope · Irell & Manella Graduate School of Biological Sciences",
+      "text": "PhD Student, Biological Sciences · Graduate Student Researcher, Beckman Research Institute · Advisor: William Y. Kim, M.D."
+    },
+    {
+      "when": "Apr 2024 — Jun 2026",
+      "title": "UNC Lineberger Comprehensive Cancer Center",
+      "text": "Visiting Scholar · Advisor: William Y. Kim, M.D. · Longitudinal single-cell multi-omics, TCR analysis, and spatial profiling of immunotherapy-treated metastatic renal cell carcinoma."
+    },
+    {
+      "when": "Mar 2023 — Jul 2026",
+      "title": "SAIHST, Sungkyunkwan University",
+      "text": "Integrated M.S.-Ph.D. training in Health Sciences and Technology with emphasis on translational genomics and clinical cohort analysis."
+    },
+    {
+      "when": "Summer 2022",
+      "title": "Korea University College of Medicine",
+      "text": "Student Intern · Advisor: Jason K. Sa, Ph.D. · Computational analysis of bulk RNA-seq and whole-exome sequencing in gastric cancer immunotherapy."
+    },
+    {
+      "when": "Feb 2023",
+      "title": "Kyung Hee University",
+      "text": "B.S., Biology · Undergraduate thesis on immunotherapy efficacy and the gut microbiome."
+    }
+  ],
+  "presentations": [
+    {
+      "title": "Pretreatment intratumoral stress-adapted exhausted T cells predict ICI response in metastatic renal cell carcinoma.",
+      "meta": "Korean Urological Association Annual Meeting · 2026 · Seoul · Oral presentation"
+    },
+    {
+      "title": "Temporal dynamics of T cell reprogramming associate with clinical response to ICI-based combination therapy in metastatic renal cell carcinoma.",
+      "meta": "AACR Annual Meeting · 2026 · Poster presentation"
+    },
+    {
+      "title": "Understanding the complex tumor immune microenvironment in metastatic renal cell carcinoma patients undergoing immune checkpoint inhibitor therapy at single-cell resolution.",
+      "meta": "Urological Research Society Annual Meeting · 2025 · Kyoto · Oral presentation"
+    },
+    {
+      "title": "Longitudinal single-cell transcriptomic analysis reveals clinically relevant CD8 T-cell functional alterations during immune checkpoint inhibitor treatment in metastatic renal cell carcinoma.",
+      "meta": "Korean Urological Association Annual Meeting · 2025 · Seoul · Oral presentation"
+    },
+    {
+      "title": "Single-cell transcriptomic features for predicting immunotherapy responsiveness in metastatic renal cell carcinoma.",
+      "meta": "Korean Urological Association Annual Meeting · 2023 · Seoul · Oral presentation"
+    }
+  ],
+  "resourcesIntro": "Computational workflows spanning single-cell, spatial, genomic, and clinical analysis.",
+  "toolkit": [
+    "Single-cell RNA-seq: Seurat, Monocle3, CellChat, inferCNV, DoubletFinder",
+    "Single-cell TCR/BCR: scRepertoire, clonotype tracking",
+    "Spatial transcriptomics: 10x Visium, Xenium, Xenium Explorer",
+    "Bulk RNA-seq: DESeq2, survival analysis",
+    "Whole-exome sequencing: vcf2maf, VEP, maftools",
+    "RNA velocity: Velocyto, scVelo",
+    "Demultiplexing: Demuxlet, Souporcell",
+    "Programming: R, Python, Linux, Docker"
+  ],
+  "interests": [
+    "Immune checkpoint blockade",
+    "Renal cell carcinoma",
+    "T-cell differentiation and exhaustion",
+    "Tumor-reactive T-cell states",
+    "Myeloid–T-cell spatial niches",
+    "Translational biomarker development"
+  ],
+  "resources": [
+    {
+      "label": "GEO",
+      "title": "GSE317051",
+      "text": "Data deposition associated with the metastatic renal cell carcinoma immunotherapy project. Repository access may be subject to release restrictions.",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE317051",
+      "button": "View GEO record"
+    },
+    {
+      "label": "Zenodo",
+      "title": "mRCC Xenium resource",
+      "text": "Metastatic renal cell carcinoma Xenium spatial transcriptomics resource spanning pre- and post-ICI tumor samples.",
+      "url": "https://doi.org/10.5281/zenodo.20402498",
+      "button": "View Zenodo record"
+    }
+  ],
+  "contact": {
+    "headline": "Interested in cancer immunology, single-cell genomics, or translational oncology?",
+    "text": "I am interested in scientific discussions and collaborations at the intersection of immunotherapy, patient-derived genomic data, T-cell biology, and spatial tumor immunology."
+  }
+}

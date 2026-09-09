@@ -3,15 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="KyuTae Hwang — PhD student and cancer immunology researcher studying immunotherapy response using single-cell, TCR, and spatial genomics.">
+  <meta name="description" id="meta-description" content="">
   <meta name="author" content="KyuTae Hwang">
-  <meta property="og:title" content="KyuTae Hwang | Cancer Immunology & Genomics">
-  <meta property="og:description" content="PhD researcher studying immunotherapy response through longitudinal single-cell, TCR, and spatial genomics.">
+  <meta property="og:title" id="og-title" content="">
+  <meta property="og:description" id="og-description" content="">
   <meta property="og:type" content="website">
-  <title>KyuTae Hwang | Cancer Immunology & Genomics</title>
-
+  <title>KyuTae Hwang</title>
   <style>
-    :root{
+:root{
       --bg:#f5f4ef;
       --surface:#ffffff;
       --text:#161817;
@@ -195,11 +194,10 @@
     }
   </style>
 </head>
-
 <body>
 <nav>
   <div class="wrap nav">
-    <a class="brand" href="#top">KyuTae Hwang</a>
+    <a class="brand" href="#top" id="brand-name">KyuTae Hwang</a>
     <div class="links">
       <a href="#about">About</a>
       <a href="#research">Research</a>
@@ -215,33 +213,16 @@
   <div class="wrap">
     <header class="hero">
       <div>
-        <span class="pill">Cancer Immunology · Single-Cell & Spatial Genomics</span>
-        <h1>KyuTae<br>Hwang</h1>
-        <p>
-          PhD student and computational cancer immunology researcher studying how systemic and
-          intratumoral immune states shape response to immunotherapy, with a focus on longitudinal
-          single-cell genomics, T-cell receptor biology, and spatial tumor–immune organization.
-        </p>
+        <span class="pill" id="hero-pill"></span>
+        <h1 id="hero-name"></h1>
+        <p id="hero-summary"></p>
         <div class="actions">
           <a class="btn primary" href="#research">View research</a>
-          <a class="btn secondary" href="mailto:khwang@coh.org">Email</a>
-          <a class="btn secondary" href="KyuTae_Hwang_CV.docx">Download CV</a>
+          <a class="btn secondary" id="hero-email">Email</a>
+          <a class="btn secondary" id="hero-cv">Download CV</a>
         </div>
       </div>
-
-      <aside class="profile-card">
-        <div class="monogram">KH</div>
-        <div class="label">Current position</div>
-        <strong>PhD Student · Biological Sciences</strong>
-        <p>City of Hope · Irell & Manella Graduate School of Biological Sciences</p>
-
-        <div class="label">Research</div>
-        <strong>Cancer immunology & translational genomics</strong>
-        <p>Single-cell RNA/TCR sequencing, spatial transcriptomics, clinical cohort analysis</p>
-
-        <div class="label">Location</div>
-        <strong>Duarte, California</strong>
-      </aside>
+      <aside class="profile-card" id="profile-card"></aside>
     </header>
   </div>
 
@@ -250,13 +231,8 @@
       <div class="section-head">
         <div class="kicker">01 · About</div>
         <div>
-          <h2>I study immunotherapy response as a dynamic, multi-compartment immune-system problem.</h2>
-          <p class="lead">
-            My work connects peripheral blood and tumor immune states to identify cellular programs,
-            clonal behavior, and spatial organization associated with treatment response. I am especially
-            interested in translational questions where high-dimensional genomic measurements can be
-            distilled into biologically interpretable and clinically testable signals.
-          </p>
+          <h2 id="about-headline"></h2>
+          <p class="lead" id="about-text"></p>
         </div>
       </div>
     </div>
@@ -271,50 +247,7 @@
           <p class="lead">Three recurring questions organize my current work in cancer immunology.</p>
         </div>
       </div>
-
-      <div class="cards">
-        <article class="card">
-          <div>
-            <div class="label">Systemic response</div>
-            <h3>Early peripheral immune dynamics</h3>
-            <p>
-              Characterizing early on-treatment T/NK-cell changes and signaling programs in peripheral
-              blood and asking how these dynamics relate to later clinical response.
-            </p>
-          </div>
-          <div class="tags">
-            <span class="tag">PBMC</span><span class="tag">Longitudinal</span><span class="tag">ICI</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <div>
-            <div class="label">T-cell biology</div>
-            <h3>Cell state, clonotype, and treatment outcome</h3>
-            <p>
-              Integrating transcriptional states with TCR clonotypes to study expansion, persistence,
-              cross-compartment relationships, and response-associated exhausted CD8 T-cell programs.
-            </p>
-          </div>
-          <div class="tags">
-            <span class="tag">scRNA-seq</span><span class="tag">scTCR-seq</span><span class="tag">CD8 T cells</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <div>
-            <div class="label">Tumor ecosystem</div>
-            <h3>Spatial myeloid–T-cell organization</h3>
-            <p>
-              Studying how macrophage and T-cell programs are arranged within renal cell carcinoma
-              and how local tissue architecture associates with immunotherapy phenotypes.
-            </p>
-          </div>
-          <div class="tags">
-            <span class="tag">Xenium</span><span class="tag">Visium</span><span class="tag">TME</span>
-          </div>
-        </article>
-      </div>
+      <div class="cards" id="research-cards"></div>
     </div>
   </section>
 
@@ -324,38 +257,8 @@
         <div class="kicker">03 · Selected Work</div>
         <div><h2>Current manuscript</h2></div>
       </div>
-
-      <div class="feature">
-        <div>
-          <div class="label" style="color:rgba(255,255,255,.62)">Metastatic renal cell carcinoma</div>
-          <h3>Early peripheral T-cell dynamics and pretreatment intratumoral stress-adapted exhausted T cells</h3>
-          <p>
-            Longitudinal single-cell multi-omics profiling of paired tumor and peripheral blood samples
-            from patients with metastatic renal cell carcinoma treated with immune checkpoint inhibitor–based therapy.
-          </p>
-          <p>
-            The study integrates scRNA-seq, scTCR-seq, independent cohort validation, and spatial
-            transcriptomics to examine early peripheral T/NK-cell activation, an ATF3-linked
-            stress-adapted exhausted CD8 T-cell program, clonotype dynamics, and macrophage–T-cell niches.
-          </p>
-          <div class="tags">
-            <span class="tag">mRCC</span><span class="tag">Immunotherapy</span>
-            <span class="tag">Single-cell multi-omics</span><span class="tag">Spatial genomics</span>
-          </div>
-        </div>
-        <div class="status">Under revision · Nature Communications</div>
-      </div>
-
-      <div style="margin-top:34px">
-        <div class="pub">
-          <div class="pub-year">2026</div>
-          <div>
-            <h3>Hwang K, et al. Early peripheral T cell dynamics and pretreatment intratumoral stress-adapted exhausted T cells associated with ICI response in metastatic renal cell carcinoma.</h3>
-            <p>Manuscript under revision at <em>Nature Communications</em>.</p>
-            <span class="badge">First-author manuscript</span>
-          </div>
-        </div>
-      </div>
+      <div class="feature" id="selected-work"></div>
+      <div style="margin-top:34px" id="publication"></div>
     </div>
   </section>
 
@@ -363,55 +266,9 @@
     <div class="wrap">
       <div class="section-head">
         <div class="kicker">04 · Trajectory</div>
-        <div>
-          <h2>Research training across Korea, UNC Lineberger, and City of Hope.</h2>
-        </div>
+        <div><h2 id="trajectory-headline"></h2></div>
       </div>
-
-      <div class="timeline">
-        <div class="time">
-          <div class="when">Aug 2026 — Present</div>
-          <div>
-            <h3>City of Hope · Irell & Manella Graduate School of Biological Sciences</h3>
-            <p>PhD Student, Biological Sciences · Graduate Student Researcher, Beckman Research Institute · Advisor: William Y. Kim, M.D.</p>
-          </div>
-        </div>
-
-        <div class="time">
-          <div class="when">Apr 2024 — Jun 2026</div>
-          <div>
-            <h3>UNC Lineberger Comprehensive Cancer Center</h3>
-            <p>
-              Visiting Scholar · Advisor: William Y. Kim, M.D. · Longitudinal single-cell multi-omics,
-              TCR analysis, and spatial profiling of immunotherapy-treated metastatic renal cell carcinoma.
-            </p>
-          </div>
-        </div>
-
-        <div class="time">
-          <div class="when">Mar 2023 — Jul 2026</div>
-          <div>
-            <h3>SAIHST, Sungkyunkwan University</h3>
-            <p>Integrated M.S.-Ph.D. training in Health Sciences and Technology with emphasis on translational genomics and clinical cohort analysis.</p>
-          </div>
-        </div>
-
-        <div class="time">
-          <div class="when">Summer 2022</div>
-          <div>
-            <h3>Korea University College of Medicine</h3>
-            <p>Student Intern · Advisor: Jason K. Sa, Ph.D. · Computational analysis of bulk RNA-seq and whole-exome sequencing in gastric cancer immunotherapy.</p>
-          </div>
-        </div>
-
-        <div class="time">
-          <div class="when">Feb 2023</div>
-          <div>
-            <h3>Kyung Hee University</h3>
-            <p>B.S., Biology · Undergraduate thesis on immunotherapy efficacy and the gut microbiome.</p>
-          </div>
-        </div>
-      </div>
+      <div class="timeline" id="trajectory-list"></div>
     </div>
   </section>
 
@@ -421,29 +278,7 @@
         <div class="kicker">05 · Presentations</div>
         <div><h2>Selected talks & posters</h2></div>
       </div>
-
-      <div class="presentations">
-        <div class="presentation">
-          <strong>Pretreatment intratumoral stress-adapted exhausted T cells predict ICI response in metastatic renal cell carcinoma.</strong>
-          <span>Korean Urological Association Annual Meeting · 2026 · Seoul · Oral presentation</span>
-        </div>
-        <div class="presentation">
-          <strong>Temporal dynamics of T cell reprogramming associate with clinical response to ICI-based combination therapy in metastatic renal cell carcinoma.</strong>
-          <span>AACR Annual Meeting · 2026 · Poster presentation</span>
-        </div>
-        <div class="presentation">
-          <strong>Understanding the complex tumor immune microenvironment in metastatic renal cell carcinoma patients undergoing immune checkpoint inhibitor therapy at single-cell resolution.</strong>
-          <span>Urological Research Society Annual Meeting · 2025 · Kyoto · Oral presentation</span>
-        </div>
-        <div class="presentation">
-          <strong>Longitudinal single-cell transcriptomic analysis reveals clinically relevant CD8 T-cell functional alterations during immune checkpoint inhibitor treatment in metastatic renal cell carcinoma.</strong>
-          <span>Korean Urological Association Annual Meeting · 2025 · Seoul · Oral presentation</span>
-        </div>
-        <div class="presentation">
-          <strong>Single-cell transcriptomic features for predicting immunotherapy responsiveness in metastatic renal cell carcinoma.</strong>
-          <span>Korean Urological Association Annual Meeting · 2023 · Seoul · Oral presentation</span>
-        </div>
-      </div>
+      <div class="presentations" id="presentation-list"></div>
     </div>
   </section>
 
@@ -453,67 +288,25 @@
         <div class="kicker">06 · Data & Methods</div>
         <div>
           <h2>Tools and research resources</h2>
-          <p class="lead">Computational workflows spanning single-cell, spatial, genomic, and clinical analysis.</p>
+          <p class="lead" id="resources-intro"></p>
         </div>
       </div>
-
       <div class="two-col">
-        <div class="panel">
-          <h3>Computational toolkit</h3>
-          <ul>
-            <li>Single-cell RNA-seq: Seurat, Monocle3, CellChat, inferCNV, DoubletFinder</li>
-            <li>Single-cell TCR/BCR: scRepertoire, clonotype tracking</li>
-            <li>Spatial transcriptomics: 10x Visium, Xenium, Xenium Explorer</li>
-            <li>Bulk RNA-seq: DESeq2, survival analysis</li>
-            <li>Whole-exome sequencing: vcf2maf, VEP, maftools</li>
-            <li>RNA velocity: Velocyto, scVelo</li>
-            <li>Demultiplexing: Demuxlet, Souporcell</li>
-            <li>Programming: R, Python, Linux, Docker</li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <h3>Scientific interests</h3>
-          <ul>
-            <li>Immune checkpoint blockade</li>
-            <li>Renal cell carcinoma</li>
-            <li>T-cell differentiation and exhaustion</li>
-            <li>Tumor-reactive T-cell states</li>
-            <li>Myeloid–T-cell spatial niches</li>
-            <li>Translational biomarker development</li>
-          </ul>
-        </div>
+        <div class="panel"><h3>Computational toolkit</h3><ul id="toolkit-list"></ul></div>
+        <div class="panel"><h3>Scientific interests</h3><ul id="interests-list"></ul></div>
       </div>
-
-      <div class="resource-grid" style="margin-top:18px">
-        <div class="resource">
-          <div class="label">GEO</div>
-          <h3>GSE317051</h3>
-          <p>Data deposition associated with the metastatic renal cell carcinoma immunotherapy project. Repository access may be subject to release restrictions.</p>
-          <a class="btn secondary" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE317051" target="_blank" rel="noopener">View GEO record</a>
-        </div>
-
-        <div class="resource">
-          <div class="label">Zenodo</div>
-          <h3>mRCC Xenium resource</h3>
-          <p>Metastatic renal cell carcinoma Xenium spatial transcriptomics resource spanning pre- and post-ICI tumor samples.</p>
-          <a class="btn secondary" href="https://doi.org/10.5281/zenodo.20402498" target="_blank" rel="noopener">View Zenodo record</a>
-        </div>
-      </div>
+      <div class="resource-grid" style="margin-top:18px" id="resource-grid"></div>
     </div>
   </section>
 
   <section id="contact" class="contact">
     <div class="wrap">
       <div class="kicker" style="padding:0;margin-bottom:18px">07 · Contact</div>
-      <h2>Interested in cancer immunology, single-cell genomics, or translational oncology?</h2>
-      <p>
-        I am interested in scientific discussions and collaborations at the intersection of
-        immunotherapy, patient-derived genomic data, T-cell biology, and spatial tumor immunology.
-      </p>
+      <h2 id="contact-headline"></h2>
+      <p id="contact-text"></p>
       <div class="actions">
-        <a class="btn primary" href="mailto:khwang@coh.org">khwang@coh.org</a>
-        <a class="btn secondary" href="KyuTae_Hwang_CV.docx">Download CV</a>
+        <a class="btn primary" id="contact-email"></a>
+        <a class="btn secondary" id="contact-cv">Download CV</a>
       </div>
     </div>
   </section>
@@ -521,13 +314,115 @@
 
 <footer>
   <div class="wrap foot">
-    <span>© <span id="year"></span> KyuTae Hwang</span>
-    <span>Duarte, California</span>
+    <span>© <span id="year"></span> <span id="footer-name"></span></span>
+    <span id="footer-location"></span>
   </div>
 </footer>
 
 <script>
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const esc = (value) => String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+
+  async function loadSite() {
+    const response = await fetch("data.json", { cache: "no-store" });
+    if (!response.ok) throw new Error("Could not load data.json");
+    const d = await response.json();
+
+    document.title = d.meta.title;
+    document.getElementById("meta-description").content = d.meta.description;
+    document.getElementById("og-title").content = d.meta.title;
+    document.getElementById("og-description").content = d.meta.ogDescription;
+
+    const displayName = esc(d.hero.name).replace(/\s+/, "<br>");
+    document.getElementById("brand-name").textContent = d.hero.name;
+    document.getElementById("hero-pill").textContent = d.hero.pill;
+    document.getElementById("hero-name").innerHTML = displayName;
+    document.getElementById("hero-summary").textContent = d.hero.summary;
+    document.getElementById("hero-email").href = `mailto:${d.hero.email}`;
+    document.getElementById("hero-cv").href = d.hero.cv;
+
+    document.getElementById("profile-card").innerHTML = `
+      <div class="monogram">${esc(d.hero.name.split(/\s+/).map(x => x[0]).join("").slice(0,2))}</div>
+      <div class="label">Current position</div>
+      <strong>${esc(d.profile.position)}</strong>
+      <p>${esc(d.profile.institution)}</p>
+      <div class="label">Research</div>
+      <strong>${esc(d.profile.research)}</strong>
+      <p>${esc(d.profile.methods)}</p>
+      <div class="label">Location</div>
+      <strong>${esc(d.profile.location)}</strong>`;
+
+    document.getElementById("about-headline").textContent = d.about.headline;
+    document.getElementById("about-text").textContent = d.about.text;
+
+    document.getElementById("research-cards").innerHTML = d.researchThemes.map(x => `
+      <article class="card">
+        <div>
+          <div class="label">${esc(x.label)}</div>
+          <h3>${esc(x.title)}</h3>
+          <p>${esc(x.text)}</p>
+        </div>
+        <div class="tags">${x.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+      </article>`).join("");
+
+    const w = d.selectedWork;
+    document.getElementById("selected-work").innerHTML = `
+      <div>
+        <div class="label" style="color:rgba(255,255,255,.62)">${esc(w.label)}</div>
+        <h3>${esc(w.title)}</h3>
+        ${w.paragraphs.map(p => `<p>${esc(p)}</p>`).join("")}
+        <div class="tags">${w.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+      </div>
+      <div class="status">${esc(w.status)}</div>`;
+
+    document.getElementById("publication").innerHTML = `
+      <div class="pub">
+        <div class="pub-year">${esc(w.year)}</div>
+        <div>
+          <h3>${esc(w.citation)}</h3>
+          <p>${esc(w.journalText)}</p>
+          <span class="badge">${esc(w.badge)}</span>
+        </div>
+      </div>`;
+
+    document.getElementById("trajectory-headline").textContent = d.trajectoryHeadline;
+    document.getElementById("trajectory-list").innerHTML = d.trajectory.map(x => `
+      <div class="time">
+        <div class="when">${esc(x.when)}</div>
+        <div><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></div>
+      </div>`).join("");
+
+    document.getElementById("presentation-list").innerHTML = d.presentations.map(x => `
+      <div class="presentation">
+        <strong>${esc(x.title)}</strong>
+        <span>${esc(x.meta)}</span>
+      </div>`).join("");
+
+    document.getElementById("resources-intro").textContent = d.resourcesIntro;
+    document.getElementById("toolkit-list").innerHTML = d.toolkit.map(x => `<li>${esc(x)}</li>`).join("");
+    document.getElementById("interests-list").innerHTML = d.interests.map(x => `<li>${esc(x)}</li>`).join("");
+    document.getElementById("resource-grid").innerHTML = d.resources.map(x => `
+      <div class="resource">
+        <div class="label">${esc(x.label)}</div>
+        <h3>${esc(x.title)}</h3>
+        <p>${esc(x.text)}</p>
+        <a class="btn secondary" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.button)}</a>
+      </div>`).join("");
+
+    document.getElementById("contact-headline").textContent = d.contact.headline;
+    document.getElementById("contact-text").textContent = d.contact.text;
+    document.getElementById("contact-email").href = `mailto:${d.hero.email}`;
+    document.getElementById("contact-email").textContent = d.hero.email;
+    document.getElementById("contact-cv").href = d.hero.cv;
+
+    document.getElementById("footer-name").textContent = d.hero.name;
+    document.getElementById("footer-location").textContent = d.profile.location;
+    document.getElementById("year").textContent = new Date().getFullYear();
+  }
+
+  loadSite().catch(err => {
+    console.error(err);
+    document.body.insertAdjacentHTML("afterbegin", `<div style="padding:12px;text-align:center;background:#fff3cd">Site data could not be loaded.</div>`);
+  });
 </script>
 </body>
 </html>
