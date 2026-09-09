@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="KyuTae Hwang — PhD student and cancer immunology researcher studying immunotherapy response using single-cell, TCR, and spatial genomics.">
+  <meta name="author" content="KyuTae Hwang">
+  <meta property="og:title" content="KyuTae Hwang | Cancer Immunology & Genomics">
+  <meta property="og:description" content="PhD researcher studying immunotherapy response through longitudinal single-cell, TCR, and spatial genomics.">
+  <meta property="og:type" content="website">
+  <title>KyuTae Hwang | Cancer Immunology & Genomics</title>
+
+  <style>
+    :root{
+      --bg:#f5f4ef;
+      --surface:#ffffff;
+      --text:#161817;
+      --muted:#686b67;
+      --line:#dedfd8;
+      --accent:#274c45;
+      --accent-soft:#dce8e4;
+      --max:1160px;
+      --radius:26px;
+      --shadow:0 14px 40px rgba(24,28,26,.06);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;background:var(--bg);color:var(--text);
+      font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+    }
+    a{color:inherit;text-decoration:none}
+    a:hover{color:var(--accent)}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+
+    nav{
+      position:sticky;top:0;z-index:50;
+      background:rgba(245,244,239,.9);
+      border-bottom:1px solid rgba(222,223,216,.9);
+      backdrop-filter:blur(16px)
+    }
+    .nav{
+      height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px
+    }
+    .brand{font-weight:850;letter-spacing:-.025em}
+    .links{display:flex;gap:24px;font-size:.92rem;color:var(--muted)}
+    .links a:hover{color:var(--text)}
+
+    .hero{
+      display:grid;grid-template-columns:1.45fr .55fr;gap:58px;
+      padding:108px 0 78px;align-items:end
+    }
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid var(--line);border-radius:999px;padding:7px 11px;
+      color:var(--muted);font-size:.8rem;background:rgba(255,255,255,.55)
+    }
+    h1{
+      font-size:clamp(3.7rem,8vw,7.8rem);line-height:.88;
+      letter-spacing:-.07em;margin:24px 0 20px
+    }
+    .hero p{font-size:1.19rem;color:#40433f;max-width:790px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:46px;padding:0 18px;border-radius:999px;
+      border:1px solid var(--text);font-size:.92rem;font-weight:700
+    }
+    .btn.primary{background:var(--text);color:#fff}
+    .btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+    .btn.secondary:hover{background:#fff;color:var(--text)}
+
+    .profile-card{
+      background:var(--surface);border:1px solid var(--line);
+      border-radius:var(--radius);box-shadow:var(--shadow);padding:28px
+    }
+    .monogram{
+      width:82px;height:82px;border-radius:24px;background:var(--accent);
+      color:white;display:grid;place-items:center;font-weight:850;font-size:1.55rem;
+      letter-spacing:-.04em;margin-bottom:28px
+    }
+    .label{
+      font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;
+      color:var(--muted);font-weight:800;margin-bottom:8px
+    }
+    .profile-card strong{display:block;font-size:1.05rem}
+    .profile-card p{font-size:.94rem;margin:.25rem 0 1.15rem;color:var(--muted)}
+
+    section{padding:82px 0;border-top:1px solid var(--line)}
+    .section-head{
+      display:grid;grid-template-columns:190px 1fr;gap:54px;margin-bottom:38px
+    }
+    .kicker{
+      font-size:.76rem;text-transform:uppercase;letter-spacing:.13em;
+      color:var(--muted);font-weight:800;padding-top:8px
+    }
+    h2{
+      font-size:clamp(2.2rem,4vw,3.7rem);line-height:1.04;
+      letter-spacing:-.05em;margin:0
+    }
+    .lead{font-size:1.12rem;color:#434642;max-width:820px;margin:18px 0 0}
+
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+      padding:26px;min-height:260px;box-shadow:var(--shadow);
+      display:flex;flex-direction:column;justify-content:space-between
+    }
+    .card h3{margin:4px 0 10px;font-size:1.18rem;line-height:1.3;letter-spacing:-.025em}
+    .card p{margin:0;color:var(--muted)}
+    .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:20px}
+    .tag{
+      font-size:.74rem;padding:5px 9px;background:#eef1ee;border-radius:999px;color:#555b57
+    }
+
+    .feature{
+      background:var(--accent);color:#fff;border-radius:34px;padding:44px;
+      display:grid;grid-template-columns:1.3fr .7fr;gap:50px
+    }
+    .feature h3{
+      font-size:clamp(2.05rem,4vw,3.25rem);letter-spacing:-.045em;
+      line-height:1.03;margin:0 0 14px
+    }
+    .feature p{color:rgba(255,255,255,.8);margin:0 0 15px}
+    .status{
+      justify-self:end;align-self:start;border:1px solid rgba(255,255,255,.35);
+      border-radius:999px;padding:8px 12px;font-size:.8rem
+    }
+
+    .pub{
+      display:grid;grid-template-columns:155px 1fr;gap:28px;padding:26px 0;
+      border-bottom:1px solid var(--line)
+    }
+    .pub:last-child{border-bottom:0}
+    .pub-year{color:var(--muted);font-size:.9rem}
+    .pub h3{font-size:1.05rem;margin:0 0 5px;line-height:1.45}
+    .pub p{margin:0;color:var(--muted)}
+    .badge{
+      display:inline-block;margin-top:10px;font-size:.74rem;padding:4px 9px;
+      border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:700
+    }
+
+    .timeline{display:grid}
+    .time{
+      display:grid;grid-template-columns:190px 1fr;gap:32px;padding:25px 0;
+      border-bottom:1px solid var(--line)
+    }
+    .time:last-child{border-bottom:0}
+    .when{color:var(--muted);font-size:.9rem}
+    .time h3{margin:0 0 5px;font-size:1.08rem}
+    .time p{margin:0;color:var(--muted)}
+
+    .presentations{display:grid;gap:14px}
+    .presentation{
+      background:rgba(255,255,255,.55);border:1px solid var(--line);
+      border-radius:20px;padding:20px 22px
+    }
+    .presentation strong{display:block;line-height:1.4}
+    .presentation span{font-size:.88rem;color:var(--muted)}
+
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .panel{
+      background:rgba(255,255,255,.6);border:1px solid var(--line);
+      border-radius:var(--radius);padding:27px
+    }
+    .panel h3{margin-top:0}
+    .panel ul{margin-bottom:0;padding-left:20px;color:var(--muted)}
+
+    .resource-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .resource{
+      background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+      padding:25px;box-shadow:var(--shadow)
+    }
+    .resource h3{margin:0 0 7px}
+    .resource p{color:var(--muted);margin:0 0 16px}
+
+    .contact{text-align:center;padding:112px 0 122px}
+    .contact h2{max-width:900px;margin:auto}
+    .contact p{max-width:690px;margin:20px auto;color:var(--muted);font-size:1.07rem}
+    .contact .actions{justify-content:center}
+
+    footer{border-top:1px solid var(--line);padding:27px 0;color:var(--muted);font-size:.85rem}
+    .foot{display:flex;justify-content:space-between;gap:15px}
+
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;gap:38px;padding-top:72px}
+      .section-head{grid-template-columns:1fr;gap:10px}
+      .cards,.two-col,.resource-grid{grid-template-columns:1fr}
+      .feature{grid-template-columns:1fr;padding:31px}
+      .feature .status{justify-self:start}
+      .time,.pub{grid-template-columns:1fr;gap:5px}
+      .links{display:none}
+      h1{font-size:clamp(3.5rem,18vw,6rem)}
+    }
+  </style>
+</head>
+
+<body>
+<nav>
+  <div class="wrap nav">
+    <a class="brand" href="#top">KyuTae Hwang</a>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#work">Work</a>
+      <a href="#trajectory">Trajectory</a>
+      <a href="#presentations">Talks</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <div class="wrap">
+    <header class="hero">
+      <div>
+        <span class="pill">Cancer Immunology · Single-Cell & Spatial Genomics</span>
+        <h1>KyuTae<br>Hwang</h1>
+        <p>
+          PhD student and computational cancer immunology researcher studying how systemic and
+          intratumoral immune states shape response to immunotherapy, with a focus on longitudinal
+          single-cell genomics, T-cell receptor biology, and spatial tumor–immune organization.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#research">View research</a>
+          <a class="btn secondary" href="mailto:khwang@coh.org">Email</a>
+          <a class="btn secondary" href="KyuTae_Hwang_CV.docx">Download CV</a>
+        </div>
+      </div>
+
+      <aside class="profile-card">
+        <div class="monogram">KH</div>
+        <div class="label">Current position</div>
+        <strong>PhD Student · Biological Sciences</strong>
+        <p>City of Hope · Irell & Manella Graduate School of Biological Sciences</p>
+
+        <div class="label">Research</div>
+        <strong>Cancer immunology & translational genomics</strong>
+        <p>Single-cell RNA/TCR sequencing, spatial transcriptomics, clinical cohort analysis</p>
+
+        <div class="label">Location</div>
+        <strong>Duarte, California</strong>
+      </aside>
+    </header>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">01 · About</div>
+        <div>
+          <h2>I study immunotherapy response as a dynamic, multi-compartment immune-system problem.</h2>
+          <p class="lead">
+            My work connects peripheral blood and tumor immune states to identify cellular programs,
+            clonal behavior, and spatial organization associated with treatment response. I am especially
+            interested in translational questions where high-dimensional genomic measurements can be
+            distilled into biologically interpretable and clinically testable signals.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">02 · Research</div>
+        <div>
+          <h2>Research themes</h2>
+          <p class="lead">Three recurring questions organize my current work in cancer immunology.</p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div>
+            <div class="label">Systemic response</div>
+            <h3>Early peripheral immune dynamics</h3>
+            <p>
+              Characterizing early on-treatment T/NK-cell changes and signaling programs in peripheral
+              blood and asking how these dynamics relate to later clinical response.
+            </p>
+          </div>
+          <div class="tags">
+            <span class="tag">PBMC</span><span class="tag">Longitudinal</span><span class="tag">ICI</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <div class="label">T-cell biology</div>
+            <h3>Cell state, clonotype, and treatment outcome</h3>
+            <p>
+              Integrating transcriptional states with TCR clonotypes to study expansion, persistence,
+              cross-compartment relationships, and response-associated exhausted CD8 T-cell programs.
+            </p>
+          </div>
+          <div class="tags">
+            <span class="tag">scRNA-seq</span><span class="tag">scTCR-seq</span><span class="tag">CD8 T cells</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <div class="label">Tumor ecosystem</div>
+            <h3>Spatial myeloid–T-cell organization</h3>
+            <p>
+              Studying how macrophage and T-cell programs are arranged within renal cell carcinoma
+              and how local tissue architecture associates with immunotherapy phenotypes.
+            </p>
+          </div>
+          <div class="tags">
+            <span class="tag">Xenium</span><span class="tag">Visium</span><span class="tag">TME</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">03 · Selected Work</div>
+        <div><h2>Current manuscript</h2></div>
+      </div>
+
+      <div class="feature">
+        <div>
+          <div class="label" style="color:rgba(255,255,255,.62)">Metastatic renal cell carcinoma</div>
+          <h3>Early peripheral T-cell dynamics and pretreatment intratumoral stress-adapted exhausted T cells</h3>
+          <p>
+            Longitudinal single-cell multi-omics profiling of paired tumor and peripheral blood samples
+            from patients with metastatic renal cell carcinoma treated with immune checkpoint inhibitor–based therapy.
+          </p>
+          <p>
+            The study integrates scRNA-seq, scTCR-seq, independent cohort validation, and spatial
+            transcriptomics to examine early peripheral T/NK-cell activation, an ATF3-linked
+            stress-adapted exhausted CD8 T-cell program, clonotype dynamics, and macrophage–T-cell niches.
+          </p>
+          <div class="tags">
+            <span class="tag">mRCC</span><span class="tag">Immunotherapy</span>
+            <span class="tag">Single-cell multi-omics</span><span class="tag">Spatial genomics</span>
+          </div>
+        </div>
+        <div class="status">Under revision · Nature Communications</div>
+      </div>
+
+      <div style="margin-top:34px">
+        <div class="pub">
+          <div class="pub-year">2026</div>
+          <div>
+            <h3>Hwang K, et al. Early peripheral T cell dynamics and pretreatment intratumoral stress-adapted exhausted T cells associated with ICI response in metastatic renal cell carcinoma.</h3>
+            <p>Manuscript under revision at <em>Nature Communications</em>.</p>
+            <span class="badge">First-author manuscript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trajectory">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">04 · Trajectory</div>
+        <div>
+          <h2>Research training across Korea, UNC Lineberger, and City of Hope.</h2>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="time">
+          <div class="when">Aug 2026 — Present</div>
+          <div>
+            <h3>City of Hope · Irell & Manella Graduate School of Biological Sciences</h3>
+            <p>PhD Student, Biological Sciences · Graduate Student Researcher, Beckman Research Institute · Advisor: William Y. Kim, M.D.</p>
+          </div>
+        </div>
+
+        <div class="time">
+          <div class="when">Apr 2024 — Jun 2026</div>
+          <div>
+            <h3>UNC Lineberger Comprehensive Cancer Center</h3>
+            <p>
+              Visiting Scholar · Advisor: William Y. Kim, M.D. · Longitudinal single-cell multi-omics,
+              TCR analysis, and spatial profiling of immunotherapy-treated metastatic renal cell carcinoma.
+            </p>
+          </div>
+        </div>
+
+        <div class="time">
+          <div class="when">Mar 2023 — Jul 2026</div>
+          <div>
+            <h3>SAIHST, Sungkyunkwan University</h3>
+            <p>Integrated M.S.-Ph.D. training in Health Sciences and Technology with emphasis on translational genomics and clinical cohort analysis.</p>
+          </div>
+        </div>
+
+        <div class="time">
+          <div class="when">Summer 2022</div>
+          <div>
+            <h3>Korea University College of Medicine</h3>
+            <p>Student Intern · Advisor: Jason K. Sa, Ph.D. · Computational analysis of bulk RNA-seq and whole-exome sequencing in gastric cancer immunotherapy.</p>
+          </div>
+        </div>
+
+        <div class="time">
+          <div class="when">Feb 2023</div>
+          <div>
+            <h3>Kyung Hee University</h3>
+            <p>B.S., Biology · Undergraduate thesis on immunotherapy efficacy and the gut microbiome.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="presentations">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">05 · Presentations</div>
+        <div><h2>Selected talks & posters</h2></div>
+      </div>
+
+      <div class="presentations">
+        <div class="presentation">
+          <strong>Pretreatment intratumoral stress-adapted exhausted T cells predict ICI response in metastatic renal cell carcinoma.</strong>
+          <span>Korean Urological Association Annual Meeting · 2026 · Seoul · Oral presentation</span>
+        </div>
+        <div class="presentation">
+          <strong>Temporal dynamics of T cell reprogramming associate with clinical response to ICI-based combination therapy in metastatic renal cell carcinoma.</strong>
+          <span>AACR Annual Meeting · 2026 · Poster presentation</span>
+        </div>
+        <div class="presentation">
+          <strong>Understanding the complex tumor immune microenvironment in metastatic renal cell carcinoma patients undergoing immune checkpoint inhibitor therapy at single-cell resolution.</strong>
+          <span>Urological Research Society Annual Meeting · 2025 · Kyoto · Oral presentation</span>
+        </div>
+        <div class="presentation">
+          <strong>Longitudinal single-cell transcriptomic analysis reveals clinically relevant CD8 T-cell functional alterations during immune checkpoint inhibitor treatment in metastatic renal cell carcinoma.</strong>
+          <span>Korean Urological Association Annual Meeting · 2025 · Seoul · Oral presentation</span>
+        </div>
+        <div class="presentation">
+          <strong>Single-cell transcriptomic features for predicting immunotherapy responsiveness in metastatic renal cell carcinoma.</strong>
+          <span>Korean Urological Association Annual Meeting · 2023 · Seoul · Oral presentation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resources">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">06 · Data & Methods</div>
+        <div>
+          <h2>Tools and research resources</h2>
+          <p class="lead">Computational workflows spanning single-cell, spatial, genomic, and clinical analysis.</p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <h3>Computational toolkit</h3>
+          <ul>
+            <li>Single-cell RNA-seq: Seurat, Monocle3, CellChat, inferCNV, DoubletFinder</li>
+            <li>Single-cell TCR/BCR: scRepertoire, clonotype tracking</li>
+            <li>Spatial transcriptomics: 10x Visium, Xenium, Xenium Explorer</li>
+            <li>Bulk RNA-seq: DESeq2, survival analysis</li>
+            <li>Whole-exome sequencing: vcf2maf, VEP, maftools</li>
+            <li>RNA velocity: Velocyto, scVelo</li>
+            <li>Demultiplexing: Demuxlet, Souporcell</li>
+            <li>Programming: R, Python, Linux, Docker</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Scientific interests</h3>
+          <ul>
+            <li>Immune checkpoint blockade</li>
+            <li>Renal cell carcinoma</li>
+            <li>T-cell differentiation and exhaustion</li>
+            <li>Tumor-reactive T-cell states</li>
+            <li>Myeloid–T-cell spatial niches</li>
+            <li>Translational biomarker development</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="resource-grid" style="margin-top:18px">
+        <div class="resource">
+          <div class="label">GEO</div>
+          <h3>GSE317051</h3>
+          <p>Data deposition associated with the metastatic renal cell carcinoma immunotherapy project. Repository access may be subject to release restrictions.</p>
+          <a class="btn secondary" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE317051" target="_blank" rel="noopener">View GEO record</a>
+        </div>
+
+        <div class="resource">
+          <div class="label">Zenodo</div>
+          <h3>mRCC Xenium resource</h3>
+          <p>Metastatic renal cell carcinoma Xenium spatial transcriptomics resource spanning pre- and post-ICI tumor samples.</p>
+          <a class="btn secondary" href="https://doi.org/10.5281/zenodo.20402498" target="_blank" rel="noopener">View Zenodo record</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="kicker" style="padding:0;margin-bottom:18px">07 · Contact</div>
+      <h2>Interested in cancer immunology, single-cell genomics, or translational oncology?</h2>
+      <p>
+        I am interested in scientific discussions and collaborations at the intersection of
+        immunotherapy, patient-derived genomic data, T-cell biology, and spatial tumor immunology.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:khwang@coh.org">khwang@coh.org</a>
+        <a class="btn secondary" href="KyuTae_Hwang_CV.docx">Download CV</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="year"></span> KyuTae Hwang</span>
+    <span>Duarte, California</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
