@@ -73,7 +73,8 @@
         "PBMC",
         "Longitudinal",
         "ICI"
-      ]
+      ],
+      "image": "media/images/2026-09-10-155053.png"
     },
     {
       "label": "T-cell biology",
@@ -83,7 +84,8 @@
         "scRNA-seq",
         "scTCR-seq",
         "CD8 T cells"
-      ]
+      ],
+      "image": "media/images/2026-09-10-155200.png"
     },
     {
       "label": "Tumor ecosystem",
@@ -93,7 +95,8 @@
         "Xenium",
         "Visium",
         "TME"
-      ]
+      ],
+      "image": "media/images/2026-09-05-123121.png"
     }
   ],
   "selectedWork": {
