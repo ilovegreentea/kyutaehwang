@@ -1,40 +1,63 @@
-# KyuTae Hwang — Interactive GitHub Pages site
+# KyuTae Hwang website — CMS-ready version
 
-## Files
-- `index.html`: public website
-- `data.json`: editable site content
-- `admin/index.html`: browser-based GitHub editor
-- `KyuTae_Hwang_CV.docx`: CV
+This version keeps GitHub Pages for hosting and uses Pages CMS as the no-code editing interface.
 
-## Install
-Upload/replace these files in the root of the `ilovegreentea/kyutaehwang` repository:
+## Repository structure
 
 ```text
 index.html
 data.json
-KyuTae_Hwang_CV.docx
-admin/index.html
+.pages.yml
+admin/
+  index.html
+media/
+  images/
+  files/
+    KyuTae_Hwang_CV.docx
 ```
 
-After GitHub Pages publishes, the editor will be available at:
+## First-time installation
 
-`https://ilovegreentea.github.io/kyutaehwang/admin/`
+1. Open the `ilovegreentea/kyutaehwang` repository on GitHub.
+2. Upload **the contents of this folder** to the repository root.
+   - `.pages.yml` must be in the repository root.
+   - `admin/index.html` must remain inside the `admin` folder.
+   - `data.json` and `index.html` must be in the repository root.
+3. Commit the files to the branch used by GitHub Pages (normally `main`).
+4. Confirm GitHub Pages is configured for that same branch and root folder.
+5. Open:
+   - Public site: `https://ilovegreentea.github.io/kyutaehwang/`
+   - Admin shortcut: `https://ilovegreentea.github.io/kyutaehwang/admin/`
+6. From the admin shortcut, open Pages CMS.
+7. Sign in with GitHub and install/authorize the Pages CMS GitHub App for the repository.
+8. Select `ilovegreentea/kyutaehwang` and the `main` branch.
 
-## GitHub token
-Create a fine-grained personal access token restricted to the `kyutaehwang` repository.
+## What can be edited without code
 
-Required repository permission:
-- Contents: Read and write
+- Name, email, location, position
+- Hero introduction
+- Profile photo
+- About section
+- Research cards, tags, and optional card images
+- Selected work and optional feature image
+- Career/trajectory entries
+- Presentations
+- Toolkit and scientific interests
+- GEO/Zenodo/resource links
+- Photo gallery
+- CV document
 
-The editor does not save the token to localStorage, cookies, or the repository. You enter it each browser session.
+## Image and file uploads
 
-## Workflow
-1. Open `/admin/`.
-2. Enter your GitHub token.
-3. Click **Load from GitHub**.
-4. Edit fields.
-5. Click **Commit changes to GitHub**.
-6. GitHub Pages redeploys from the new `data.json`.
+Pages CMS stores uploads directly in the GitHub repository:
 
-## Important
-This admin page is public because it is hosted by GitHub Pages, but editing still requires a valid GitHub token with repository write permission. Never hard-code the token into `admin/index.html`.
+- Images: `media/images/`
+- Documents: `media/files/`
+
+The website reads those paths from `data.json`, so uploaded media appears on the public site after GitHub Pages republishes.
+
+## Security
+
+The `/admin/` shortcut page itself is public because GitHub Pages is static hosting. Actual editing requires GitHub authentication and repository authorization in Pages CMS.
+
+Do not store a GitHub personal access token in the repository or in `index.html`.
