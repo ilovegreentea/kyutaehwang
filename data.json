@@ -10,7 +10,7 @@
     "researchCardTitleScale": 1,
     "researchCardTextScale": 1,
     "workHeadingScale": 1,
-    "workTitleScale": 1,
+    "workTitleScale": 0.5,
     "workTextScale": 1,
     "trajectoryHeadingScale": 1,
     "trajectoryTitleScale": 1,
