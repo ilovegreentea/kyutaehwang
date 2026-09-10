@@ -123,3 +123,14 @@ In the Overview screen, use **Do not count this browser**. GoatCounter supports 
 ### Accuracy note
 
 Client-side analytics can be blocked by ad blockers, so the numbers are useful website analytics rather than a perfect server-log count.
+
+
+## Stats display fix
+
+This build no longer fetches GoatCounter JSON from JavaScript.
+
+The `/admin/` Overview uses GoatCounter's official visitor-counter HTML endpoints inside small iframes. This avoids browser cross-origin/CORS failures such as `Stats error: Failed to fetch`.
+
+If `https://YOURCODE.goatcounter.com/counter/%2F.json` opens successfully in a browser and `Allow adding visitor counts on your website` is enabled, the Overview counters should render without requiring the dashboard to be public.
+
+Visitor-counter responses may be cached by GoatCounter for up to four hours.

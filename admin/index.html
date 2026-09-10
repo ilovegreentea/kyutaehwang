@@ -96,6 +96,22 @@
     .bar-value{font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}
     .bar{width:min(32px,78%);min-height:2px;background:var(--accent);border-radius:5px 5px 2px 2px}
     .bar-label{font-size:10px;color:var(--muted);white-space:nowrap}
+
+    .counter-frame{
+      width:100%;height:52px;border:0;display:block;overflow:hidden;background:transparent
+    }
+    .daily-grid{
+      display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px
+    }
+    .daily-card{
+      min-width:0;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 5px;text-align:center
+    }
+    .daily-card .day{font-size:10px;color:var(--muted);margin-bottom:2px}
+    .daily-card .counter-frame{height:42px}
+    @media(max-width:900px){
+      .daily-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    }
+
     .analytics-empty{
       border:1px dashed #9ba7b3;border-radius:10px;background:#f8fafc;padding:24px;text-align:center
     }
@@ -522,15 +538,6 @@
       .toLowerCase();
   }
 
-  function analyticsCounterUrl(start="", end="") {
-    const code = analyticsCode();
-    const base = `https://${code}.goatcounter.com/counter/${encodeURIComponent("/")}.json`;
-    const params = new URLSearchParams();
-    if (start) params.set("start", start);
-    if (end) params.set("end", end);
-    return params.size ? `${base}?${params.toString()}` : base;
-  }
-
   function dateISO(date) {
     const y = date.getFullYear();
     const m = String(date.getMonth() + 1).padStart(2, "0");
@@ -545,102 +552,37 @@
     return d;
   }
 
-  async function fetchCounter(start="", end="") {
-    const response = await fetch(analyticsCounterUrl(start, end), {cache:"no-store"});
-    if (!response.ok) {
-      throw new Error(`Stats request returned ${response.status}`);
-    }
-    const payload = await response.json();
-    const value = Number(String(payload.count || "0").replace(/,/g, ""));
-    return Number.isFinite(value) ? value : 0;
-  }
-
-  function formatCount(value) {
-    if (value == null) return "—";
-    return Number(value).toLocaleString();
-  }
-
-  async function refreshAnalyticsDashboard() {
-    const box = document.getElementById("analyticsDashboard");
-    if (!box || state.section !== "overview") return;
-
+  function counterFrameUrl(start="", end="") {
     const code = analyticsCode();
-    const enabled = getPath(state.data, "analytics.enabled", false) === true;
-    if (!code) return;
+    const base = `https://${code}.goatcounter.com/counter/${encodeURIComponent("/")}.html`;
+    const params = new URLSearchParams();
+    params.set("no_branding", "1");
 
-    const today = dateISO(new Date());
-    const sevenStart = dateISO(dateDaysAgo(6));
-    const thirtyStart = dateISO(dateDaysAgo(29));
+    // Style the official GoatCounter visitor counter as a simple number.
+    params.set("style", `
+      html,body{margin:0!important;padding:0!important;background:transparent!important}
+      div{border:0!important;background:transparent!important;padding:0!important;margin:0!important;width:auto!important;height:auto!important}
+      #gcvc-for,#gcvc-by{display:none!important}
+      #gcvc-views{font:700 27px/1.15 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;color:#1f2328!important}
+    `);
 
-    box.innerHTML = `
-      <div class="stats-grid">
-        ${["Today","Last 7 days","Last 30 days","Total"].map(label => `
-          <div class="stat-card"><div class="stat-label">${label}</div><div class="stat-value">…</div></div>
-        `).join("")}
-      </div>
-      ${card("Recent 7 days", `<div class="chart"><div style="margin:auto;color:var(--muted)">Loading…</div></div>`)}
-    `;
-
-    try {
-      const [todayCount, sevenCount, thirtyCount, totalCount] = await Promise.all([
-        fetchCounter(today, today),
-        fetchCounter(sevenStart, today),
-        fetchCounter(thirtyStart, today),
-        fetchCounter()
-      ]);
-
-      const statValues = [todayCount, sevenCount, thirtyCount, totalCount];
-      box.querySelectorAll(".stat-value").forEach((el, i) => {
-        el.textContent = formatCount(statValues[i]);
-      });
-
-      const days = [];
-      for (let i = 6; i >= 0; i--) {
-        const date = dateDaysAgo(i);
-        days.push({date, iso:dateISO(date)});
-      }
-
-      const counts = await Promise.all(days.map(x => fetchCounter(x.iso, x.iso)));
-      const max = Math.max(1, ...counts);
-
-      const chart = box.querySelector(".chart");
-      chart.innerHTML = days.map((x, i) => {
-        const pct = Math.max(2, Math.round((counts[i] / max) * 100));
-        const label = x.date.toLocaleDateString(undefined, {weekday:"short"});
-        return `
-          <div class="bar-wrap">
-            <div class="bar-value">${formatCount(counts[i])}</div>
-            <div class="bar" style="height:${pct}%"></div>
-            <div class="bar-label">${esc(label)}</div>
-          </div>`;
-      }).join("");
-
-      $("#analyticsStateNote").innerHTML = enabled
-        ? `<strong>Tracking is ON.</strong> Public-site visits are being counted.`
-        : `<strong>Tracking is OFF.</strong> Existing statistics are visible, but new visits are not being recorded.`;
-
-    } catch (err) {
-      box.innerHTML = `
-        <div class="analytics-empty">
-          <h3>Statistics are not readable yet</h3>
-          <p>
-            The GoatCounter account code is saved, but public counter access is not available.
-            In GoatCounter, enable <strong>“Allow adding visitor counts on your website”</strong>,
-            then return here and press Refresh stats.
-          </p>
-          <button class="btn" type="button" id="refreshStats">Refresh stats</button>
-        </div>`;
-      document.getElementById("refreshStats")?.addEventListener("click", refreshAnalyticsDashboard);
-      $("#analyticsStateNote").textContent = `Stats error: ${err.message}`;
-    }
+    if (start) params.set("start", start);
+    if (end) params.set("end", end);
+    return `${base}?${params.toString()}`;
   }
 
-  function renderOverview() {
+  function counterFrame(start="", end="", title="Visitor count") {
+    return `<iframe class="counter-frame"
+      src="${esc(counterFrameUrl(start,end))}"
+      title="${esc(title)}"
+      loading="lazy"
+      referrerpolicy="no-referrer"></iframe>`;
+  }
+
+  function renderCounterDashboard() {
     const code = analyticsCode();
-    const enabled = getPath(state.data, "analytics.enabled", false) === true;
-    const dashboard = code
-      ? `<div id="analyticsDashboard"></div>`
-      : `
+    if (!code) {
+      return `
         <div id="analyticsDashboard" class="analytics-empty">
           <h3>Visitor statistics are not connected yet</h3>
           <p>
@@ -649,12 +591,74 @@
           </p>
           <a class="btn primary" href="https://www.goatcounter.com/signup" target="_blank" rel="noopener">Create free analytics account ↗</a>
         </div>`;
+    }
+
+    const today = dateISO(new Date());
+    const sevenStart = dateISO(dateDaysAgo(6));
+    const thirtyStart = dateISO(dateDaysAgo(29));
+
+    const days = [];
+    for (let i = 6; i >= 0; i--) {
+      const date = dateDaysAgo(i);
+      days.push({
+        iso: dateISO(date),
+        label: date.toLocaleDateString(undefined, {weekday:"short"})
+      });
+    }
+
+    return `
+      <div id="analyticsDashboard">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Today</div>
+            ${counterFrame(today,today,"Today's views")}
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Last 7 days</div>
+            ${counterFrame(sevenStart,today,"Last 7 days views")}
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Last 30 days</div>
+            ${counterFrame(thirtyStart,today,"Last 30 days views")}
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total</div>
+            ${counterFrame("","","Total views")}
+          </div>
+        </div>
+
+        ${card("Recent 7 days", `
+          <div class="daily-grid">
+            ${days.map(x => `
+              <div class="daily-card">
+                <div class="day">${esc(x.label)}</div>
+                ${counterFrame(x.iso,x.iso,`${x.label} views`)}
+              </div>
+            `).join("")}
+          </div>
+        `)}
+      </div>`;
+  }
+
+  function refreshAnalyticsDashboard() {
+    const box = document.getElementById("analyticsDashboard");
+    if (!box || state.section !== "overview") return;
+
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = renderCounterDashboard();
+    const fresh = wrapper.firstElementChild;
+    box.replaceWith(fresh);
+  }
+
+  function renderOverview() {
+    const code = analyticsCode();
+    const enabled = getPath(state.data, "analytics.enabled", false) === true;
 
     return `
       <h1 class="page-title">Website Overview</h1>
       <p class="page-sub">홈페이지 조회수와 기본 상태를 여기서 바로 확인합니다.</p>
 
-      ${dashboard}
+      ${renderCounterDashboard()}
 
       ${card("Analytics setup", `
         ${toggle("analytics.enabled","Count public website visits",false)}
@@ -663,7 +667,9 @@
         })}
         <div class="analytics-note" id="analyticsStateNote">
           ${code
-            ? (enabled ? "<strong>Tracking is ON.</strong>" : "<strong>Tracking is OFF.</strong>")
+            ? (enabled
+                ? "<strong>Tracking is ON.</strong> Public-site visits are being counted."
+                : "<strong>Tracking is OFF.</strong> Existing counts remain visible, but new visits are not recorded.")
             : "No analytics account is connected yet."}
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
@@ -672,8 +678,8 @@
           <a class="btn" href="../#toggle-goatcounter" target="_blank">Do not count this browser ↗</a>
         </div>
         <div class="hint" style="margin-top:10px">
-          For the four summary cards to work, enable “Allow adding visitor counts on your website”
-          in the GoatCounter site settings. No API password is stored in this website.
+          The summary cards use GoatCounter's official visitor-counter pages inside small frames.
+          This avoids cross-origin fetch errors and does not require an analytics API password.
         </div>
       `)}
 
@@ -681,7 +687,7 @@
         <div class="hint" style="font-size:13px">
           The public homepage is counted. The visual editor and its live preview are excluded.
           Because this is a one-page academic website, the dashboard summarizes views of the homepage.
-          Ad blockers can prevent some analytics requests, so counts are approximate rather than a perfect server-log total.
+          GoatCounter may cache visitor-counter responses for up to four hours, so these summary numbers are not always instant.
         </div>
       `)}
     `;
@@ -1018,7 +1024,6 @@
     bindEditor();
     if (state.section === "overview") {
       document.getElementById("refreshStats")?.addEventListener("click", refreshAnalyticsDashboard);
-      if (analyticsCode()) setTimeout(refreshAnalyticsDashboard, 50);
     }
   }
 
