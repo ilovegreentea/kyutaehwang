@@ -69,6 +69,39 @@
       --section-pad:96px;
       --research-columns:3;
       --resource-columns:2;
+
+      --hero-name-size:112px;
+      --hero-summary-direct-size:19px;
+
+      --about-heading-size:58px;
+      --about-body-size:18px;
+
+      --research-heading-size:58px;
+      --research-card-title-direct-size:20px;
+      --research-card-body-size:16px;
+
+      --work-heading-size:58px;
+      --work-title-direct-size:48px;
+      --work-body-size:16px;
+
+      --trajectory-heading-size:58px;
+      --trajectory-title-direct-size:18px;
+      --trajectory-body-size:16px;
+
+      --presentation-heading-size:58px;
+      --presentation-title-direct-size:16px;
+      --presentation-meta-direct-size:14px;
+
+      --methods-heading-size:58px;
+      --methods-panel-title-size:19px;
+      --methods-list-size:16px;
+
+      --gallery-heading-size:58px;
+      --gallery-caption-direct-size:14px;
+
+      --contact-heading-size:64px;
+      --contact-body-size:17px;
+      --nav-direct-size:15px;
     }
 
     *{box-sizing:border-box}
@@ -130,7 +163,7 @@
       align-items:center;
       gap:22px;
       color:#59625e;
-      font-size:var(--nav-size);
+      font-size:var(--nav-direct-size);
       font-weight:650;
     }
     .links a{
@@ -181,7 +214,7 @@
       box-shadow:0 0 0 5px rgba(53,104,93,.09);
     }
     h1{
-      font-size:clamp(var(--hero-min),var(--hero-fluid),var(--hero-max));
+      font-size:clamp(62px,9vw,var(--hero-name-size));
       line-height:.82;
       letter-spacing:-.075em;
       margin:28px 0 28px;
@@ -189,7 +222,7 @@
     }
     .hero-summary{
       max-width:760px;
-      font-size:var(--hero-summary-size);
+      font-size:var(--hero-summary-direct-size);
       line-height:1.72;
       color:#414b47;
       margin:0;
@@ -320,25 +353,25 @@
       line-height:.98;
     }
     #about .section-head h2{
-      font-size:clamp(var(--about-heading-min,var(--section-min)),var(--about-heading-fluid,var(--section-fluid)),var(--about-heading-max,var(--section-max)));
+      font-size:clamp(36px,5vw,var(--about-heading-size));
     }
     #research .section-head h2{
-      font-size:clamp(var(--research-heading-min,var(--section-min)),var(--research-heading-fluid,var(--section-fluid)),var(--research-heading-max,var(--section-max)));
+      font-size:clamp(36px,5vw,var(--research-heading-size));
     }
     #work .section-head h2{
-      font-size:clamp(var(--work-heading-min,var(--section-min)),var(--work-heading-fluid,var(--section-fluid)),var(--work-heading-max,var(--section-max)));
+      font-size:clamp(36px,5vw,var(--work-heading-size));
     }
     #trajectory .section-head h2{
-      font-size:clamp(var(--trajectory-heading-min,var(--section-min)),var(--trajectory-heading-fluid,var(--section-fluid)),var(--trajectory-heading-max,var(--section-max)));
+      font-size:clamp(36px,5vw,var(--trajectory-heading-size));
     }
     #presentations .section-head h2{
-      font-size:clamp(var(--presentation-heading-min,var(--section-min)),var(--presentation-heading-fluid,var(--section-fluid)),var(--presentation-heading-max,var(--section-max)));
+      font-size:clamp(36px,5vw,var(--presentation-heading-size));
     }
     #resources .section-head h2{
-      font-size:clamp(var(--methods-heading-min,var(--section-min)),var(--methods-heading-fluid,var(--section-fluid)),var(--methods-heading-max,var(--section-max)));
+      font-size:clamp(36px,5vw,var(--methods-heading-size));
     }
     #gallery .section-head h2{
-      font-size:clamp(var(--gallery-heading-min,var(--section-min)),var(--gallery-heading-fluid,var(--section-fluid)),var(--gallery-heading-max,var(--section-max)));
+      font-size:clamp(36px,5vw,var(--gallery-heading-size));
     }
     .section-head .lead{
       margin:18px 0 0;
@@ -359,7 +392,7 @@
       background:rgba(255,255,255,.62);
     }
     .about-copy{padding:36px}
-    .about-copy p{font-size:var(--about-text-size);color:#46504c;margin:0;line-height:1.82}
+    .about-copy p{font-size:var(--about-body-size);color:#46504c;margin:0;line-height:1.82}
     .about-side{
       padding:30px;
       display:flex;
@@ -427,11 +460,11 @@
     .research-body{padding:25px 25px 27px}
     .research-body h3{
       margin:7px 0 11px;
-      font-size:var(--research-card-title-size);
+      font-size:var(--research-card-title-direct-size);
       line-height:1.32;
       letter-spacing:-.025em;
     }
-    .research-body p{margin:0;color:var(--muted);font-size:var(--research-card-text-size)}
+    .research-body p{margin:0;color:var(--muted);font-size:var(--research-card-body-size)}
     .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
     .tag{
       display:inline-flex;
@@ -459,12 +492,12 @@
       color:white;
     }
     .feature h3{
-      font-size:clamp(var(--work-title-min),var(--work-title-fluid),var(--work-title-max));
+      font-size:clamp(30px,4.6vw,var(--work-title-direct-size));
       line-height:.98;
       letter-spacing:-.055em;
       margin:10px 0 22px;
     }
-    .feature p{color:rgba(255,255,255,.75);margin:0 0 14px;font-size:var(--work-text-size)}
+    .feature p{color:rgba(255,255,255,.75);margin:0 0 14px;font-size:var(--work-body-size)}
     .feature .tag{background:rgba(255,255,255,.12);color:#fff}
     .feature-side{
       display:flex;
@@ -563,8 +596,8 @@
       box-shadow:0 0 0 5px var(--bg);
     }
     .when{font-size:.84rem;color:var(--muted);font-weight:750}
-    .time h3{font-size:var(--trajectory-title-size);margin:0 0 6px;letter-spacing:-.02em}
-    .time p{margin:0;color:var(--muted);max-width:760px;font-size:var(--trajectory-text-size)}
+    .time h3{font-size:var(--trajectory-title-direct-size);margin:0 0 6px;letter-spacing:-.02em}
+    .time p{margin:0;color:var(--muted);max-width:760px;font-size:var(--trajectory-body-size)}
 
     /* PRESENTATIONS */
     .presentation-list{display:grid;gap:10px}
@@ -586,8 +619,8 @@
       font-weight:900;
       letter-spacing:.04em;
     }
-    .presentation strong{display:block;line-height:1.42;font-size:var(--presentation-title-size)}
-    .presentation-meta{font-size:var(--presentation-meta-size);color:var(--muted);margin-top:5px}
+    .presentation strong{display:block;line-height:1.42;font-size:var(--presentation-title-direct-size)}
+    .presentation-meta{font-size:var(--presentation-meta-direct-size);color:var(--muted);margin-top:5px}
     .presentation-type{
       padding:5px 9px;
       border:1px solid var(--line);
@@ -606,13 +639,13 @@
       border-radius:var(--radius);
       background:rgba(255,255,255,.62);
     }
-    .methods-card h3{margin:0 0 20px;font-size:var(--methods-title-size)}
+    .methods-card h3{margin:0 0 20px;font-size:var(--methods-panel-title-size)}
     .methods-card ul{list-style:none;padding:0;margin:0;display:grid;gap:11px}
     .methods-card li{
       position:relative;
       padding-left:18px;
       color:var(--muted);
-      font-size:var(--methods-text-size);
+      font-size:var(--methods-list-size);
     }
     .methods-card li::before{
       content:"";
@@ -662,7 +695,7 @@
       transition:transform .35s ease;
     }
     .gallery-item:hover img{transform:scale(1.02)}
-    .gallery-item figcaption{padding:13px 15px;color:var(--muted);font-size:var(--gallery-caption-size)}
+    .gallery-item figcaption{padding:13px 15px;color:var(--muted);font-size:var(--gallery-caption-direct-size)}
 
     /* CONTACT */
     .contact-wrap{
@@ -672,14 +705,14 @@
     .contact-wrap h2{
       max-width:970px;
       margin:0 auto;
-      font-size:clamp(var(--contact-min),var(--contact-fluid),var(--contact-max));
+      font-size:clamp(40px,6vw,var(--contact-heading-size));
       line-height:.95;
     }
     .contact-wrap p{
       max-width:700px;
       margin:22px auto 0;
       color:var(--muted);
-      font-size:var(--contact-text-size);
+      font-size:var(--contact-body-size);
     }
     .contact-actions{justify-content:center}
 
@@ -776,7 +809,7 @@
     @media(max-width:680px){
       .wrap{padding:0 18px}
       .section{padding:76px 0}
-      h1{font-size:clamp(calc(var(--hero-min) * .78),22vw,var(--hero-max))}
+      h1{font-size:clamp(54px,22vw,var(--hero-name-size))}
       .hero-summary{font-size:var(--hero-summary-size)}
       .hero-visual{padding:0 12px}
       .profile-float{
@@ -1133,74 +1166,60 @@
     root.style.setProperty("--font-heading", headingFonts[style.headingFont] || headingFonts.editorial);
   }
 
-  function applyDesign(design = {}) {
-    const root = document.documentElement;
+  function setPx(name, value, fallback, min, max) {
+    const n = Number(value);
+    const safe = Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : fallback;
+    document.documentElement.style.setProperty(name, `${safe}px`);
+  }
 
-    const overall = boundedNumber(design.overallFontScale, 0.80, 1.30, 1);
-    root.style.fontSize = `${16 * overall}px`;
-    root.style.setProperty("--nav-size", `${0.9 * scale(design.navScale)}rem`);
+  function applyDirectTypography(d) {
+    const style = d.siteStyle || {};
+    const hero = d.hero || {};
+    const about = d.about || {};
+    const research = d.researchSettings || {};
+    const work = d.selectedWork || {};
+    const trajectory = d.trajectorySettings || {};
+    const presentations = d.presentationSettings || {};
+    const methods = d.methodsSettings || {};
+    const gallery = d.gallery || {};
+    const contact = d.contact || {};
 
-    const heroName = scale(design.heroNameScale);
-    root.style.setProperty("--hero-min", `${4.4 * heroName}rem`);
-    root.style.setProperty("--hero-fluid", `${9 * heroName}vw`);
-    root.style.setProperty("--hero-max", `${8.7 * heroName}rem`);
-    root.style.setProperty("--hero-summary-size", `${1.19 * scale(design.heroSummaryScale)}rem`);
+    // Direct pixel values avoid compounded scale factors.
+    document.documentElement.style.fontSize = "16px";
 
-    const aboutHeading = scale(design.aboutHeadingScale);
-    root.style.setProperty("--about-heading-min", `${2.7 * aboutHeading}rem`);
-    root.style.setProperty("--about-heading-fluid", `${5 * aboutHeading}vw`);
-    root.style.setProperty("--about-heading-max", `${5.15 * aboutHeading}rem`);
-    root.style.setProperty("--about-text-size", `${1.13 * scale(design.aboutTextScale)}rem`);
+    setPx("--nav-direct-size", style.navFontSize, 15, 12, 22);
 
-    const researchHeading = scale(design.researchHeadingScale);
-    root.style.setProperty("--research-heading-min", `${2.7 * researchHeading}rem`);
-    root.style.setProperty("--research-heading-fluid", `${5 * researchHeading}vw`);
-    root.style.setProperty("--research-heading-max", `${5.15 * researchHeading}rem`);
-    root.style.setProperty("--research-card-title-size", `${1.23 * scale(design.researchCardTitleScale)}rem`);
-    root.style.setProperty("--research-card-text-size", `${1.0 * scale(design.researchCardTextScale)}rem`);
+    setPx("--hero-name-size", hero.nameSize, 112, 64, 160);
+    setPx("--hero-summary-direct-size", hero.summarySize, 19, 14, 30);
 
-    const workHeading = scale(design.workHeadingScale);
-    root.style.setProperty("--work-heading-min", `${2.7 * workHeading}rem`);
-    root.style.setProperty("--work-heading-fluid", `${5 * workHeading}vw`);
-    root.style.setProperty("--work-heading-max", `${5.15 * workHeading}rem`);
-    const workTitle = scale(design.workTitleScale);
-    root.style.setProperty("--work-title-min", `${2.35 * workTitle}rem`);
-    root.style.setProperty("--work-title-fluid", `${4.6 * workTitle}vw`);
-    root.style.setProperty("--work-title-max", `${4.8 * workTitle}rem`);
-    root.style.setProperty("--work-text-size", `${1.0 * scale(design.workTextScale)}rem`);
+    setPx("--about-heading-size", about.headingSize, 58, 34, 92);
+    setPx("--about-body-size", about.textSize, 18, 13, 26);
 
-    const trajectoryHeading = scale(design.trajectoryHeadingScale);
-    root.style.setProperty("--trajectory-heading-min", `${2.7 * trajectoryHeading}rem`);
-    root.style.setProperty("--trajectory-heading-fluid", `${5 * trajectoryHeading}vw`);
-    root.style.setProperty("--trajectory-heading-max", `${5.15 * trajectoryHeading}rem`);
-    root.style.setProperty("--trajectory-title-size", `${1.12 * scale(design.trajectoryTitleScale)}rem`);
-    root.style.setProperty("--trajectory-text-size", `${1.0 * scale(design.trajectoryTextScale)}rem`);
+    setPx("--research-heading-size", research.headingSize, 58, 34, 92);
+    setPx("--research-card-title-direct-size", research.cardTitleSize, 20, 14, 32);
+    setPx("--research-card-body-size", research.cardTextSize, 16, 12, 24);
 
-    const presentationHeading = scale(design.presentationHeadingScale);
-    root.style.setProperty("--presentation-heading-min", `${2.7 * presentationHeading}rem`);
-    root.style.setProperty("--presentation-heading-fluid", `${5 * presentationHeading}vw`);
-    root.style.setProperty("--presentation-heading-max", `${5.15 * presentationHeading}rem`);
-    root.style.setProperty("--presentation-title-size", `${0.98 * scale(design.presentationTitleScale)}rem`);
-    root.style.setProperty("--presentation-meta-size", `${0.82 * scale(design.presentationMetaScale)}rem`);
+    setPx("--work-heading-size", work.headingSize, 58, 34, 92);
+    setPx("--work-title-direct-size", work.titleSize, 48, 26, 78);
+    setPx("--work-body-size", work.textSize, 16, 12, 24);
 
-    const methodsHeading = scale(design.methodsHeadingScale);
-    root.style.setProperty("--methods-heading-min", `${2.7 * methodsHeading}rem`);
-    root.style.setProperty("--methods-heading-fluid", `${5 * methodsHeading}vw`);
-    root.style.setProperty("--methods-heading-max", `${5.15 * methodsHeading}rem`);
-    root.style.setProperty("--methods-title-size", `${1.18 * scale(design.methodsTitleScale)}rem`);
-    root.style.setProperty("--methods-text-size", `${1.0 * scale(design.methodsTextScale)}rem`);
+    setPx("--trajectory-heading-size", trajectory.headingSize, 58, 34, 92);
+    setPx("--trajectory-title-direct-size", trajectory.titleSize, 18, 13, 28);
+    setPx("--trajectory-body-size", trajectory.textSize, 16, 12, 24);
 
-    const galleryHeading = scale(design.galleryHeadingScale);
-    root.style.setProperty("--gallery-heading-min", `${2.7 * galleryHeading}rem`);
-    root.style.setProperty("--gallery-heading-fluid", `${5 * galleryHeading}vw`);
-    root.style.setProperty("--gallery-heading-max", `${5.15 * galleryHeading}rem`);
-    root.style.setProperty("--gallery-caption-size", `${0.86 * scale(design.galleryCaptionScale)}rem`);
+    setPx("--presentation-heading-size", presentations.headingSize, 58, 34, 92);
+    setPx("--presentation-title-direct-size", presentations.titleSize, 16, 12, 24);
+    setPx("--presentation-meta-direct-size", presentations.metaSize, 14, 11, 20);
 
-    const contactHeading = scale(design.contactHeadingScale);
-    root.style.setProperty("--contact-min", `${3.1 * contactHeading}rem`);
-    root.style.setProperty("--contact-fluid", `${6 * contactHeading}vw`);
-    root.style.setProperty("--contact-max", `${6.4 * contactHeading}rem`);
-    root.style.setProperty("--contact-text-size", `${1.05 * scale(design.contactTextScale)}rem`);
+    setPx("--methods-heading-size", methods.headingSize, 58, 34, 92);
+    setPx("--methods-panel-title-size", methods.panelTitleSize, 19, 13, 30);
+    setPx("--methods-list-size", methods.listTextSize, 16, 12, 24);
+
+    setPx("--gallery-heading-size", gallery.headingSize, 58, 34, 92);
+    setPx("--gallery-caption-direct-size", gallery.captionSize, 14, 11, 22);
+
+    setPx("--contact-heading-size", contact.headingSize, 64, 36, 100);
+    setPx("--contact-body-size", contact.textSize, 17, 12, 26);
   }
 
   const imageOrPlaceholder = (src, alt, cls, placeholderText = "") => {
@@ -1299,63 +1318,10 @@
     navLinks.innerHTML = nav.join("");
   }
 
-  async function loadSite() {
-    const [response, designResponse] = await Promise.all([
-      fetch("data.json", { cache:"no-store" }),
-      fetch("design.json", { cache:"no-store" }).catch(() => null)
-    ]);
-    if (!response.ok) throw new Error("Could not load data.json");
-    const d = await response.json();
-
-    let fallbackDesign = {};
-    if (designResponse && designResponse.ok) {
-      try {
-        fallbackDesign = await designResponse.json();
-      } catch (_) {
-        fallbackDesign = {};
-      }
-    }
-
-    const legacy = { ...fallbackDesign, ...(d.design || {}) };
+  function renderSite(d) {
     const style = d.siteStyle || {};
-
     applySiteStyle(style);
-    applyDesign({
-      overallFontScale: style.overallFontScale ?? legacy.overallFontScale,
-      navScale: style.navScale ?? legacy.navScale,
-
-      heroNameScale: d.hero?.nameScale ?? legacy.heroNameScale,
-      heroSummaryScale: d.hero?.summaryScale ?? legacy.heroSummaryScale,
-
-      aboutHeadingScale: d.about?.headingScale ?? legacy.aboutHeadingScale,
-      aboutTextScale: d.about?.textScale ?? legacy.aboutTextScale,
-
-      researchHeadingScale: d.researchSettings?.headingScale ?? legacy.researchHeadingScale,
-      researchCardTitleScale: d.researchSettings?.cardTitleScale ?? legacy.researchCardTitleScale,
-      researchCardTextScale: d.researchSettings?.cardTextScale ?? legacy.researchCardTextScale,
-
-      workHeadingScale: d.selectedWork?.headingScale ?? legacy.workHeadingScale,
-      workTitleScale: d.selectedWork?.titleScale ?? legacy.workTitleScale,
-      workTextScale: d.selectedWork?.textScale ?? legacy.workTextScale,
-
-      trajectoryHeadingScale: d.trajectorySettings?.headingScale ?? legacy.trajectoryHeadingScale,
-      trajectoryTitleScale: d.trajectorySettings?.titleScale ?? legacy.trajectoryTitleScale,
-      trajectoryTextScale: d.trajectorySettings?.textScale ?? legacy.trajectoryTextScale,
-
-      presentationHeadingScale: d.presentationSettings?.headingScale ?? legacy.presentationHeadingScale,
-      presentationTitleScale: d.presentationSettings?.titleScale ?? legacy.presentationTitleScale,
-      presentationMetaScale: d.presentationSettings?.metaScale ?? legacy.presentationMetaScale,
-
-      methodsHeadingScale: d.methodsSettings?.headingScale ?? legacy.methodsHeadingScale,
-      methodsTitleScale: d.methodsSettings?.panelTitleScale ?? legacy.methodsTitleScale,
-      methodsTextScale: d.methodsSettings?.listTextScale ?? legacy.methodsTextScale,
-
-      galleryHeadingScale: d.gallery?.headingScale ?? legacy.galleryHeadingScale,
-      galleryCaptionScale: d.gallery?.captionScale ?? legacy.galleryCaptionScale,
-
-      contactHeadingScale: d.contact?.headingScale ?? legacy.contactHeadingScale,
-      contactTextScale: d.contact?.textScale ?? legacy.contactTextScale
-    });
+    applyDirectTypography(d);
 
     document.title = d.meta?.title || d.hero?.name || "Academic Website";
     document.getElementById("meta-description").content = d.meta?.description || "";
@@ -1529,6 +1495,19 @@
     applySectionLayout(d, { gallery: galleryHasContent });
     initReveal();
   }
+
+  async function loadSite() {
+    const response = await fetch("data.json", { cache:"no-store" });
+    if (!response.ok) throw new Error("Could not load data.json");
+    const d = await response.json();
+    renderSite(d);
+  }
+
+  window.addEventListener("message", event => {
+    if (event.origin !== window.location.origin) return;
+    if (!event.data || event.data.type !== "kyt-preview" || !event.data.data) return;
+    renderSite(event.data.data);
+  });
 
   function initReveal(){
     const els = document.querySelectorAll(".reveal");

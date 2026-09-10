@@ -188,24 +188,6 @@ content:
       label: Scroll / hover animations
       type: boolean
       default: true
-    - name: overallFontScale
-      label: Overall text size
-      type: number
-      required: false
-      default: 1.0
-      options:
-        min: 0.8
-        max: 1.3
-      description: 1.00 = default. 0.90 = about 10% smaller.
-    - name: navScale
-      label: Navigation text size
-      type: number
-      required: false
-      default: 1.0
-      options:
-        min: 0.7
-        max: 1.4
-      description: 1.00 = default.
     - name: sections
       label: Section order & visibility
       type: object
@@ -261,6 +243,15 @@ content:
         label: Show section
         type: boolean
         default: true
+    - name: navFontSize
+      label: Navigation font size (px)
+      type: number
+      required: false
+      default: 15
+      description: 'Direct font size in pixels. Default: 15px.'
+      options:
+        min: 12
+        max: 22
   - name: meta
     label: Search / Social
     type: object
@@ -341,24 +332,24 @@ content:
       label: Show floating current-position card
       type: boolean
       default: true
-    - name: nameScale
-      label: Name font size
+    - name: nameSize
+      label: Name font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 112
+      description: 'Direct font size in pixels. Default: 112px.'
       options:
-        min: 0.7
-        max: 1.3
-      description: 1.00 = default.
-    - name: summaryScale
-      label: Introduction font size
+        min: 64
+        max: 160
+    - name: summarySize
+      label: Introduction font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 19
+      description: 'Direct font size in pixels. Default: 19px.'
       options:
-        min: 0.7
-        max: 1.4
-      description: 1.00 = default.
+        min: 14
+        max: 30
   - name: profile
     label: Profile Card
     type: object
@@ -398,24 +389,24 @@ content:
     - name: text
       label: Description
       type: text
-    - name: headingScale
-      label: Headline font size
+    - name: headingSize
+      label: Headline font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 58
+      description: 'Direct font size in pixels. Default: 58px.'
       options:
-        min: 0.65
-        max: 1.5
-      description: 1.00 = default.
-    - name: textScale
-      label: Body font size
+        min: 34
+        max: 92
+    - name: textSize
+      label: Body font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 18
+      description: 'Direct font size in pixels. Default: 18px.'
       options:
-        min: 0.65
-        max: 1.5
-      description: 1.00 = default.
+        min: 13
+        max: 26
   - name: researchSettings
     label: Research Section Settings
     type: object
@@ -465,30 +456,33 @@ content:
       label: Show research card images
       type: boolean
       default: true
-    - name: headingScale
-      label: Section heading font size
+    - name: headingSize
+      label: Section heading font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 58
+      description: 'Direct font size in pixels. Default: 58px.'
       options:
-        min: 0.65
-        max: 1.5
-    - name: cardTitleScale
-      label: Card title font size
+        min: 34
+        max: 92
+    - name: cardTitleSize
+      label: Card title font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 20
+      description: 'Direct font size in pixels. Default: 20px.'
       options:
-        min: 0.65
-        max: 1.5
-    - name: cardTextScale
-      label: Card body font size
+        min: 14
+        max: 32
+    - name: cardTextSize
+      label: Card body font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 16
+      description: 'Direct font size in pixels. Default: 16px.'
       options:
-        min: 0.65
-        max: 1.5
+        min: 12
+        max: 24
   - name: researchThemes
     label: Research Themes
     type: object
@@ -588,30 +582,33 @@ content:
       label: Show feature image / placeholder
       type: boolean
       default: true
-    - name: headingScale
-      label: Section heading font size
+    - name: headingSize
+      label: Section heading font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 58
+      description: 'Direct font size in pixels. Default: 58px.'
       options:
-        min: 0.65
-        max: 1.5
-    - name: titleScale
-      label: Manuscript title font size
+        min: 34
+        max: 92
+    - name: titleSize
+      label: Manuscript title font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 48
+      description: 'Direct font size in pixels. Default: 48px.'
       options:
-        min: 0.65
-        max: 1.5
-    - name: textScale
-      label: Description font size
+        min: 26
+        max: 78
+    - name: textSize
+      label: Description font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 16
+      description: 'Direct font size in pixels. Default: 16px.'
       options:
-        min: 0.65
-        max: 1.5
+        min: 12
+        max: 24
   - name: trajectorySettings
     label: Trajectory Section Settings
     type: object
@@ -627,30 +624,33 @@ content:
       type: string
       required: false
       default: Trajectory
-    - name: headingScale
-      label: Section heading font size
+    - name: headingSize
+      label: Section heading font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 58
+      description: 'Direct font size in pixels. Default: 58px.'
       options:
-        min: 0.65
-        max: 1.5
-    - name: titleScale
-      label: Institution / role font size
+        min: 34
+        max: 92
+    - name: titleSize
+      label: Institution / role font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 18
+      description: 'Direct font size in pixels. Default: 18px.'
       options:
-        min: 0.65
-        max: 1.5
-    - name: textScale
-      label: Description font size
+        min: 13
+        max: 28
+    - name: textSize
+      label: Description font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 16
+      description: 'Direct font size in pixels. Default: 16px.'
       options:
-        min: 0.65
-        max: 1.5
+        min: 12
+        max: 24
   - name: trajectoryHeadline
     label: Trajectory headline
     type: text
@@ -700,30 +700,33 @@ content:
       options:
         min: 0
         max: 50
-    - name: headingScale
-      label: Section heading font size
+    - name: headingSize
+      label: Section heading font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 58
+      description: 'Direct font size in pixels. Default: 58px.'
       options:
-        min: 0.65
-        max: 1.5
-    - name: titleScale
-      label: Presentation title font size
+        min: 34
+        max: 92
+    - name: titleSize
+      label: Presentation title font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 16
+      description: 'Direct font size in pixels. Default: 16px.'
       options:
-        min: 0.65
-        max: 1.5
-    - name: metaScale
-      label: Meeting / year font size
+        min: 12
+        max: 24
+    - name: metaSize
+      label: Meeting / year font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 14
+      description: 'Direct font size in pixels. Default: 14px.'
       options:
-        min: 0.65
-        max: 1.5
+        min: 11
+        max: 20
   - name: presentations
     label: Presentations
     type: object
@@ -787,30 +790,33 @@ content:
       options:
         min: 0
         max: 20
-    - name: headingScale
-      label: Section heading font size
+    - name: headingSize
+      label: Section heading font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 58
+      description: 'Direct font size in pixels. Default: 58px.'
       options:
-        min: 0.65
-        max: 1.5
-    - name: panelTitleScale
-      label: Panel title font size
+        min: 34
+        max: 92
+    - name: panelTitleSize
+      label: Panel title font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 19
+      description: 'Direct font size in pixels. Default: 19px.'
       options:
-        min: 0.65
-        max: 1.5
-    - name: listTextScale
-      label: List font size
+        min: 13
+        max: 30
+    - name: listTextSize
+      label: List font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 16
+      description: 'Direct font size in pixels. Default: 16px.'
       options:
-        min: 0.65
-        max: 1.5
+        min: 12
+        max: 24
   - name: resourcesIntro
     label: Data & Methods intro
     type: text
@@ -908,22 +914,24 @@ content:
       label: Show photo captions
       type: boolean
       default: true
-    - name: headingScale
-      label: Section heading font size
+    - name: headingSize
+      label: Section heading font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 58
+      description: 'Direct font size in pixels. Default: 58px.'
       options:
-        min: 0.65
-        max: 1.5
-    - name: captionScale
-      label: Caption font size
+        min: 34
+        max: 92
+    - name: captionSize
+      label: Caption font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 14
+      description: 'Direct font size in pixels. Default: 14px.'
       options:
-        min: 0.65
-        max: 1.5
+        min: 11
+        max: 22
   - name: contact
     label: Contact
     type: object
@@ -955,19 +963,21 @@ content:
       type: string
       required: false
       default: Download CV
-    - name: headingScale
-      label: Headline font size
+    - name: headingSize
+      label: Headline font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 64
+      description: 'Direct font size in pixels. Default: 64px.'
       options:
-        min: 0.65
-        max: 1.5
-    - name: textScale
-      label: Description font size
+        min: 36
+        max: 100
+    - name: textSize
+      label: Description font size (px)
       type: number
       required: false
-      default: 1.0
+      default: 17
+      description: 'Direct font size in pixels. Default: 17px.'
       options:
-        min: 0.65
-        max: 1.5
+        min: 12
+        max: 26
