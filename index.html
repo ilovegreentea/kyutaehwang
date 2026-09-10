@@ -60,6 +60,15 @@
 
       --gallery-caption-size:.86rem;
       --contact-text-size:1.05rem;
+
+      --font-body:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      --font-heading:Georgia,"Times New Roman",serif;
+      --nav-bg:rgba(244,242,236,.86);
+      --accent-rgb:36,77,69;
+      --warm-rgb:232,224,211;
+      --section-pad:96px;
+      --research-columns:3;
+      --resource-columns:2;
     }
 
     *{box-sizing:border-box}
@@ -67,11 +76,11 @@
     body{
       margin:0;
       background:
-        radial-gradient(circle at 84% 3%, rgba(53,104,93,.09), transparent 22rem),
-        radial-gradient(circle at 8% 26%, rgba(232,224,211,.72), transparent 26rem),
+        radial-gradient(circle at 84% 3%, rgba(var(--accent-rgb),.09), transparent 22rem),
+        radial-gradient(circle at 8% 26%, rgba(var(--warm-rgb),.72), transparent 26rem),
         var(--bg);
       color:var(--ink);
-      font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      font-family:var(--font-body);
       line-height:1.65;
       -webkit-font-smoothing:antialiased;
     }
@@ -80,7 +89,7 @@
     a{color:inherit;text-decoration:none}
     button,a{ -webkit-tap-highlight-color:transparent }
     .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
-    .section{padding:96px 0;border-top:1px solid rgba(217,221,216,.9)}
+    .section{padding:var(--section-pad) 0;border-top:1px solid var(--line)}
     .eyebrow{
       font-size:.74rem;
       text-transform:uppercase;
@@ -90,17 +99,17 @@
     }
     .muted{color:var(--muted)}
     .serif{
-      font-family:Georgia,"Times New Roman",serif;
+      font-family:var(--font-heading);
       font-weight:500;
       letter-spacing:-.035em;
     }
 
     /* NAV */
     nav{
-      position:sticky;
+      position:var(--nav-position,sticky);
       top:0;
       z-index:80;
-      background:rgba(244,242,236,.86);
+      background:var(--nav-bg);
       backdrop-filter:blur(18px);
       border-bottom:1px solid rgba(217,221,216,.72);
     }
@@ -367,7 +376,7 @@
     /* RESEARCH */
     .research-grid{
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-columns:repeat(var(--research-columns),minmax(0,1fr));
       gap:18px;
     }
     .research-card{
@@ -614,7 +623,7 @@
     }
     .resource-grid{
       display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
+      grid-template-columns:repeat(var(--resource-columns),minmax(0,1fr));
       gap:18px;
       margin-top:18px;
     }
@@ -682,6 +691,58 @@
     }
     .foot{display:flex;justify-content:space-between;gap:18px}
 
+
+    /* CMS LAYOUT CONTROLS */
+    html[data-corners="soft"] .research-card,
+    html[data-corners="soft"] .about-copy,
+    html[data-corners="soft"] .about-side,
+    html[data-corners="soft"] .methods-card,
+    html[data-corners="soft"] .resource,
+    html[data-corners="soft"] .gallery-item,
+    html[data-corners="soft"] .presentation{border-radius:14px}
+
+    html[data-corners="square"] .research-card,
+    html[data-corners="square"] .about-copy,
+    html[data-corners="square"] .about-side,
+    html[data-corners="square"] .methods-card,
+    html[data-corners="square"] .resource,
+    html[data-corners="square"] .gallery-item,
+    html[data-corners="square"] .presentation{border-radius:4px}
+
+    html[data-corners="soft"] .feature{border-radius:22px}
+    html[data-corners="square"] .feature{border-radius:6px}
+
+    html[data-hero-layout="centered"] .hero-grid{
+      grid-template-columns:1fr;
+      max-width:900px;
+      margin:0 auto;
+      text-align:center;
+    }
+    html[data-hero-layout="centered"] .hero-summary{margin-left:auto;margin-right:auto}
+    html[data-hero-layout="centered"] .hero-actions{justify-content:center}
+    html[data-hero-layout="centered"] .hero-visual{margin-top:12px}
+    html[data-hero-layout="centered"] .profile-float{text-align:left}
+
+    html[data-hero-layout="compact"] .hero{padding-top:54px;padding-bottom:60px}
+    html[data-hero-layout="compact"] .hero-grid{grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr)}
+    html[data-hero-layout="compact"] .hero-visual{min-height:410px}
+    html[data-hero-layout="compact"] .portrait-shell{width:min(100%,320px)}
+
+    html[data-animations="off"] .reveal{
+      opacity:1;
+      transform:none;
+      transition:none;
+    }
+    html[data-animations="off"] .btn,
+    html[data-animations="off"] .research-card,
+    html[data-animations="off"] .presentation,
+    html[data-animations="off"] .research-media img,
+    html[data-animations="off"] .gallery-item img{
+      transition:none;
+    }
+
+    .section[hidden]{display:none !important}
+
     /* REVEAL */
     .reveal{
       opacity:0;
@@ -715,8 +776,8 @@
     @media(max-width:680px){
       .wrap{padding:0 18px}
       .section{padding:76px 0}
-      h1{font-size:clamp(4rem,22vw,6.3rem)}
-      .hero-summary{font-size:1.02rem}
+      h1{font-size:clamp(calc(var(--hero-min) * .78),22vw,var(--hero-max))}
+      .hero-summary{font-size:var(--hero-summary-size)}
       .hero-visual{padding:0 12px}
       .profile-float{
         position:relative;
@@ -742,7 +803,7 @@
 <nav>
   <div class="wrap nav">
     <a class="brand" id="brand-name" href="#top">KyuTae Hwang</a>
-    <div class="links">
+    <div class="links" id="nav-links">
       <a href="#about">About</a>
       <a href="#research">Research</a>
       <a href="#work">Work</a>
@@ -763,7 +824,7 @@
         <h1 id="hero-name"></h1>
         <p class="hero-summary" id="hero-summary"></p>
         <div class="hero-actions">
-          <a class="btn primary" href="#research">Explore research <span class="arrow">↘</span></a>
+          <a class="btn primary" id="hero-primary" href="#research"><span id="hero-primary-label">Explore research</span> <span class="arrow">↘</span></a>
           <a class="btn ghost" id="hero-cv">CV</a>
           <a class="btn ghost" id="hero-email">Email</a>
         </div>
@@ -772,7 +833,7 @@
       <div class="hero-visual reveal">
         <div class="orbit"></div>
         <div class="portrait-shell" id="portrait-shell"></div>
-        <div class="profile-float">
+        <div class="profile-float" id="profile-float">
           <div class="eyebrow">Current position</div>
           <strong id="profile-position"></strong>
           <span id="profile-institution"></span>
@@ -784,7 +845,7 @@
   <section id="about" class="section">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">01 · About</div>
+        <div class="eyebrow section-index" data-section-id="about"></div>
         <div>
           <h2 class="serif" id="about-headline"></h2>
         </div>
@@ -809,10 +870,10 @@
   <section id="research" class="section">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">02 · Research</div>
+        <div class="eyebrow section-index" data-section-id="research"></div>
         <div>
-          <h2 class="serif">Questions that organize my work.</h2>
-          <p class="lead">A multi-compartment view of cancer immunology, from circulating immune dynamics to clonotype behavior and spatial tumor–immune organization.</p>
+          <h2 class="serif" id="research-section-heading">Questions that organize my work.</h2>
+          <p class="lead" id="research-section-lead">A multi-compartment view of cancer immunology, from circulating immune dynamics to clonotype behavior and spatial tumor–immune organization.</p>
         </div>
       </div>
       <div class="research-grid" id="research-grid"></div>
@@ -822,8 +883,8 @@
   <section id="work" class="section">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">03 · Selected Work</div>
-        <div><h2 class="serif">Current manuscript.</h2></div>
+        <div class="eyebrow section-index" data-section-id="work"></div>
+        <div><h2 class="serif" id="work-section-heading">Current manuscript.</h2></div>
       </div>
       <div class="feature reveal" id="feature"></div>
       <div class="citation reveal" id="citation"></div>
@@ -833,7 +894,7 @@
   <section id="trajectory" class="section">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">04 · Trajectory</div>
+        <div class="eyebrow section-index" data-section-id="trajectory"></div>
         <div><h2 class="serif" id="trajectory-headline"></h2></div>
       </div>
       <div class="timeline" id="timeline"></div>
@@ -843,8 +904,8 @@
   <section id="presentations" class="section">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">05 · Presentations</div>
-        <div><h2 class="serif">Selected talks & posters.</h2></div>
+        <div class="eyebrow section-index" data-section-id="presentations"></div>
+        <div><h2 class="serif" id="presentations-section-heading">Selected talks & posters.</h2></div>
       </div>
       <div class="presentation-list" id="presentation-list"></div>
     </div>
@@ -853,20 +914,20 @@
   <section id="resources" class="section">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">06 · Data & Methods</div>
+        <div class="eyebrow section-index" data-section-id="resources"></div>
         <div>
-          <h2 class="serif">Tools behind the biology.</h2>
+          <h2 class="serif" id="methods-section-heading">Tools behind the biology.</h2>
           <p class="lead" id="resources-intro"></p>
         </div>
       </div>
 
       <div class="methods-grid reveal">
         <div class="methods-card">
-          <h3>Computational toolkit</h3>
+          <h3 id="toolkit-heading">Computational toolkit</h3>
           <ul id="toolkit-list"></ul>
         </div>
         <div class="methods-card">
-          <h3>Scientific interests</h3>
+          <h3 id="interests-heading">Scientific interests</h3>
           <ul id="interests-list"></ul>
         </div>
       </div>
@@ -878,7 +939,7 @@
   <section id="gallery" class="section">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="eyebrow">07 · Photos</div>
+        <div class="eyebrow section-index" data-section-id="gallery"></div>
         <div>
           <h2 class="serif" id="gallery-headline"></h2>
           <p class="lead" id="gallery-intro"></p>
@@ -890,7 +951,7 @@
 
   <section id="contact" class="section">
     <div class="wrap contact-wrap reveal">
-      <div class="eyebrow" style="margin-bottom:18px">08 · Contact</div>
+      <div class="eyebrow section-index" data-section-id="contact" style="margin-bottom:18px"></div>
       <h2 class="serif" id="contact-headline"></h2>
       <p id="contact-text"></p>
       <div class="hero-actions contact-actions">
@@ -938,29 +999,159 @@
   const scale = (value, fallback = 1) =>
     boundedNumber(value, 0.65, 1.50, fallback);
 
+  const limited = (items, value) => {
+    const list = Array.isArray(items) ? items : [];
+    const limit = Math.floor(Number(value) || 0);
+    return limit > 0 ? list.slice(0, limit) : list;
+  };
+
+  const isHex = (value) => /^#[0-9a-f]{6}$/i.test(String(value || "").trim());
+
+  const hexToRgb = (hex) => {
+    const value = String(hex || "").replace("#", "");
+    if (!/^[0-9a-f]{6}$/i.test(value)) return null;
+    return [
+      parseInt(value.slice(0, 2), 16),
+      parseInt(value.slice(2, 4), 16),
+      parseInt(value.slice(4, 6), 16)
+    ];
+  };
+
+  const THEMES = {
+    forest: {
+      bg:"#f4f2ec", paper:"#fbfaf6", surface:"#ffffff", ink:"#15201d",
+      muted:"#69726e", line:"#d9ddd8", accent:"#244d45", accent2:"#35685d",
+      soft:"#dfe9e5", warm:"#e8e0d3"
+    },
+    ocean: {
+      bg:"#f2f5f5", paper:"#fafcfc", surface:"#ffffff", ink:"#142126",
+      muted:"#66747a", line:"#d7dfe1", accent:"#1f5668", accent2:"#34758a",
+      soft:"#dcebef", warm:"#e7e5df"
+    },
+    burgundy: {
+      bg:"#f5f1ef", paper:"#fcfaf8", surface:"#ffffff", ink:"#241a1b",
+      muted:"#74686a", line:"#e1d8d8", accent:"#713c46", accent2:"#925865",
+      soft:"#efe1e4", warm:"#eadfd7"
+    },
+    slate: {
+      bg:"#f3f4f2", paper:"#fbfbf9", surface:"#ffffff", ink:"#1d2221",
+      muted:"#6c7370", line:"#daddda", accent:"#485b57", accent2:"#657b76",
+      soft:"#e1e7e5", warm:"#e7e3dc"
+    },
+    sand: {
+      bg:"#f5f0e7", paper:"#fcfaf5", surface:"#fffdf9", ink:"#2a241c",
+      muted:"#776f63", line:"#e2dacb", accent:"#66543c", accent2:"#887154",
+      soft:"#ede5d8", warm:"#e8dcc9"
+    }
+  };
+
+  const SECTION_DEFAULTS = [
+    { section:"about", visible:true },
+    { section:"research", visible:true },
+    { section:"work", visible:true },
+    { section:"trajectory", visible:true },
+    { section:"presentations", visible:true },
+    { section:"resources", visible:true },
+    { section:"gallery", visible:true },
+    { section:"contact", visible:true }
+  ];
+
+  function applyTheme(style = {}) {
+    const root = document.documentElement;
+    const preset = THEMES[style.themePreset] || THEMES.forest;
+    const theme = { ...preset };
+
+    const overrides = {
+      bg: style.backgroundColor,
+      surface: style.surfaceColor,
+      paper: style.surfaceColor,
+      ink: style.textColor,
+      muted: style.mutedTextColor,
+      line: style.lineColor,
+      accent: style.accentColor
+    };
+
+    Object.entries(overrides).forEach(([key, value]) => {
+      if (isHex(value)) theme[key] = value.trim();
+    });
+
+    if (isHex(style.accentColor)) {
+      theme.accent2 = style.accentColor.trim();
+      theme.soft = preset.soft;
+    }
+
+    root.style.setProperty("--bg", theme.bg);
+    root.style.setProperty("--paper", theme.paper);
+    root.style.setProperty("--surface", theme.surface);
+    root.style.setProperty("--ink", theme.ink);
+    root.style.setProperty("--muted", theme.muted);
+    root.style.setProperty("--line", theme.line);
+    root.style.setProperty("--green", theme.accent);
+    root.style.setProperty("--green-2", theme.accent2);
+    root.style.setProperty("--green-soft", theme.soft);
+    root.style.setProperty("--warm", theme.warm);
+
+    const accentRgb = hexToRgb(theme.accent);
+    const warmRgb = hexToRgb(theme.warm);
+    if (accentRgb) root.style.setProperty("--accent-rgb", accentRgb.join(","));
+    if (warmRgb) root.style.setProperty("--warm-rgb", warmRgb.join(","));
+
+    root.style.setProperty("--nav-bg", theme.bg + "e8");
+  }
+
+  function applySiteStyle(style = {}) {
+    const root = document.documentElement;
+
+    applyTheme(style);
+
+    const widths = { compact:"980px", standard:"1180px", wide:"1320px" };
+    root.style.setProperty("--max", widths[style.contentWidth] || widths.standard);
+
+    const spacings = { compact:"68px", standard:"96px", airy:"126px" };
+    root.style.setProperty("--section-pad", spacings[style.sectionSpacing] || spacings.standard);
+
+    root.dataset.corners = ["rounded","soft","square"].includes(style.cornerStyle)
+      ? style.cornerStyle : "rounded";
+
+    root.dataset.heroLayout = ["split","centered","compact"].includes(style.heroLayout)
+      ? style.heroLayout : "split";
+
+    root.dataset.animations = style.animations === false ? "off" : "on";
+    root.style.setProperty("--nav-position", style.stickyNav === false ? "relative" : "sticky");
+
+    const bodyFonts = {
+      modern:'Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif',
+      classic:'Georgia,"Times New Roman",serif'
+    };
+    root.style.setProperty("--font-body", bodyFonts[style.bodyFont] || bodyFonts.modern);
+
+    const headingFonts = {
+      editorial:'Georgia,"Times New Roman",serif',
+      modern:'Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif',
+      classic:'"Palatino Linotype",Palatino,Georgia,serif'
+    };
+    root.style.setProperty("--font-heading", headingFonts[style.headingFont] || headingFonts.editorial);
+  }
+
   function applyDesign(design = {}) {
     const root = document.documentElement;
 
-    // Global and navigation.
     const overall = boundedNumber(design.overallFontScale, 0.80, 1.30, 1);
     root.style.fontSize = `${16 * overall}px`;
     root.style.setProperty("--nav-size", `${0.9 * scale(design.navScale)}rem`);
 
-    // Hero.
     const heroName = scale(design.heroNameScale);
     root.style.setProperty("--hero-min", `${4.4 * heroName}rem`);
     root.style.setProperty("--hero-fluid", `${9 * heroName}vw`);
     root.style.setProperty("--hero-max", `${8.7 * heroName}rem`);
     root.style.setProperty("--hero-summary-size", `${1.19 * scale(design.heroSummaryScale)}rem`);
 
-    // About.
     const aboutHeading = scale(design.aboutHeadingScale);
     root.style.setProperty("--about-heading-min", `${2.7 * aboutHeading}rem`);
     root.style.setProperty("--about-heading-fluid", `${5 * aboutHeading}vw`);
     root.style.setProperty("--about-heading-max", `${5.15 * aboutHeading}rem`);
     root.style.setProperty("--about-text-size", `${1.13 * scale(design.aboutTextScale)}rem`);
 
-    // Research.
     const researchHeading = scale(design.researchHeadingScale);
     root.style.setProperty("--research-heading-min", `${2.7 * researchHeading}rem`);
     root.style.setProperty("--research-heading-fluid", `${5 * researchHeading}vw`);
@@ -968,7 +1159,6 @@
     root.style.setProperty("--research-card-title-size", `${1.23 * scale(design.researchCardTitleScale)}rem`);
     root.style.setProperty("--research-card-text-size", `${1.0 * scale(design.researchCardTextScale)}rem`);
 
-    // Selected Work.
     const workHeading = scale(design.workHeadingScale);
     root.style.setProperty("--work-heading-min", `${2.7 * workHeading}rem`);
     root.style.setProperty("--work-heading-fluid", `${5 * workHeading}vw`);
@@ -979,7 +1169,6 @@
     root.style.setProperty("--work-title-max", `${4.8 * workTitle}rem`);
     root.style.setProperty("--work-text-size", `${1.0 * scale(design.workTextScale)}rem`);
 
-    // Trajectory.
     const trajectoryHeading = scale(design.trajectoryHeadingScale);
     root.style.setProperty("--trajectory-heading-min", `${2.7 * trajectoryHeading}rem`);
     root.style.setProperty("--trajectory-heading-fluid", `${5 * trajectoryHeading}vw`);
@@ -987,7 +1176,6 @@
     root.style.setProperty("--trajectory-title-size", `${1.12 * scale(design.trajectoryTitleScale)}rem`);
     root.style.setProperty("--trajectory-text-size", `${1.0 * scale(design.trajectoryTextScale)}rem`);
 
-    // Presentations.
     const presentationHeading = scale(design.presentationHeadingScale);
     root.style.setProperty("--presentation-heading-min", `${2.7 * presentationHeading}rem`);
     root.style.setProperty("--presentation-heading-fluid", `${5 * presentationHeading}vw`);
@@ -995,7 +1183,6 @@
     root.style.setProperty("--presentation-title-size", `${0.98 * scale(design.presentationTitleScale)}rem`);
     root.style.setProperty("--presentation-meta-size", `${0.82 * scale(design.presentationMetaScale)}rem`);
 
-    // Methods.
     const methodsHeading = scale(design.methodsHeadingScale);
     root.style.setProperty("--methods-heading-min", `${2.7 * methodsHeading}rem`);
     root.style.setProperty("--methods-heading-fluid", `${5 * methodsHeading}vw`);
@@ -1003,14 +1190,12 @@
     root.style.setProperty("--methods-title-size", `${1.18 * scale(design.methodsTitleScale)}rem`);
     root.style.setProperty("--methods-text-size", `${1.0 * scale(design.methodsTextScale)}rem`);
 
-    // Gallery.
     const galleryHeading = scale(design.galleryHeadingScale);
     root.style.setProperty("--gallery-heading-min", `${2.7 * galleryHeading}rem`);
     root.style.setProperty("--gallery-heading-fluid", `${5 * galleryHeading}vw`);
     root.style.setProperty("--gallery-heading-max", `${5.15 * galleryHeading}rem`);
     root.style.setProperty("--gallery-caption-size", `${0.86 * scale(design.galleryCaptionScale)}rem`);
 
-    // Contact.
     const contactHeading = scale(design.contactHeadingScale);
     root.style.setProperty("--contact-min", `${3.1 * contactHeading}rem`);
     root.style.setProperty("--contact-fluid", `${6 * contactHeading}vw`);
@@ -1026,6 +1211,94 @@
     return `<div class="research-placeholder" aria-hidden="true"></div>`;
   };
 
+  function sectionConfig(data) {
+    return {
+      about: {
+        nav: data.about?.navLabel || "About",
+        label: data.about?.sectionLabel || "About"
+      },
+      research: {
+        nav: data.researchSettings?.navLabel || "Research",
+        label: data.researchSettings?.sectionLabel || "Research"
+      },
+      work: {
+        nav: data.selectedWork?.navLabel || "Work",
+        label: data.selectedWork?.sectionLabel || "Selected Work"
+      },
+      trajectory: {
+        nav: data.trajectorySettings?.navLabel || "Trajectory",
+        label: data.trajectorySettings?.sectionLabel || "Trajectory"
+      },
+      presentations: {
+        nav: data.presentationSettings?.navLabel || "Talks",
+        label: data.presentationSettings?.sectionLabel || "Presentations"
+      },
+      resources: {
+        nav: data.methodsSettings?.navLabel || "Methods",
+        label: data.methodsSettings?.sectionLabel || "Data & Methods"
+      },
+      gallery: {
+        nav: data.gallery?.navLabel || "Photos",
+        label: data.gallery?.sectionLabel || "Photos"
+      },
+      contact: {
+        nav: data.contact?.navLabel || "Contact",
+        label: data.contact?.sectionLabel || "Contact"
+      }
+    };
+  }
+
+  function normalizedSections(raw) {
+    const valid = new Set(SECTION_DEFAULTS.map(x => x.section));
+    const result = [];
+    const seen = new Set();
+
+    const source = Array.isArray(raw) && raw.length ? raw : SECTION_DEFAULTS;
+    source.forEach(item => {
+      const id = String(item?.section || "");
+      if (!valid.has(id) || seen.has(id)) return;
+      result.push({ section:id, visible:item?.visible !== false });
+      seen.add(id);
+    });
+
+    SECTION_DEFAULTS.forEach(item => {
+      if (!seen.has(item.section)) result.push({ ...item });
+    });
+
+    return result;
+  }
+
+  function applySectionLayout(data, contentAvailable = {}) {
+    const main = document.querySelector("main#top");
+    const navLinks = document.getElementById("nav-links");
+    const labels = sectionConfig(data);
+    const sections = normalizedSections(data.siteStyle?.sections);
+
+    let visibleIndex = 0;
+    const nav = [];
+
+    sections.forEach(item => {
+      const node = document.getElementById(item.section);
+      if (!node) return;
+
+      const hasContent = contentAvailable[item.section] !== false;
+      const visible = item.visible && hasContent;
+      node.hidden = !visible;
+      main.appendChild(node);
+
+      if (visible) {
+        visibleIndex += 1;
+        const indexNode = node.querySelector(`.section-index[data-section-id="${item.section}"]`);
+        if (indexNode) {
+          indexNode.textContent = `${String(visibleIndex).padStart(2, "0")} · ${labels[item.section].label}`;
+        }
+        nav.push(`<a href="#${esc(item.section)}">${esc(labels[item.section].nav)}</a>`);
+      }
+    });
+
+    navLinks.innerHTML = nav.join("");
+  }
+
   async function loadSite() {
     const [response, designResponse] = await Promise.all([
       fetch("data.json", { cache:"no-store" }),
@@ -1034,7 +1307,6 @@
     if (!response.ok) throw new Error("Could not load data.json");
     const d = await response.json();
 
-    // Website Content settings take priority. design.json remains only as a fallback.
     let fallbackDesign = {};
     if (designResponse && designResponse.ok) {
       try {
@@ -1043,7 +1315,47 @@
         fallbackDesign = {};
       }
     }
-    applyDesign({ ...fallbackDesign, ...(d.design || {}) });
+
+    const legacy = { ...fallbackDesign, ...(d.design || {}) };
+    const style = d.siteStyle || {};
+
+    applySiteStyle(style);
+    applyDesign({
+      overallFontScale: style.overallFontScale ?? legacy.overallFontScale,
+      navScale: style.navScale ?? legacy.navScale,
+
+      heroNameScale: d.hero?.nameScale ?? legacy.heroNameScale,
+      heroSummaryScale: d.hero?.summaryScale ?? legacy.heroSummaryScale,
+
+      aboutHeadingScale: d.about?.headingScale ?? legacy.aboutHeadingScale,
+      aboutTextScale: d.about?.textScale ?? legacy.aboutTextScale,
+
+      researchHeadingScale: d.researchSettings?.headingScale ?? legacy.researchHeadingScale,
+      researchCardTitleScale: d.researchSettings?.cardTitleScale ?? legacy.researchCardTitleScale,
+      researchCardTextScale: d.researchSettings?.cardTextScale ?? legacy.researchCardTextScale,
+
+      workHeadingScale: d.selectedWork?.headingScale ?? legacy.workHeadingScale,
+      workTitleScale: d.selectedWork?.titleScale ?? legacy.workTitleScale,
+      workTextScale: d.selectedWork?.textScale ?? legacy.workTextScale,
+
+      trajectoryHeadingScale: d.trajectorySettings?.headingScale ?? legacy.trajectoryHeadingScale,
+      trajectoryTitleScale: d.trajectorySettings?.titleScale ?? legacy.trajectoryTitleScale,
+      trajectoryTextScale: d.trajectorySettings?.textScale ?? legacy.trajectoryTextScale,
+
+      presentationHeadingScale: d.presentationSettings?.headingScale ?? legacy.presentationHeadingScale,
+      presentationTitleScale: d.presentationSettings?.titleScale ?? legacy.presentationTitleScale,
+      presentationMetaScale: d.presentationSettings?.metaScale ?? legacy.presentationMetaScale,
+
+      methodsHeadingScale: d.methodsSettings?.headingScale ?? legacy.methodsHeadingScale,
+      methodsTitleScale: d.methodsSettings?.panelTitleScale ?? legacy.methodsTitleScale,
+      methodsTextScale: d.methodsSettings?.listTextScale ?? legacy.methodsTextScale,
+
+      galleryHeadingScale: d.gallery?.headingScale ?? legacy.galleryHeadingScale,
+      galleryCaptionScale: d.gallery?.captionScale ?? legacy.galleryCaptionScale,
+
+      contactHeadingScale: d.contact?.headingScale ?? legacy.contactHeadingScale,
+      contactTextScale: d.contact?.textScale ?? legacy.contactTextScale
+    });
 
     document.title = d.meta?.title || d.hero?.name || "Academic Website";
     document.getElementById("meta-description").content = d.meta?.description || "";
@@ -1054,8 +1366,15 @@
     document.getElementById("hero-pill").textContent = d.hero.pill;
     document.getElementById("hero-name").innerHTML = esc(d.hero.name).replace(/\s+/, "<br>");
     document.getElementById("hero-summary").textContent = d.hero.summary;
+
+    const heroPrimary = document.getElementById("hero-primary");
+    heroPrimary.href = d.hero.primaryButtonTarget || "#research";
+    document.getElementById("hero-primary-label").textContent = d.hero.primaryButtonLabel || "Explore research";
+
     document.getElementById("hero-email").href = `mailto:${d.hero.email}`;
+    document.getElementById("hero-email").textContent = d.hero.emailButtonLabel || "Email";
     document.getElementById("hero-cv").href = d.hero.cv;
+    document.getElementById("hero-cv").textContent = d.hero.cvButtonLabel || "CV";
 
     const portraitShell = document.getElementById("portrait-shell");
     portraitShell.innerHTML = d.hero.profileImage
@@ -1067,17 +1386,33 @@
     document.getElementById("profile-research").textContent = d.profile.research;
     document.getElementById("profile-methods").textContent = d.profile.methods;
     document.getElementById("profile-location").textContent = d.profile.location;
+    document.getElementById("profile-float").style.display = d.hero.showProfileCard === false ? "none" : "";
 
     document.getElementById("about-headline").textContent = d.about.headline;
     document.getElementById("about-text").textContent = d.about.text;
 
-    document.getElementById("research-grid").innerHTML = (d.researchThemes || []).map(x => `
+    const researchSettings = d.researchSettings || {};
+    document.getElementById("research-section-heading").textContent =
+      researchSettings.sectionHeading || "Questions that organize my work.";
+    document.getElementById("research-section-lead").textContent =
+      researchSettings.sectionLead ||
+      "A multi-compartment view of cancer immunology, from circulating immune dynamics to clonotype behavior and spatial tumor–immune organization.";
+
+    document.documentElement.style.setProperty(
+      "--research-columns",
+      ["2","3"].includes(String(researchSettings.columns)) ? String(researchSettings.columns) : "3"
+    );
+
+    const researchItems = limited(d.researchThemes || [], researchSettings.cardLimit);
+    document.getElementById("research-grid").innerHTML = researchItems.map(x => `
       <article class="research-card reveal">
-        <div class="research-media">
-          ${x.image
-            ? `<img src="${esc(x.image)}" alt="${esc(x.title)}" loading="lazy">`
-            : `<div class="research-placeholder" aria-hidden="true"></div>`}
-        </div>
+        ${researchSettings.showImages === false ? "" : `
+          <div class="research-media">
+            ${x.image
+              ? `<img src="${esc(x.image)}" alt="${esc(x.title)}" loading="lazy">`
+              : `<div class="research-placeholder" aria-hidden="true"></div>`}
+          </div>
+        `}
         <div class="research-body">
           <div class="eyebrow">${esc(x.label)}</div>
           <h3>${esc(x.title)}</h3>
@@ -1088,6 +1423,7 @@
     `).join("");
 
     const w = d.selectedWork || {};
+    document.getElementById("work-section-heading").textContent = w.sectionHeading || "Current manuscript.";
     document.getElementById("feature").innerHTML = `
       <div>
         <div class="eyebrow" style="color:rgba(255,255,255,.58)">${esc(w.label)}</div>
@@ -1097,7 +1433,7 @@
       </div>
       <div class="feature-side">
         <div class="status">${esc(w.status)}</div>
-        ${imageOrPlaceholder(w.image, w.title, "feature-image", "Add a feature image in CMS")}
+        ${w.showImage === false ? "" : imageOrPlaceholder(w.image, w.title, "feature-image", "Add a feature image in CMS")}
       </div>
     `;
 
@@ -1120,7 +1456,12 @@
       </div>
     `).join("");
 
-    document.getElementById("presentation-list").innerHTML = (d.presentations || []).map(x => `
+    const presentationSettings = d.presentationSettings || {};
+    document.getElementById("presentations-section-heading").textContent =
+      presentationSettings.sectionHeading || "Selected talks & posters.";
+
+    const presentationItems = limited(d.presentations || [], presentationSettings.itemLimit);
+    document.getElementById("presentation-list").innerHTML = presentationItems.map(x => `
       <article class="presentation reveal">
         <div class="presentation-year">${esc(getYear(x.meta))}</div>
         <div>
@@ -1131,10 +1472,25 @@
       </article>
     `).join("");
 
+    const methodsSettings = d.methodsSettings || {};
+    document.getElementById("methods-section-heading").textContent =
+      methodsSettings.sectionHeading || "Tools behind the biology.";
+    document.getElementById("toolkit-heading").textContent =
+      methodsSettings.toolkitHeading || "Computational toolkit";
+    document.getElementById("interests-heading").textContent =
+      methodsSettings.interestsHeading || "Scientific interests";
+
+    document.documentElement.style.setProperty(
+      "--resource-columns",
+      ["1","2"].includes(String(methodsSettings.resourceColumns)) ? String(methodsSettings.resourceColumns) : "2"
+    );
+
     document.getElementById("resources-intro").textContent = d.resourcesIntro || "";
     document.getElementById("toolkit-list").innerHTML = (d.toolkit || []).map(x => `<li>${esc(x)}</li>`).join("");
     document.getElementById("interests-list").innerHTML = (d.interests || []).map(x => `<li>${esc(x)}</li>`).join("");
-    document.getElementById("resource-grid").innerHTML = (d.resources || []).map(x => `
+
+    const resourceItems = limited(d.resources || [], methodsSettings.resourceLimit);
+    document.getElementById("resource-grid").innerHTML = resourceItems.map(x => `
       <article class="resource reveal">
         <div class="eyebrow">${esc(x.label)}</div>
         <h3>${esc(x.title)}</h3>
@@ -1144,19 +1500,17 @@
     `).join("");
 
     const gallery = d.gallery || {headline:"Research & academic moments",intro:"",items:[]};
-    const gallerySection = document.getElementById("gallery");
-    const galleryNav = document.getElementById("gallery-nav");
-    const items = gallery.items || [];
-    if (!items.length) {
-      gallerySection.style.display = "none";
-      galleryNav.style.display = "none";
-    } else {
+    const allGalleryItems = gallery.items || [];
+    const galleryItems = limited(allGalleryItems, gallery.photoLimit);
+    const galleryHasContent = galleryItems.length > 0;
+
+    if (galleryHasContent) {
       document.getElementById("gallery-headline").textContent = gallery.headline || "Research & academic moments";
       document.getElementById("gallery-intro").textContent = gallery.intro || "";
-      document.getElementById("gallery-grid").innerHTML = items.map(x => `
+      document.getElementById("gallery-grid").innerHTML = galleryItems.map(x => `
         <figure class="gallery-item reveal">
           <img src="${esc(x.image)}" alt="${esc(x.alt || x.caption || "Gallery image")}" loading="lazy">
-          ${x.caption ? `<figcaption>${esc(x.caption)}</figcaption>` : ""}
+          ${gallery.showCaptions === false || !x.caption ? "" : `<figcaption>${esc(x.caption)}</figcaption>`}
         </figure>
       `).join("");
     }
@@ -1164,22 +1518,29 @@
     document.getElementById("contact-headline").textContent = d.contact.headline;
     document.getElementById("contact-text").textContent = d.contact.text;
     document.getElementById("contact-email").href = `mailto:${d.hero.email}`;
-    document.getElementById("contact-email").textContent = d.hero.email;
+    document.getElementById("contact-email").textContent = d.contact.emailButtonLabel || d.hero.email;
     document.getElementById("contact-cv").href = d.hero.cv;
+    document.getElementById("contact-cv").textContent = d.contact.cvButtonLabel || "Download CV";
 
     document.getElementById("footer-name").textContent = d.hero.name;
     document.getElementById("footer-location").textContent = d.profile.location;
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    applySectionLayout(d, { gallery: galleryHasContent });
     initReveal();
   }
 
   function initReveal(){
     const els = document.querySelectorAll(".reveal");
-    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      document.documentElement.dataset.animations === "off" ||
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       els.forEach(el => el.classList.add("visible"));
       return;
     }
+
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1188,6 +1549,7 @@
         }
       });
     }, { threshold:.12 });
+
     els.forEach(el => observer.observe(el));
   }
 

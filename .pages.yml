@@ -1,450 +1,973 @@
 media:
-  - name: images
-    label: Images
-    input: media/images
-    output: media/images
-    categories: [image]
-    extensions: [jpg, jpeg, png, webp, gif]
-    rename: safe
-
-  - name: documents
-    label: Documents
-    input: media/files
-    output: media/files
-    categories: [document]
-    extensions: [pdf, doc, docx]
-    rename: false
-
+- name: images
+  label: Images
+  input: media/images
+  output: media/images
+  categories:
+  - image
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  - gif
+  rename: safe
+- name: documents
+  label: Documents
+  input: media/files
+  output: media/files
+  categories:
+  - document
+  extensions:
+  - pdf
+  - doc
+  - docx
+  rename: false
 actions:
-  - name: sync-cv-to-website
-    label: Sync website from CV
-    workflow: cv-sync.yml
-    ref: current
-    cancelable: false
-    confirm:
-      title: Create website update suggestions from CV?
-      message: The workflow reads the DOCX CV, updates selected structured fields, and creates a Pull Request for review. It does not publish the suggestions until you merge the Pull Request.
-      button: Create review PR
-
+- name: sync-cv-to-website
+  label: Sync website from CV
+  workflow: cv-sync.yml
+  ref: current
+  cancelable: false
+  confirm:
+    title: Create website update suggestions from CV?
+    message: The workflow reads the DOCX CV, updates selected structured fields, and creates a Pull Request for review. It
+      does not publish the suggestions until you merge the Pull Request.
+    button: Create review PR
 content:
-
-  - name: website
-    label: Website Content
-    type: file
-    path: data.json
-    format: json
-    operations:
-      delete: false
-      rename: false
+- name: website
+  label: Website Content
+  type: file
+  path: data.json
+  format: json
+  operations:
+    delete: false
+    rename: false
+  fields:
+  - name: siteStyle
+    label: Site Design & Layout
+    type: object
+    required: false
+    description: Global visual controls. These settings affect the whole website and require no code.
     fields:
-
-      - name: design
-        label: Display / Font Sizes
-        type: object
-        required: false
-        description: Adjust typography directly here. 1.00 is the default size. Values below 1.00 make text smaller; values above 1.00 make it larger.
-        fields:
-          - name: overallFontScale
-            label: Global · Overall text
-            type: number
-            required: false
-            description: Affects the whole site's base text size. Recommended 0.90–1.10.
-
-          - name: navScale
-            label: Navigation
-            type: number
-            required: false
-            description: Top navigation links.
-
-          - name: heroNameScale
-            label: Hero · Name
-            type: number
-            required: false
-            description: Large KyuTae Hwang name on the first screen.
-
-          - name: heroSummaryScale
-            label: Hero · Introduction text
-            type: number
-            required: false
-
-          - name: aboutHeadingScale
-            label: About · Heading
-            type: number
-            required: false
-
-          - name: aboutTextScale
-            label: About · Body text
-            type: number
-            required: false
-
-          - name: researchHeadingScale
-            label: Research · Section heading
-            type: number
-            required: false
-
-          - name: researchCardTitleScale
-            label: Research · Card titles
-            type: number
-            required: false
-
-          - name: researchCardTextScale
-            label: Research · Card body text
-            type: number
-            required: false
-
-          - name: workHeadingScale
-            label: Selected Work · Section heading
-            type: number
-            required: false
-
-          - name: workTitleScale
-            label: Selected Work · Manuscript title
-            type: number
-            required: false
-
-          - name: workTextScale
-            label: Selected Work · Description text
-            type: number
-            required: false
-
-          - name: trajectoryHeadingScale
-            label: Trajectory · Section heading
-            type: number
-            required: false
-
-          - name: trajectoryTitleScale
-            label: Trajectory · Institution / role title
-            type: number
-            required: false
-
-          - name: trajectoryTextScale
-            label: Trajectory · Description text
-            type: number
-            required: false
-
-          - name: presentationHeadingScale
-            label: Presentations · Section heading
-            type: number
-            required: false
-
-          - name: presentationTitleScale
-            label: Presentations · Talk / poster titles
-            type: number
-            required: false
-
-          - name: presentationMetaScale
-            label: Presentations · Meeting / year text
-            type: number
-            required: false
-
-          - name: methodsHeadingScale
-            label: Methods · Section heading
-            type: number
-            required: false
-
-          - name: methodsTitleScale
-            label: Methods · Panel titles
-            type: number
-            required: false
-
-          - name: methodsTextScale
-            label: Methods · List text
-            type: number
-            required: false
-
-          - name: galleryHeadingScale
-            label: Photos · Section heading
-            type: number
-            required: false
-
-          - name: galleryCaptionScale
-            label: Photos · Captions
-            type: number
-            required: false
-
-          - name: contactHeadingScale
-            label: Contact · Heading
-            type: number
-            required: false
-
-          - name: contactTextScale
-            label: Contact · Description text
-            type: number
-            required: false
-
-      - name: meta
-        label: Search / Social
-        type: object
-        fields:
-          - name: title
-            label: Browser title
-            type: string
-          - name: description
-            label: Search description
-            type: text
-          - name: ogDescription
-            label: Social sharing description
-            type: text
-
-      - name: hero
-        label: Hero
-        type: object
-        fields:
-          - name: pill
-            label: Top label
-            type: string
-          - name: name
-            label: Name
-            type: string
-          - name: summary
-            label: Introduction
-            type: text
-          - name: email
-            label: Email
-            type: string
-          - name: profileImage
-            label: Profile photo
-            type: image
-            required: false
-            options:
-              media: images
-              path: profile
-              extensions: [jpg, jpeg, png, webp]
-              rename: safe
-          - name: cv
-            label: CV file
-            type: file
-            required: false
-            description: Upload DOCX if you want to use the CV-to-website sync action. PDF can still be used for download, but the included sync parser reads DOCX.
-            options:
-              media: documents
-              extensions: [pdf, doc, docx]
-              rename: false
-
-      - name: profile
-        label: Profile Card
-        type: object
-        fields:
-          - name: position
-            label: Current position
-            type: string
-          - name: institution
-            label: Institution
-            type: string
+    - name: themePreset
+      label: Color theme
+      type: select
+      default: forest
+      options:
+        values:
+        - name: forest
+          label: Forest — current green
+        - name: ocean
+          label: Ocean — academic blue
+        - name: burgundy
+          label: Burgundy — warm editorial
+        - name: slate
+          label: Slate — neutral gray-green
+        - name: sand
+          label: Sand — warm minimal
+    - name: accentColor
+      label: Custom accent color
+      type: string
+      required: false
+      default: ''
+      description: Optional. Overrides the preset accent.
+      pattern: &id001
+        regex: ^#[0-9A-Fa-f]{6}$|^$
+        message: 'Use a 6-digit HEX color such as #244d45, or leave it blank.'
+    - name: backgroundColor
+      label: Custom background color
+      type: string
+      required: false
+      default: ''
+      description: Optional. Overrides the preset background.
+      pattern: *id001
+    - name: surfaceColor
+      label: Custom card / surface color
+      type: string
+      required: false
+      default: ''
+      description: Optional. Overrides cards and panels.
+      pattern: *id001
+    - name: textColor
+      label: Custom main text color
+      type: string
+      required: false
+      default: ''
+      description: Optional.
+      pattern: *id001
+    - name: mutedTextColor
+      label: Custom secondary text color
+      type: string
+      required: false
+      default: ''
+      description: Optional.
+      pattern: *id001
+    - name: lineColor
+      label: Custom divider / border color
+      type: string
+      required: false
+      default: ''
+      description: Optional.
+      pattern: *id001
+    - name: contentWidth
+      label: Page width
+      type: select
+      default: standard
+      options:
+        values:
+        - name: compact
+          label: Compact
+        - name: standard
+          label: Standard
+        - name: wide
+          label: Wide
+    - name: sectionSpacing
+      label: Vertical section spacing
+      type: select
+      default: standard
+      options:
+        values:
+        - name: compact
+          label: Compact
+        - name: standard
+          label: Standard
+        - name: airy
+          label: Airy
+    - name: cornerStyle
+      label: Card corner style
+      type: select
+      default: rounded
+      options:
+        values:
+        - name: rounded
+          label: Rounded
+        - name: soft
+          label: Soft
+        - name: square
+          label: Square
+    - name: bodyFont
+      label: Body font
+      type: select
+      default: modern
+      options:
+        values:
+        - name: modern
+          label: Modern sans-serif
+        - name: classic
+          label: Classic serif
+    - name: headingFont
+      label: Heading font
+      type: select
+      default: editorial
+      options:
+        values:
+        - name: editorial
+          label: Editorial serif
+        - name: modern
+          label: Modern sans-serif
+        - name: classic
+          label: Classic book serif
+    - name: heroLayout
+      label: Hero layout
+      type: select
+      default: split
+      options:
+        values:
+        - name: split
+          label: Split — text + portrait
+        - name: centered
+          label: Centered
+        - name: compact
+          label: Compact split
+    - name: stickyNav
+      label: Sticky top navigation
+      type: boolean
+      default: true
+    - name: animations
+      label: Scroll / hover animations
+      type: boolean
+      default: true
+    - name: overallFontScale
+      label: Overall text size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.8
+        max: 1.3
+      description: 1.00 = default. 0.90 = about 10% smaller.
+    - name: navScale
+      label: Navigation text size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.7
+        max: 1.4
+      description: 1.00 = default.
+    - name: sections
+      label: Section order & visibility
+      type: object
+      required: false
+      description: Drag these items to reorder the page. Turn Show section off to hide a section.
+      default:
+      - section: about
+        visible: true
+      - section: research
+        visible: true
+      - section: work
+        visible: true
+      - section: trajectory
+        visible: true
+      - section: presentations
+        visible: true
+      - section: resources
+        visible: true
+      - section: gallery
+        visible: true
+      - section: contact
+        visible: true
+      list:
+        min: 1
+        max: 8
+        collapsible:
+          collapsed: true
+          summary: '{section}'
+      fields:
+      - name: section
+        label: Section
+        type: select
+        default: about
+        options:
+          values:
+          - name: about
+            label: About
           - name: research
-            label: Research area
-            type: string
-          - name: methods
-            label: Methods
-            type: text
-          - name: location
-            label: Location
-            type: string
-
-      - name: about
-        label: About
-        type: object
-        fields:
-          - name: headline
-            label: Headline
-            type: text
-          - name: text
-            label: Description
-            type: text
-
-      - name: researchThemes
-        label: Research Themes
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{title}"
-        fields:
-          - name: label
-            label: Category
-            type: string
-          - name: title
-            label: Title
-            type: string
-          - name: text
-            label: Description
-            type: text
-          - name: tags
-            label: Tags
-            type: string
-            list: true
-          - name: image
-            label: Optional image
-            type: image
-            required: false
-            options:
-              media: images
-              path: research
-              extensions: [jpg, jpeg, png, webp]
-              rename: safe
-
-      - name: selectedWork
-        label: Selected Work
-        type: object
-        fields:
-          - name: label
-            label: Category
-            type: string
-          - name: title
-            label: Title
-            type: text
-          - name: paragraphs
-            label: Description paragraphs
-            type: text
-            list: true
-          - name: tags
-            label: Tags
-            type: string
-            list: true
-          - name: status
-            label: Status
-            type: string
-          - name: year
-            label: Year
-            type: string
-          - name: citation
-            label: Citation
-            type: text
-          - name: journalText
-            label: Journal status text
-            type: string
-          - name: badge
-            label: Badge
-            type: string
-          - name: image
-            label: Optional feature image
-            type: image
-            required: false
-            options:
-              media: images
-              path: selected-work
-              extensions: [jpg, jpeg, png, webp]
-              rename: safe
-
-      - name: trajectoryHeadline
-        label: Trajectory headline
-        type: text
-
-      - name: trajectory
-        label: Trajectory
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{when} — {title}"
-        fields:
-          - name: when
-            label: Date / period
-            type: string
-          - name: title
-            label: Institution / role
-            type: string
-          - name: text
-            label: Description
-            type: text
-
-      - name: presentations
-        label: Presentations
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{title}"
-        fields:
-          - name: title
-            label: Presentation title
-            type: text
-          - name: meta
-            label: Meeting / year / place / type
-            type: string
-
-      - name: resourcesIntro
-        label: Data & Methods intro
-        type: text
-
-      - name: toolkit
-        label: Computational Toolkit
-        type: string
-        list: true
-
-      - name: interests
-        label: Scientific Interests
-        type: string
-        list: true
-
-      - name: resources
-        label: External Resources
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{label} — {title}"
-        fields:
-          - name: label
-            label: Type
-            type: string
-          - name: title
-            label: Title
-            type: string
-          - name: text
-            label: Description
-            type: text
-          - name: url
-            label: URL
-            type: string
-          - name: button
-            label: Button text
-            type: string
-
-      - name: gallery
-        label: Photo Gallery
-        type: object
-        required: false
-        fields:
-          - name: headline
-            label: Headline
-            type: string
-          - name: intro
-            label: Introduction
-            type: text
-          - name: items
+            label: Research
+          - name: work
+            label: Selected Work
+          - name: trajectory
+            label: Trajectory
+          - name: presentations
+            label: Presentations
+          - name: resources
+            label: Data & Methods
+          - name: gallery
             label: Photos
-            type: object
-            list:
-              collapsible:
-                collapsed: true
-                summary: "{caption}"
-            fields:
-              - name: image
-                label: Image
-                type: image
-                required: true
-                options:
-                  media: images
-                  path: gallery
-                  extensions: [jpg, jpeg, png, webp]
-                  rename: safe
-              - name: caption
-                label: Caption
-                type: string
-                required: false
-              - name: alt
-                label: Accessibility description
-                type: string
-                required: false
-
-      - name: contact
-        label: Contact
-        type: object
-        fields:
-          - name: headline
-            label: Headline
-            type: text
-          - name: text
-            label: Description
-            type: text
+          - name: contact
+            label: Contact
+      - name: visible
+        label: Show section
+        type: boolean
+        default: true
+  - name: meta
+    label: Search / Social
+    type: object
+    fields:
+    - name: title
+      label: Browser title
+      type: string
+    - name: description
+      label: Search description
+      type: text
+    - name: ogDescription
+      label: Social sharing description
+      type: text
+  - name: hero
+    label: Hero
+    type: object
+    fields:
+    - name: pill
+      label: Top label
+      type: string
+    - name: name
+      label: Name
+      type: string
+    - name: summary
+      label: Introduction
+      type: text
+    - name: email
+      label: Email
+      type: string
+    - name: profileImage
+      label: Profile photo
+      type: image
+      required: false
+      options:
+        media: images
+        path: profile
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: safe
+    - name: cv
+      label: CV file
+      type: file
+      required: false
+      description: Upload DOCX if you want to use the CV-to-website sync action. PDF can still be used for download, but the
+        included sync parser reads DOCX.
+      options:
+        media: documents
+        extensions:
+        - pdf
+        - doc
+        - docx
+        rename: false
+    - name: primaryButtonLabel
+      label: Primary button text
+      type: string
+      required: false
+      default: Explore research
+    - name: primaryButtonTarget
+      label: Primary button link
+      type: string
+      required: false
+      default: '#research'
+      description: 'Use a section link such as #research or a full URL.'
+    - name: cvButtonLabel
+      label: CV button text
+      type: string
+      required: false
+      default: CV
+    - name: emailButtonLabel
+      label: Email button text
+      type: string
+      required: false
+      default: Email
+    - name: showProfileCard
+      label: Show floating current-position card
+      type: boolean
+      default: true
+    - name: nameScale
+      label: Name font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.7
+        max: 1.3
+      description: 1.00 = default.
+    - name: summaryScale
+      label: Introduction font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.7
+        max: 1.4
+      description: 1.00 = default.
+  - name: profile
+    label: Profile Card
+    type: object
+    fields:
+    - name: position
+      label: Current position
+      type: string
+    - name: institution
+      label: Institution
+      type: string
+    - name: research
+      label: Research area
+      type: string
+    - name: methods
+      label: Methods
+      type: text
+    - name: location
+      label: Location
+      type: string
+  - name: about
+    label: About
+    type: object
+    fields:
+    - name: navLabel
+      label: Navigation label
+      type: string
+      required: false
+      default: About
+    - name: sectionLabel
+      label: Small section label
+      type: string
+      required: false
+      default: About
+    - name: headline
+      label: Headline
+      type: text
+    - name: text
+      label: Description
+      type: text
+    - name: headingScale
+      label: Headline font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+      description: 1.00 = default.
+    - name: textScale
+      label: Body font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+      description: 1.00 = default.
+  - name: researchSettings
+    label: Research Section Settings
+    type: object
+    required: false
+    fields:
+    - name: navLabel
+      label: Navigation label
+      type: string
+      required: false
+      default: Research
+    - name: sectionLabel
+      label: Small section label
+      type: string
+      required: false
+      default: Research
+    - name: sectionHeading
+      label: Section heading
+      type: string
+      required: false
+      default: Questions that organize my work.
+    - name: sectionLead
+      label: Section introduction
+      type: text
+      required: false
+      default: A multi-compartment view of cancer immunology, from circulating immune dynamics to clonotype behavior and spatial
+        tumor–immune organization.
+    - name: columns
+      label: Research cards per row
+      type: select
+      default: '3'
+      options:
+        values:
+        - name: '2'
+          label: 2 columns
+        - name: '3'
+          label: 3 columns
+    - name: cardLimit
+      label: Maximum cards to show
+      type: number
+      required: false
+      default: 0
+      description: 0 = show all research cards.
+      options:
+        min: 0
+        max: 20
+    - name: showImages
+      label: Show research card images
+      type: boolean
+      default: true
+    - name: headingScale
+      label: Section heading font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+    - name: cardTitleScale
+      label: Card title font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+    - name: cardTextScale
+      label: Card body font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+  - name: researchThemes
+    label: Research Themes
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
+    fields:
+    - name: label
+      label: Category
+      type: string
+    - name: title
+      label: Title
+      type: string
+    - name: text
+      label: Description
+      type: text
+    - name: tags
+      label: Tags
+      type: string
+      list: true
+    - name: image
+      label: Optional image
+      type: image
+      required: false
+      options:
+        media: images
+        path: research
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: safe
+  - name: selectedWork
+    label: Selected Work
+    type: object
+    fields:
+    - name: navLabel
+      label: Navigation label
+      type: string
+      required: false
+      default: Work
+    - name: sectionLabel
+      label: Small section label
+      type: string
+      required: false
+      default: Selected Work
+    - name: sectionHeading
+      label: Section heading
+      type: string
+      required: false
+      default: Current manuscript.
+    - name: label
+      label: Category
+      type: string
+    - name: title
+      label: Title
+      type: text
+    - name: paragraphs
+      label: Description paragraphs
+      type: text
+      list: true
+    - name: tags
+      label: Tags
+      type: string
+      list: true
+    - name: status
+      label: Status
+      type: string
+    - name: year
+      label: Year
+      type: string
+    - name: citation
+      label: Citation
+      type: text
+    - name: journalText
+      label: Journal status text
+      type: string
+    - name: badge
+      label: Badge
+      type: string
+    - name: image
+      label: Optional feature image
+      type: image
+      required: false
+      options:
+        media: images
+        path: selected-work
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: safe
+    - name: showImage
+      label: Show feature image / placeholder
+      type: boolean
+      default: true
+    - name: headingScale
+      label: Section heading font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+    - name: titleScale
+      label: Manuscript title font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+    - name: textScale
+      label: Description font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+  - name: trajectorySettings
+    label: Trajectory Section Settings
+    type: object
+    required: false
+    fields:
+    - name: navLabel
+      label: Navigation label
+      type: string
+      required: false
+      default: Trajectory
+    - name: sectionLabel
+      label: Small section label
+      type: string
+      required: false
+      default: Trajectory
+    - name: headingScale
+      label: Section heading font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+    - name: titleScale
+      label: Institution / role font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+    - name: textScale
+      label: Description font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+  - name: trajectoryHeadline
+    label: Trajectory headline
+    type: text
+  - name: trajectory
+    label: Trajectory
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{when} — {title}'
+    fields:
+    - name: when
+      label: Date / period
+      type: string
+    - name: title
+      label: Institution / role
+      type: string
+    - name: text
+      label: Description
+      type: text
+  - name: presentationSettings
+    label: Presentations Section Settings
+    type: object
+    required: false
+    fields:
+    - name: navLabel
+      label: Navigation label
+      type: string
+      required: false
+      default: Talks
+    - name: sectionLabel
+      label: Small section label
+      type: string
+      required: false
+      default: Presentations
+    - name: sectionHeading
+      label: Section heading
+      type: string
+      required: false
+      default: Selected talks & posters.
+    - name: itemLimit
+      label: Maximum presentations to show
+      type: number
+      required: false
+      default: 0
+      description: 0 = show all presentations.
+      options:
+        min: 0
+        max: 50
+    - name: headingScale
+      label: Section heading font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+    - name: titleScale
+      label: Presentation title font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+    - name: metaScale
+      label: Meeting / year font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+  - name: presentations
+    label: Presentations
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
+    fields:
+    - name: title
+      label: Presentation title
+      type: text
+    - name: meta
+      label: Meeting / year / place / type
+      type: string
+  - name: methodsSettings
+    label: Data & Methods Section Settings
+    type: object
+    required: false
+    fields:
+    - name: navLabel
+      label: Navigation label
+      type: string
+      required: false
+      default: Methods
+    - name: sectionLabel
+      label: Small section label
+      type: string
+      required: false
+      default: Data & Methods
+    - name: sectionHeading
+      label: Section heading
+      type: string
+      required: false
+      default: Tools behind the biology.
+    - name: toolkitHeading
+      label: Toolkit panel title
+      type: string
+      required: false
+      default: Computational toolkit
+    - name: interestsHeading
+      label: Interests panel title
+      type: string
+      required: false
+      default: Scientific interests
+    - name: resourceColumns
+      label: External-resource cards per row
+      type: select
+      default: '2'
+      options:
+        values:
+        - name: '1'
+          label: 1 column
+        - name: '2'
+          label: 2 columns
+    - name: resourceLimit
+      label: Maximum external resources to show
+      type: number
+      required: false
+      default: 0
+      description: 0 = show all resources.
+      options:
+        min: 0
+        max: 20
+    - name: headingScale
+      label: Section heading font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+    - name: panelTitleScale
+      label: Panel title font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+    - name: listTextScale
+      label: List font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+  - name: resourcesIntro
+    label: Data & Methods intro
+    type: text
+  - name: toolkit
+    label: Computational Toolkit
+    type: string
+    list: true
+  - name: interests
+    label: Scientific Interests
+    type: string
+    list: true
+  - name: resources
+    label: External Resources
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{label} — {title}'
+    fields:
+    - name: label
+      label: Type
+      type: string
+    - name: title
+      label: Title
+      type: string
+    - name: text
+      label: Description
+      type: text
+    - name: url
+      label: URL
+      type: string
+    - name: button
+      label: Button text
+      type: string
+  - name: gallery
+    label: Photo Gallery
+    type: object
+    required: false
+    fields:
+    - name: navLabel
+      label: Navigation label
+      type: string
+      required: false
+      default: Photos
+    - name: sectionLabel
+      label: Small section label
+      type: string
+      required: false
+      default: Photos
+    - name: headline
+      label: Headline
+      type: string
+    - name: intro
+      label: Introduction
+      type: text
+    - name: items
+      label: Photos
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{caption}'
+      fields:
+      - name: image
+        label: Image
+        type: image
+        required: true
+        options:
+          media: images
+          path: gallery
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: safe
+      - name: caption
+        label: Caption
+        type: string
+        required: false
+      - name: alt
+        label: Accessibility description
+        type: string
+        required: false
+    - name: photoLimit
+      label: Maximum photos to show
+      type: number
+      required: false
+      default: 0
+      description: 0 = show all photos.
+      options:
+        min: 0
+        max: 50
+    - name: showCaptions
+      label: Show photo captions
+      type: boolean
+      default: true
+    - name: headingScale
+      label: Section heading font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+    - name: captionScale
+      label: Caption font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+  - name: contact
+    label: Contact
+    type: object
+    fields:
+    - name: navLabel
+      label: Navigation label
+      type: string
+      required: false
+      default: Contact
+    - name: sectionLabel
+      label: Small section label
+      type: string
+      required: false
+      default: Contact
+    - name: headline
+      label: Headline
+      type: text
+    - name: text
+      label: Description
+      type: text
+    - name: emailButtonLabel
+      label: Email button text
+      type: string
+      required: false
+      default: ''
+      description: Leave blank to display the email address.
+    - name: cvButtonLabel
+      label: CV button text
+      type: string
+      required: false
+      default: Download CV
+    - name: headingScale
+      label: Headline font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
+    - name: textScale
+      label: Description font size
+      type: number
+      required: false
+      default: 1.0
+      options:
+        min: 0.65
+        max: 1.5
