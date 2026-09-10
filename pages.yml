@@ -1,0 +1,292 @@
+media:
+  - name: images
+    label: Images
+    input: media/images
+    output: media/images
+    categories: [image]
+    extensions: [jpg, jpeg, png, webp, gif]
+    rename: safe
+
+  - name: documents
+    label: Documents
+    input: media/files
+    output: media/files
+    categories: [document]
+    extensions: [pdf, doc, docx]
+    rename: false
+
+content:
+  - name: website
+    label: Website Content
+    type: file
+    path: data.json
+    format: json
+    fields:
+      - name: meta
+        label: Search / Social
+        type: object
+        fields:
+          - name: title
+            label: Browser title
+            type: string
+          - name: description
+            label: Search description
+            type: text
+          - name: ogDescription
+            label: Social sharing description
+            type: text
+
+      - name: hero
+        label: Hero
+        type: object
+        fields:
+          - name: pill
+            label: Top label
+            type: string
+          - name: name
+            label: Name
+            type: string
+          - name: summary
+            label: Introduction
+            type: text
+          - name: email
+            label: Email
+            type: string
+          - name: profileImage
+            label: Profile photo
+            type: image
+            options:
+              media: images
+              path: profile
+              extensions: [jpg, jpeg, png, webp]
+              rename: safe
+          - name: cv
+            label: CV file
+            type: file
+            options:
+              media: documents
+              extensions: [pdf, doc, docx]
+              rename: false
+
+      - name: profile
+        label: Profile Card
+        type: object
+        fields:
+          - name: position
+            label: Current position
+            type: string
+          - name: institution
+            label: Institution
+            type: string
+          - name: research
+            label: Research area
+            type: string
+          - name: methods
+            label: Methods
+            type: text
+          - name: location
+            label: Location
+            type: string
+
+      - name: about
+        label: About
+        type: object
+        fields:
+          - name: headline
+            label: Headline
+            type: text
+          - name: text
+            label: Description
+            type: text
+
+      - name: researchThemes
+        label: Research Themes
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: label
+            label: Category
+            type: string
+          - name: title
+            label: Title
+            type: string
+          - name: text
+            label: Description
+            type: text
+          - name: tags
+            label: Tags
+            type: string
+            list: true
+          - name: image
+            label: Optional image
+            type: image
+            options:
+              media: images
+              path: research
+              extensions: [jpg, jpeg, png, webp]
+              rename: safe
+
+      - name: selectedWork
+        label: Selected Work
+        type: object
+        fields:
+          - name: label
+            label: Category
+            type: string
+          - name: title
+            label: Title
+            type: text
+          - name: paragraphs
+            label: Description paragraphs
+            type: text
+            list: true
+          - name: tags
+            label: Tags
+            type: string
+            list: true
+          - name: status
+            label: Status
+            type: string
+          - name: year
+            label: Year
+            type: string
+          - name: citation
+            label: Citation
+            type: text
+          - name: journalText
+            label: Journal status text
+            type: string
+          - name: badge
+            label: Badge
+            type: string
+          - name: image
+            label: Optional feature image
+            type: image
+            options:
+              media: images
+              path: selected-work
+              extensions: [jpg, jpeg, png, webp]
+              rename: safe
+
+      - name: trajectoryHeadline
+        label: Trajectory headline
+        type: text
+
+      - name: trajectory
+        label: Trajectory
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{when} — {title}"
+        fields:
+          - name: when
+            label: Date / period
+            type: string
+          - name: title
+            label: Institution / role
+            type: string
+          - name: text
+            label: Description
+            type: text
+
+      - name: presentations
+        label: Presentations
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: Presentation title
+            type: text
+          - name: meta
+            label: Meeting / year / place / type
+            type: string
+
+      - name: resourcesIntro
+        label: Data & Methods intro
+        type: text
+
+      - name: toolkit
+        label: Computational Toolkit
+        type: string
+        list: true
+
+      - name: interests
+        label: Scientific Interests
+        type: string
+        list: true
+
+      - name: resources
+        label: External Resources
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label} — {title}"
+        fields:
+          - name: label
+            label: Type
+            type: string
+          - name: title
+            label: Title
+            type: string
+          - name: text
+            label: Description
+            type: text
+          - name: url
+            label: URL
+            type: string
+          - name: button
+            label: Button text
+            type: string
+
+      - name: gallery
+        label: Photo Gallery
+        type: object
+        fields:
+          - name: headline
+            label: Headline
+            type: string
+          - name: intro
+            label: Introduction
+            type: text
+          - name: items
+            label: Photos
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{caption}"
+            fields:
+              - name: image
+                label: Image
+                type: image
+                required: true
+                options:
+                  media: images
+                  path: gallery
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: safe
+              - name: caption
+                label: Caption
+                type: string
+              - name: alt
+                label: Accessibility description
+                type: string
+
+      - name: contact
+        label: Contact
+        type: object
+        fields:
+          - name: headline
+            label: Headline
+            type: text
+          - name: text
+            label: Description
+            type: text
