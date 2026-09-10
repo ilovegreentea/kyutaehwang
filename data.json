@@ -265,7 +265,7 @@
     "textSize": 17
   },
   "analytics": {
-    "enabled": false,
-    "goatcounterCode": ""
+    "enabled": true,
+    "goatcounterCode": "gkmin03"
   }
 }
