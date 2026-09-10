@@ -34,8 +34,8 @@
     "cvButtonLabel": "CV",
     "emailButtonLabel": "Email",
     "showProfileCard": true,
-    "nameSize": 112,
-    "summarySize": 19
+    "nameSize": 96,
+    "summarySize": 18
   },
   "profile": {
     "position": "PhD Student · Biological Sciences",
@@ -49,7 +49,7 @@
     "sectionLabel": "About",
     "headline": "I study immunotherapy response as a dynamic, multi-compartment immune-system problem.",
     "text": "My work connects peripheral blood and tumor immune states to identify cellular programs, clonal behavior, and spatial organization associated with treatment response. I am especially interested in translational questions where high-dimensional genomic measurements can be distilled into biologically interpretable and clinically testable signals.",
-    "headingSize": 58,
+    "headingSize": 38,
     "textSize": 18
   },
   "researchSettings": {
@@ -60,7 +60,7 @@
     "columns": "3",
     "cardLimit": 0,
     "showImages": true,
-    "headingSize": 58,
+    "headingSize": 54,
     "cardTitleSize": 20,
     "cardTextSize": 16
   },
@@ -129,11 +129,11 @@
   "trajectorySettings": {
     "navLabel": "Trajectory",
     "sectionLabel": "Trajectory",
-    "headingSize": 58,
+    "headingSize": 45,
     "titleSize": 18,
     "textSize": 16
   },
-  "trajectoryHeadline": "Research training across Korea, UNC Lineberger, and City of Hope.",
+  "trajectoryHeadline": "Research training across Samsung Medical Center, UNC Lineberger, and City of Hope.",
   "trajectory": [
     {
       "when": "Aug 2026 — Present",
@@ -252,7 +252,8 @@
     "photoLimit": 0,
     "showCaptions": true,
     "headingSize": 58,
-    "captionSize": 14
+    "captionSize": 14,
+    "items": []
   },
   "contact": {
     "navLabel": "Contact",
