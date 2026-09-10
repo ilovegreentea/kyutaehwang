@@ -9,200 +9,887 @@
   <meta property="og:description" id="og-description" content="">
   <meta property="og:type" content="website">
   <title>KyuTae Hwang</title>
+
   <style>
     :root{
-      --bg:#f5f4ef;--surface:#ffffff;--text:#161817;--muted:#686b67;--line:#dedfd8;
-      --accent:#274c45;--accent-soft:#dce8e4;--max:1160px;--radius:26px;
-      --shadow:0 14px 40px rgba(24,28,26,.06)
+      --bg:#f4f2ec;
+      --paper:#fbfaf6;
+      --surface:#ffffff;
+      --ink:#15201d;
+      --muted:#69726e;
+      --line:#d9ddd8;
+      --green:#244d45;
+      --green-2:#35685d;
+      --green-soft:#dfe9e5;
+      --sage:#a8bbb4;
+      --warm:#e8e0d3;
+      --max:1180px;
+      --radius:28px;
+      --shadow:0 18px 50px rgba(24,36,32,.07);
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 84% 3%, rgba(53,104,93,.09), transparent 22rem),
+        radial-gradient(circle at 8% 26%, rgba(232,224,211,.72), transparent 26rem),
+        var(--bg);
+      color:var(--ink);
+      font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
-    a:hover{color:var(--accent)}
-    img{display:block;max-width:100%}
+    button,a{ -webkit-tap-highlight-color:transparent }
     .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
-    nav{position:sticky;top:0;z-index:50;background:rgba(245,244,239,.9);border-bottom:1px solid rgba(222,223,216,.9);backdrop-filter:blur(16px)}
-    .nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{font-weight:850;letter-spacing:-.025em}
-    .links{display:flex;gap:24px;font-size:.92rem;color:var(--muted)}
-    .links a:hover{color:var(--text)}
-    .hero{display:grid;grid-template-columns:1.45fr .55fr;gap:58px;padding:108px 0 78px;align-items:end}
-    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--muted);font-size:.8rem;background:rgba(255,255,255,.55)}
-    h1{font-size:clamp(3.7rem,8vw,7.8rem);line-height:.88;letter-spacing:-.07em;margin:24px 0 20px}
-    .hero p{font-size:1.19rem;color:#40433f;max-width:790px}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:999px;border:1px solid var(--text);font-size:.92rem;font-weight:700}
-    .btn.primary{background:var(--text);color:#fff}
-    .btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-    .btn.secondary:hover{background:#fff;color:var(--text)}
-    .profile-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px}
-    .profile-image{width:100%;aspect-ratio:1/1.02;object-fit:cover;border-radius:20px;margin-bottom:24px;background:#e8ebe7}
-    .monogram{width:82px;height:82px;border-radius:24px;background:var(--accent);color:white;display:grid;place-items:center;font-weight:850;font-size:1.55rem;letter-spacing:-.04em;margin-bottom:28px}
-    .label{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800;margin-bottom:8px}
-    .profile-card strong{display:block;font-size:1.05rem}
-    .profile-card p{font-size:.94rem;margin:.25rem 0 1.15rem;color:var(--muted)}
-    section{padding:82px 0;border-top:1px solid var(--line)}
-    .section-head{display:grid;grid-template-columns:190px 1fr;gap:54px;margin-bottom:38px}
-    .kicker{font-size:.76rem;text-transform:uppercase;letter-spacing:.13em;color:var(--muted);font-weight:800;padding-top:8px}
-    h2{font-size:clamp(2.2rem,4vw,3.7rem);line-height:1.04;letter-spacing:-.05em;margin:0}
-    .lead{font-size:1.12rem;color:#434642;max-width:820px;margin:18px 0 0}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;min-height:260px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
-    .card.with-image{padding:0}
-    .card.with-image .card-body{padding:24px 26px 26px}
-    .card-image{width:100%;aspect-ratio:16/10;object-fit:cover}
-    .card h3{margin:4px 0 10px;font-size:1.18rem;line-height:1.3;letter-spacing:-.025em}
-    .card p{margin:0;color:var(--muted)}
-    .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:20px}
-    .tag{font-size:.74rem;padding:5px 9px;background:#eef1ee;border-radius:999px;color:#555b57}
-    .feature{background:var(--accent);color:#fff;border-radius:34px;padding:44px;display:grid;grid-template-columns:1.3fr .7fr;gap:50px;overflow:hidden}
-    .feature.has-image{grid-template-columns:1.12fr .88fr}
-    .feature-copy h3{font-size:clamp(2.05rem,4vw,3.25rem);letter-spacing:-.045em;line-height:1.03;margin:0 0 14px}
-    .feature-copy p{color:rgba(255,255,255,.8);margin:0 0 15px}
-    .feature-side{display:flex;flex-direction:column;align-items:flex-end;gap:18px}
-    .feature-image{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:24px}
-    .status{border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 12px;font-size:.8rem;white-space:nowrap}
-    .pub{display:grid;grid-template-columns:155px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--line)}
-    .pub-year{color:var(--muted);font-size:.9rem}
-    .pub h3{font-size:1.05rem;margin:0 0 5px;line-height:1.45}
-    .pub p{margin:0;color:var(--muted)}
-    .badge{display:inline-block;margin-top:10px;font-size:.74rem;padding:4px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:700}
-    .timeline{display:grid}
-    .time{display:grid;grid-template-columns:190px 1fr;gap:32px;padding:25px 0;border-bottom:1px solid var(--line)}
-    .when{color:var(--muted);font-size:.9rem}
-    .time h3{margin:0 0 5px;font-size:1.08rem}
-    .time p{margin:0;color:var(--muted)}
-    .presentations{display:grid;gap:14px}
-    .presentation{background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:20px;padding:20px 22px}
-    .presentation strong{display:block;line-height:1.4}
-    .presentation span{font-size:.88rem;color:var(--muted)}
-    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .panel{background:rgba(255,255,255,.6);border:1px solid var(--line);border-radius:var(--radius);padding:27px}
-    .panel h3{margin-top:0}
-    .panel ul{margin-bottom:0;padding-left:20px;color:var(--muted)}
-    .resource-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .resource{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:25px;box-shadow:var(--shadow)}
-    .resource h3{margin:0 0 7px}
-    .resource p{color:var(--muted);margin:0 0 16px}
-    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .gallery-item{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
-    .gallery-item img{width:100%;aspect-ratio:4/3;object-fit:cover}
-    .gallery-item figcaption{padding:14px 16px;color:var(--muted);font-size:.9rem}
-    .contact{text-align:center;padding:112px 0 122px}
-    .contact h2{max-width:900px;margin:auto}
-    .contact p{max-width:690px;margin:20px auto;color:var(--muted);font-size:1.07rem}
-    .contact .actions{justify-content:center}
-    footer{border-top:1px solid var(--line);padding:27px 0;color:var(--muted);font-size:.85rem}
-    .foot{display:flex;justify-content:space-between;gap:15px}
-    .load-error{padding:16px 24px;text-align:center;background:#fff1d6;color:#6b4d15}
-    @media(max-width:900px){
-      .hero{grid-template-columns:1fr;gap:38px;padding-top:72px}
-      .section-head{grid-template-columns:1fr;gap:10px}
-      .cards,.two-col,.resource-grid,.gallery-grid{grid-template-columns:1fr}
-      .feature,.feature.has-image{grid-template-columns:1fr;padding:31px}
-      .feature-side{align-items:flex-start}
-      .time,.pub{grid-template-columns:1fr;gap:5px}
+    .section{padding:96px 0;border-top:1px solid rgba(217,221,216,.9)}
+    .eyebrow{
+      font-size:.74rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+      font-weight:850;
+    }
+    .muted{color:var(--muted)}
+    .serif{
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:500;
+      letter-spacing:-.035em;
+    }
+
+    /* NAV */
+    nav{
+      position:sticky;
+      top:0;
+      z-index:80;
+      background:rgba(244,242,236,.86);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(217,221,216,.72);
+    }
+    .nav{
+      min-height:70px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .brand{
+      font-weight:900;
+      letter-spacing:-.035em;
+      font-size:1rem;
+    }
+    .links{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      color:#59625e;
+      font-size:.9rem;
+      font-weight:650;
+    }
+    .links a{
+      position:relative;
+      padding:8px 0;
+    }
+    .links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:100%;
+      bottom:4px;
+      height:1px;
+      background:var(--green);
+      transition:right .25s ease;
+    }
+    .links a:hover::after{right:0}
+
+    /* HERO */
+    .hero{
+      position:relative;
+      padding:82px 0 88px;
+      overflow:hidden;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);
+      gap:72px;
+      align-items:center;
+    }
+    .hero-copy{min-width:0}
+    .hero-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      background:rgba(255,255,255,.72);
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:#52615c;
+      font-size:.78rem;
+      font-weight:750;
+    }
+    .hero-kicker::before{
+      content:"";
+      width:7px;height:7px;border-radius:50%;
+      background:var(--green-2);
+      box-shadow:0 0 0 5px rgba(53,104,93,.09);
+    }
+    h1{
+      font-size:clamp(4.4rem,9vw,8.7rem);
+      line-height:.82;
+      letter-spacing:-.075em;
+      margin:28px 0 28px;
+      font-weight:900;
+    }
+    .hero-summary{
+      max-width:760px;
+      font-size:clamp(1.08rem,1.7vw,1.28rem);
+      line-height:1.72;
+      color:#414b47;
+      margin:0;
+    }
+    .hero-actions{
+      display:flex;
+      gap:11px;
+      flex-wrap:wrap;
+      margin-top:30px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      min-height:46px;
+      padding:0 18px;
+      border-radius:999px;
+      border:1px solid #26312d;
+      font-size:.9rem;
+      font-weight:800;
+      transition:transform .2s ease,background .2s ease,border-color .2s ease,color .2s ease;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn.primary{background:var(--ink);color:#fff}
+    .btn.primary:hover{background:var(--green);border-color:var(--green)}
+    .btn.ghost{background:rgba(255,255,255,.58)}
+    .btn.ghost:hover{background:#fff}
+    .arrow{font-size:1.05em;transform:translateY(-1px)}
+
+    .hero-visual{
+      position:relative;
+      min-height:510px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .portrait-shell{
+      position:relative;
+      width:min(100%,390px);
+      border-radius:38px;
+      padding:11px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(217,221,216,.95);
+      box-shadow:var(--shadow);
+      transform:rotate(1.2deg);
+    }
+    .portrait{
+      width:100%;
+      aspect-ratio:4/5;
+      object-fit:cover;
+      border-radius:29px;
+      background:#dce4e0;
+    }
+    .portrait-placeholder{
+      aspect-ratio:4/5;
+      border-radius:29px;
+      display:flex;
+      align-items:flex-end;
+      padding:28px;
+      overflow:hidden;
+      position:relative;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.48), transparent 24%),
+        linear-gradient(145deg,#d7e2de,#b6cbc4 52%,#7da095);
+    }
+    .portrait-placeholder::before,
+    .portrait-placeholder::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.45);
+    }
+    .portrait-placeholder::before{width:260px;height:260px;right:-105px;top:-80px}
+    .portrait-placeholder::after{width:180px;height:180px;left:-85px;bottom:22px}
+    .initials{
+      position:relative;
+      z-index:1;
+      font-size:4.4rem;
+      line-height:1;
+      font-weight:900;
+      letter-spacing:-.08em;
+      color:#fff;
+    }
+    .profile-float{
+      position:absolute;
+      left:-34px;
+      bottom:38px;
+      width:235px;
+      padding:18px 18px 16px;
+      border-radius:22px;
+      background:rgba(251,250,246,.92);
+      backdrop-filter:blur(14px);
+      border:1px solid rgba(217,221,216,.95);
+      box-shadow:0 15px 35px rgba(24,36,32,.08);
+      transform:rotate(-1.2deg);
+    }
+    .profile-float strong{display:block;font-size:.96rem;line-height:1.35;margin-top:5px}
+    .profile-float span{display:block;font-size:.82rem;color:var(--muted);margin-top:5px}
+
+    .orbit{
+      position:absolute;
+      width:470px;height:470px;
+      border-radius:50%;
+      border:1px solid rgba(36,77,69,.10);
+      pointer-events:none;
+    }
+    .orbit::before,.orbit::after{
+      content:"";
+      position:absolute;
+      width:8px;height:8px;border-radius:50%;
+      background:var(--green-2);
+    }
+    .orbit::before{right:55px;top:70px}
+    .orbit::after{left:44px;bottom:96px}
+
+    /* SECTION HEAD */
+    .section-head{
+      display:grid;
+      grid-template-columns:185px minmax(0,1fr);
+      gap:56px;
+      margin-bottom:44px;
+      align-items:start;
+    }
+    .section-head h2{
+      margin:0;
+      font-size:clamp(2.7rem,5vw,5.15rem);
+      line-height:.98;
+    }
+    .section-head .lead{
+      margin:18px 0 0;
+      max-width:820px;
+      font-size:1.08rem;
+      color:#4a5551;
+    }
+
+    /* ABOUT */
+    .about-panel{
+      display:grid;
+      grid-template-columns:1.35fr .65fr;
+      gap:18px;
+    }
+    .about-copy,.about-side{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.62);
+    }
+    .about-copy{padding:36px}
+    .about-copy p{font-size:1.13rem;color:#46504c;margin:0;line-height:1.82}
+    .about-side{
+      padding:30px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:30px;
+      background:var(--green);
+      color:white;
+    }
+    .about-side .eyebrow{color:rgba(255,255,255,.62)}
+    .about-side strong{font-size:1.15rem;line-height:1.45}
+    .about-side p{margin:6px 0 0;color:rgba(255,255,255,.72);font-size:.92rem}
+
+    /* RESEARCH */
+    .research-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+    .research-card{
+      min-width:0;
+      border:1px solid var(--line);
+      border-radius:28px;
+      overflow:hidden;
+      background:rgba(255,255,255,.78);
+      box-shadow:0 12px 34px rgba(24,36,32,.045);
+      transition:transform .25s ease,box-shadow .25s ease;
+    }
+    .research-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 20px 44px rgba(24,36,32,.08);
+    }
+    .research-media{
+      aspect-ratio:16/10;
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg,rgba(36,77,69,.96),rgba(92,128,116,.72)),
+        #315d54;
+    }
+    .research-media img{
+      width:100%;height:100%;object-fit:cover;
+      transition:transform .4s ease;
+    }
+    .research-card:hover .research-media img{transform:scale(1.025)}
+    .research-placeholder{
+      width:100%;height:100%;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 28% 35%,rgba(255,255,255,.18) 0 7%,transparent 8%),
+        radial-gradient(circle at 64% 28%,rgba(255,255,255,.13) 0 5%,transparent 6%),
+        radial-gradient(circle at 71% 72%,rgba(255,255,255,.18) 0 9%,transparent 10%),
+        linear-gradient(145deg,#244d45,#66887d);
+    }
+    .research-placeholder::after{
+      content:"";
+      position:absolute;
+      left:18%;right:18%;top:50%;
+      height:1px;
+      background:rgba(255,255,255,.35);
+      transform:rotate(-12deg);
+      box-shadow:0 -48px 0 rgba(255,255,255,.17),0 48px 0 rgba(255,255,255,.13);
+    }
+    .research-body{padding:25px 25px 27px}
+    .research-body h3{
+      margin:7px 0 11px;
+      font-size:1.23rem;
+      line-height:1.32;
+      letter-spacing:-.025em;
+    }
+    .research-body p{margin:0;color:var(--muted)}
+    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding:5px 9px;
+      border-radius:999px;
+      background:#eef2ef;
+      color:#52615c;
+      font-size:.72rem;
+      font-weight:750;
+    }
+
+    /* FEATURE WORK */
+    .feature{
+      position:relative;
+      display:grid;
+      grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr);
+      gap:44px;
+      padding:48px;
+      border-radius:38px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 86% 10%,rgba(255,255,255,.08),transparent 16rem),
+        var(--green);
+      color:white;
+    }
+    .feature h3{
+      font-size:clamp(2.35rem,4.6vw,4.8rem);
+      line-height:.98;
+      letter-spacing:-.055em;
+      margin:10px 0 22px;
+    }
+    .feature p{color:rgba(255,255,255,.75);margin:0 0 14px}
+    .feature .tag{background:rgba(255,255,255,.12);color:#fff}
+    .feature-side{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      justify-content:flex-start;
+    }
+    .status{
+      align-self:flex-end;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.28);
+      font-size:.78rem;
+      font-weight:800;
+      color:#fff;
+    }
+    .feature-image,.feature-placeholder{
+      width:100%;
+      aspect-ratio:4/3;
+      border-radius:26px;
+      object-fit:cover;
+      margin-top:auto;
+    }
+    .feature-placeholder{
+      display:grid;
+      place-items:center;
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(150deg,rgba(255,255,255,.12),rgba(255,255,255,.035));
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .feature-placeholder span{
+      position:relative;
+      z-index:1;
+      color:rgba(255,255,255,.62);
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-weight:800;
+    }
+    .feature-placeholder::before{
+      content:"";
+      position:absolute;
+      width:260px;height:260px;border-radius:50%;
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 0 0 48px rgba(255,255,255,.03),0 0 0 96px rgba(255,255,255,.02);
+    }
+    .citation{
+      display:grid;
+      grid-template-columns:155px 1fr;
+      gap:30px;
+      padding:28px 0 0;
+      margin-top:24px;
+      border-top:1px solid rgba(217,221,216,.9);
+    }
+    .citation h3{font-size:1.08rem;line-height:1.5;margin:0 0 6px}
+    .citation p{margin:0;color:var(--muted)}
+    .badge{
+      display:inline-flex;
+      margin-top:10px;
+      padding:5px 9px;
+      border-radius:999px;
+      background:var(--green-soft);
+      color:var(--green);
+      font-size:.72rem;
+      font-weight:800;
+    }
+
+    /* TIMELINE */
+    .timeline{
+      position:relative;
+      margin-left:9px;
+    }
+    .timeline::before{
+      content:"";
+      position:absolute;
+      left:10px;top:4px;bottom:12px;
+      width:1px;
+      background:var(--line);
+    }
+    .time{
+      position:relative;
+      display:grid;
+      grid-template-columns:185px 1fr;
+      gap:34px;
+      padding:0 0 34px 42px;
+    }
+    .time::before{
+      content:"";
+      position:absolute;
+      left:5px;top:7px;
+      width:10px;height:10px;border-radius:50%;
+      background:var(--bg);
+      border:3px solid var(--green-2);
+      box-shadow:0 0 0 5px var(--bg);
+    }
+    .when{font-size:.84rem;color:var(--muted);font-weight:750}
+    .time h3{font-size:1.12rem;margin:0 0 6px;letter-spacing:-.02em}
+    .time p{margin:0;color:var(--muted);max-width:760px}
+
+    /* PRESENTATIONS */
+    .presentation-list{display:grid;gap:10px}
+    .presentation{
+      display:grid;
+      grid-template-columns:120px 1fr auto;
+      gap:20px;
+      align-items:center;
+      padding:20px 22px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(255,255,255,.58);
+      transition:background .2s ease,transform .2s ease;
+    }
+    .presentation:hover{background:#fff;transform:translateX(3px)}
+    .presentation-year{
+      font-size:.79rem;
+      color:var(--green);
+      font-weight:900;
+      letter-spacing:.04em;
+    }
+    .presentation strong{display:block;line-height:1.42;font-size:.98rem}
+    .presentation-meta{font-size:.82rem;color:var(--muted);margin-top:5px}
+    .presentation-type{
+      padding:5px 9px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      white-space:nowrap;
+      font-size:.72rem;
+      font-weight:800;
+      color:#56615d;
+    }
+
+    /* METHODS */
+    .methods-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .methods-card{
+      padding:30px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.62);
+    }
+    .methods-card h3{margin:0 0 20px;font-size:1.18rem}
+    .methods-card ul{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+    .methods-card li{
+      position:relative;
+      padding-left:18px;
+      color:var(--muted);
+    }
+    .methods-card li::before{
+      content:"";
+      position:absolute;
+      left:0;top:.72em;
+      width:6px;height:6px;border-radius:50%;
+      background:var(--sage);
+    }
+    .resource-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+    .resource{
+      padding:26px;
+      border-radius:24px;
+      border:1px solid var(--line);
+      background:var(--surface);
+      box-shadow:0 12px 28px rgba(24,36,32,.04);
+    }
+    .resource h3{margin:5px 0 7px;font-size:1.18rem}
+    .resource p{margin:0 0 16px;color:var(--muted)}
+
+    /* GALLERY */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:14px;
+    }
+    .gallery-item{
+      margin:0;
+      grid-column:span 4;
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(5){grid-column:span 7}
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(6){grid-column:span 5}
+    .gallery-item img{
+      width:100%;
+      aspect-ratio:4/3;
+      object-fit:cover;
+      transition:transform .35s ease;
+    }
+    .gallery-item:hover img{transform:scale(1.02)}
+    .gallery-item figcaption{padding:13px 15px;color:var(--muted);font-size:.86rem}
+
+    /* CONTACT */
+    .contact-wrap{
+      padding:112px 0 120px;
+      text-align:center;
+    }
+    .contact-wrap h2{
+      max-width:970px;
+      margin:0 auto;
+      font-size:clamp(3.1rem,6vw,6.4rem);
+      line-height:.95;
+    }
+    .contact-wrap p{
+      max-width:700px;
+      margin:22px auto 0;
+      color:var(--muted);
+      font-size:1.05rem;
+    }
+    .contact-actions{justify-content:center}
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:27px 0 34px;
+      color:var(--muted);
+      font-size:.84rem;
+    }
+    .foot{display:flex;justify-content:space-between;gap:18px}
+
+    /* REVEAL */
+    .reveal{
+      opacity:0;
+      transform:translateY(16px);
+      transition:opacity .55s ease,transform .55s ease;
+    }
+    .reveal.visible{opacity:1;transform:none}
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .reveal{opacity:1;transform:none;transition:none}
+      .btn,.research-card,.presentation,.research-media img,.gallery-item img{transition:none}
+    }
+
+    @media(max-width:960px){
       .links{display:none}
-      h1{font-size:clamp(3.5rem,18vw,6rem)}
+      .hero-grid{grid-template-columns:1fr;gap:44px}
+      .hero{padding-top:64px}
+      .hero-visual{min-height:0}
+      .portrait-shell{width:min(100%,420px)}
+      .profile-float{left:-10px}
+      .section-head{grid-template-columns:1fr;gap:12px}
+      .research-grid{grid-template-columns:1fr}
+      .about-panel,.feature,.methods-grid{grid-template-columns:1fr}
+      .feature{padding:34px}
+      .feature-side{min-width:0}
+      .citation{grid-template-columns:1fr;gap:8px}
+      .presentation{grid-template-columns:90px 1fr}
+      .presentation-type{grid-column:2;justify-self:start}
+      .resource-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:680px){
+      .wrap{padding:0 18px}
+      .section{padding:76px 0}
+      h1{font-size:clamp(4rem,22vw,6.3rem)}
+      .hero-summary{font-size:1.02rem}
+      .hero-visual{padding:0 12px}
+      .profile-float{
+        position:relative;
+        left:auto;bottom:auto;
+        width:auto;
+        margin:-16px 14px 0;
+        transform:none;
+      }
+      .orbit{display:none}
+      .about-copy{padding:26px}
+      .time{grid-template-columns:1fr;gap:7px;padding-left:38px}
+      .presentation{grid-template-columns:1fr;gap:7px}
+      .presentation-type{grid-column:1}
+      .gallery-grid{display:grid;grid-template-columns:1fr}
+      .gallery-item,.gallery-item:nth-child(1),.gallery-item:nth-child(2),.gallery-item:nth-child(5),.gallery-item:nth-child(6){grid-column:1}
+      .contact-wrap{padding:90px 0}
+      .foot{flex-direction:column}
     }
   </style>
 </head>
+
 <body>
 <nav>
   <div class="wrap nav">
-    <a class="brand" href="#top" id="brand-name">KyuTae Hwang</a>
+    <a class="brand" id="brand-name" href="#top">KyuTae Hwang</a>
     <div class="links">
       <a href="#about">About</a>
       <a href="#research">Research</a>
       <a href="#work">Work</a>
       <a href="#trajectory">Trajectory</a>
       <a href="#presentations">Talks</a>
-      <a href="#gallery">Photos</a>
+      <a href="#resources">Methods</a>
+      <a href="#gallery" id="gallery-nav">Photos</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
 </nav>
 
 <main id="top">
-  <div class="wrap">
-    <header class="hero">
-      <div>
-        <span class="pill" id="hero-pill"></span>
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="hero-kicker" id="hero-pill"></div>
         <h1 id="hero-name"></h1>
-        <p id="hero-summary"></p>
-        <div class="actions">
-          <a class="btn primary" href="#research">View research</a>
-          <a class="btn secondary" id="hero-email">Email</a>
-          <a class="btn secondary" id="hero-cv">Download CV</a>
+        <p class="hero-summary" id="hero-summary"></p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#research">Explore research <span class="arrow">↘</span></a>
+          <a class="btn ghost" id="hero-cv">CV</a>
+          <a class="btn ghost" id="hero-email">Email</a>
         </div>
       </div>
-      <aside class="profile-card" id="profile-card"></aside>
-    </header>
-  </div>
 
-  <section id="about"><div class="wrap"><div class="section-head">
-    <div class="kicker">01 · About</div>
-    <div><h2 id="about-headline"></h2><p class="lead" id="about-text"></p></div>
-  </div></div></section>
-
-  <section id="research"><div class="wrap">
-    <div class="section-head"><div class="kicker">02 · Research</div><div><h2>Research themes</h2><p class="lead">Current questions in cancer immunology.</p></div></div>
-    <div class="cards" id="research-cards"></div>
-  </div></section>
-
-  <section id="work"><div class="wrap">
-    <div class="section-head"><div class="kicker">03 · Selected Work</div><div><h2>Current manuscript</h2></div></div>
-    <div class="feature" id="selected-work"></div>
-    <div style="margin-top:34px" id="publication"></div>
-  </div></section>
-
-  <section id="trajectory"><div class="wrap">
-    <div class="section-head"><div class="kicker">04 · Trajectory</div><div><h2 id="trajectory-headline"></h2></div></div>
-    <div class="timeline" id="trajectory-list"></div>
-  </div></section>
-
-  <section id="presentations"><div class="wrap">
-    <div class="section-head"><div class="kicker">05 · Presentations</div><div><h2>Selected talks & posters</h2></div></div>
-    <div class="presentations" id="presentation-list"></div>
-  </div></section>
-
-  <section id="resources"><div class="wrap">
-    <div class="section-head"><div class="kicker">06 · Data & Methods</div><div><h2>Tools and research resources</h2><p class="lead" id="resources-intro"></p></div></div>
-    <div class="two-col">
-      <div class="panel"><h3>Computational toolkit</h3><ul id="toolkit-list"></ul></div>
-      <div class="panel"><h3>Scientific interests</h3><ul id="interests-list"></ul></div>
+      <div class="hero-visual reveal">
+        <div class="orbit"></div>
+        <div class="portrait-shell" id="portrait-shell"></div>
+        <div class="profile-float">
+          <div class="eyebrow">Current position</div>
+          <strong id="profile-position"></strong>
+          <span id="profile-institution"></span>
+        </div>
+      </div>
     </div>
-    <div class="resource-grid" style="margin-top:18px" id="resource-grid"></div>
-  </div></section>
+  </header>
 
-  <section id="gallery"><div class="wrap">
-    <div class="section-head"><div class="kicker">07 · Photos</div><div><h2 id="gallery-headline"></h2><p class="lead" id="gallery-intro"></p></div></div>
-    <div class="gallery-grid" id="gallery-grid"></div>
-  </div></section>
+  <section id="about" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">01 · About</div>
+        <div>
+          <h2 class="serif" id="about-headline"></h2>
+        </div>
+      </div>
+      <div class="about-panel reveal">
+        <div class="about-copy"><p id="about-text"></p></div>
+        <aside class="about-side">
+          <div>
+            <div class="eyebrow">Research focus</div>
+            <strong id="profile-research"></strong>
+            <p id="profile-methods"></p>
+          </div>
+          <div>
+            <div class="eyebrow">Based in</div>
+            <strong id="profile-location"></strong>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
 
-  <section id="contact" class="contact"><div class="wrap">
-    <div class="kicker" style="padding:0;margin-bottom:18px">08 · Contact</div>
-    <h2 id="contact-headline"></h2><p id="contact-text"></p>
-    <div class="actions"><a class="btn primary" id="contact-email"></a><a class="btn secondary" id="contact-cv">Download CV</a></div>
-  </div></section>
+  <section id="research" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">02 · Research</div>
+        <div>
+          <h2 class="serif">Questions that organize my work.</h2>
+          <p class="lead">A multi-compartment view of cancer immunology, from circulating immune dynamics to clonotype behavior and spatial tumor–immune organization.</p>
+        </div>
+      </div>
+      <div class="research-grid" id="research-grid"></div>
+    </div>
+  </section>
+
+  <section id="work" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">03 · Selected Work</div>
+        <div><h2 class="serif">Current manuscript.</h2></div>
+      </div>
+      <div class="feature reveal" id="feature"></div>
+      <div class="citation reveal" id="citation"></div>
+    </div>
+  </section>
+
+  <section id="trajectory" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">04 · Trajectory</div>
+        <div><h2 class="serif" id="trajectory-headline"></h2></div>
+      </div>
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
+
+  <section id="presentations" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">05 · Presentations</div>
+        <div><h2 class="serif">Selected talks & posters.</h2></div>
+      </div>
+      <div class="presentation-list" id="presentation-list"></div>
+    </div>
+  </section>
+
+  <section id="resources" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">06 · Data & Methods</div>
+        <div>
+          <h2 class="serif">Tools behind the biology.</h2>
+          <p class="lead" id="resources-intro"></p>
+        </div>
+      </div>
+
+      <div class="methods-grid reveal">
+        <div class="methods-card">
+          <h3>Computational toolkit</h3>
+          <ul id="toolkit-list"></ul>
+        </div>
+        <div class="methods-card">
+          <h3>Scientific interests</h3>
+          <ul id="interests-list"></ul>
+        </div>
+      </div>
+
+      <div class="resource-grid" id="resource-grid"></div>
+    </div>
+  </section>
+
+  <section id="gallery" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">07 · Photos</div>
+        <div>
+          <h2 class="serif" id="gallery-headline"></h2>
+          <p class="lead" id="gallery-intro"></p>
+        </div>
+      </div>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="wrap contact-wrap reveal">
+      <div class="eyebrow" style="margin-bottom:18px">08 · Contact</div>
+      <h2 class="serif" id="contact-headline"></h2>
+      <p id="contact-text"></p>
+      <div class="hero-actions contact-actions">
+        <a class="btn primary" id="contact-email"></a>
+        <a class="btn ghost" id="contact-cv">Download CV</a>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer><div class="wrap foot"><span>© <span id="year"></span> <span id="footer-name"></span></span><span id="footer-location"></span></div></footer>
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="year"></span> <span id="footer-name"></span></span>
+    <span id="footer-location"></span>
+  </div>
+</footer>
 
 <script>
-  const esc = (value) => String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
-  const img = (src, cls, alt="") => src ? `<img class="${cls}" src="${esc(src)}" alt="${esc(alt)}" loading="lazy">` : "";
+(() => {
+  const esc = (value) => String(value ?? "").replace(/[&<>"']/g, ch => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[ch]));
+
+  const getYear = (text) => {
+    const m = String(text || "").match(/\b(20\d{2})\b/);
+    return m ? m[1] : "";
+  };
+
+  const getType = (text) => {
+    const s = String(text || "").toLowerCase();
+    if (s.includes("oral")) return "Oral";
+    if (s.includes("poster")) return "Poster";
+    return "Presentation";
+  };
+
+  const initials = (name) =>
+    String(name || "").trim().split(/\s+/).map(x => x[0]).join("").slice(0,2).toUpperCase();
+
+  const imageOrPlaceholder = (src, alt, cls, placeholderText = "") => {
+    if (src) return `<img class="${cls}" src="${esc(src)}" alt="${esc(alt)}" loading="lazy">`;
+    if (cls === "feature-image") {
+      return `<div class="feature-placeholder"><span>${esc(placeholderText || "Research figure")}</span></div>`;
+    }
+    return `<div class="research-placeholder" aria-hidden="true"></div>`;
+  };
 
   async function loadSite() {
-    const response = await fetch("data.json", { cache: "no-store" });
+    const response = await fetch("data.json", { cache:"no-store" });
     if (!response.ok) throw new Error("Could not load data.json");
     const d = await response.json();
 
-    document.title = d.meta.title;
-    document.getElementById("meta-description").content = d.meta.description;
-    document.getElementById("og-title").content = d.meta.title;
-    document.getElementById("og-description").content = d.meta.ogDescription;
+    document.title = d.meta?.title || d.hero?.name || "Academic Website";
+    document.getElementById("meta-description").content = d.meta?.description || "";
+    document.getElementById("og-title").content = d.meta?.title || "";
+    document.getElementById("og-description").content = d.meta?.ogDescription || "";
 
     document.getElementById("brand-name").textContent = d.hero.name;
     document.getElementById("hero-pill").textContent = d.hero.pill;
@@ -211,74 +898,109 @@
     document.getElementById("hero-email").href = `mailto:${d.hero.email}`;
     document.getElementById("hero-cv").href = d.hero.cv;
 
-    const initials = d.hero.name.split(/\s+/).map(x => x[0]).join("").slice(0,2);
-    const portrait = d.hero.profileImage
-      ? img(d.hero.profileImage, "profile-image", `${d.hero.name} profile photo`)
-      : `<div class="monogram">${esc(initials)}</div>`;
-    document.getElementById("profile-card").innerHTML = `
-      ${portrait}
-      <div class="label">Current position</div><strong>${esc(d.profile.position)}</strong><p>${esc(d.profile.institution)}</p>
-      <div class="label">Research</div><strong>${esc(d.profile.research)}</strong><p>${esc(d.profile.methods)}</p>
-      <div class="label">Location</div><strong>${esc(d.profile.location)}</strong>`;
+    const portraitShell = document.getElementById("portrait-shell");
+    portraitShell.innerHTML = d.hero.profileImage
+      ? `<img class="portrait" src="${esc(d.hero.profileImage)}" alt="${esc(d.hero.name)} profile photo">`
+      : `<div class="portrait-placeholder"><div class="initials">${esc(initials(d.hero.name))}</div></div>`;
+
+    document.getElementById("profile-position").textContent = d.profile.position;
+    document.getElementById("profile-institution").textContent = d.profile.institution;
+    document.getElementById("profile-research").textContent = d.profile.research;
+    document.getElementById("profile-methods").textContent = d.profile.methods;
+    document.getElementById("profile-location").textContent = d.profile.location;
 
     document.getElementById("about-headline").textContent = d.about.headline;
     document.getElementById("about-text").textContent = d.about.text;
 
-    document.getElementById("research-cards").innerHTML = d.researchThemes.map(x => {
-      const hasImage = Boolean(x.image);
-      return `<article class="card ${hasImage ? "with-image" : ""}">
-        ${hasImage ? img(x.image, "card-image", x.title) : ""}
-        <div class="${hasImage ? "card-body" : ""}">
-          <div><div class="label">${esc(x.label)}</div><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></div>
+    document.getElementById("research-grid").innerHTML = (d.researchThemes || []).map(x => `
+      <article class="research-card reveal">
+        <div class="research-media">
+          ${x.image
+            ? `<img src="${esc(x.image)}" alt="${esc(x.title)}" loading="lazy">`
+            : `<div class="research-placeholder" aria-hidden="true"></div>`}
+        </div>
+        <div class="research-body">
+          <div class="eyebrow">${esc(x.label)}</div>
+          <h3>${esc(x.title)}</h3>
+          <p>${esc(x.text)}</p>
           <div class="tags">${(x.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
         </div>
-      </article>`;
-    }).join("");
+      </article>
+    `).join("");
 
-    const w = d.selectedWork;
-    const hasFeatureImage = Boolean(w.image);
-    const feature = document.getElementById("selected-work");
-    if (hasFeatureImage) feature.classList.add("has-image");
-    feature.innerHTML = `
-      <div class="feature-copy">
-        <div class="label" style="color:rgba(255,255,255,.62)">${esc(w.label)}</div>
+    const w = d.selectedWork || {};
+    document.getElementById("feature").innerHTML = `
+      <div>
+        <div class="eyebrow" style="color:rgba(255,255,255,.58)">${esc(w.label)}</div>
         <h3>${esc(w.title)}</h3>
         ${(w.paragraphs || []).map(p => `<p>${esc(p)}</p>`).join("")}
         <div class="tags">${(w.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
       </div>
       <div class="feature-side">
         <div class="status">${esc(w.status)}</div>
-        ${hasFeatureImage ? img(w.image, "feature-image", w.title) : ""}
-      </div>`;
+        ${imageOrPlaceholder(w.image, w.title, "feature-image", "Add a feature image in CMS")}
+      </div>
+    `;
 
-    document.getElementById("publication").innerHTML = `
-      <div class="pub"><div class="pub-year">${esc(w.year)}</div><div>
-        <h3>${esc(w.citation)}</h3><p>${esc(w.journalText)}</p><span class="badge">${esc(w.badge)}</span>
-      </div></div>`;
+    document.getElementById("citation").innerHTML = `
+      <div>
+        <div class="eyebrow">${esc(w.year || "")}</div>
+      </div>
+      <div>
+        <h3>${esc(w.citation || "")}</h3>
+        <p>${esc(w.journalText || "")}</p>
+        ${w.badge ? `<span class="badge">${esc(w.badge)}</span>` : ""}
+      </div>
+    `;
 
     document.getElementById("trajectory-headline").textContent = d.trajectoryHeadline;
-    document.getElementById("trajectory-list").innerHTML = d.trajectory.map(x => `
-      <div class="time"><div class="when">${esc(x.when)}</div><div><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></div></div>`).join("");
+    document.getElementById("timeline").innerHTML = (d.trajectory || []).map(x => `
+      <div class="time reveal">
+        <div class="when">${esc(x.when)}</div>
+        <div><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></div>
+      </div>
+    `).join("");
 
-    document.getElementById("presentation-list").innerHTML = d.presentations.map(x => `
-      <div class="presentation"><strong>${esc(x.title)}</strong><span>${esc(x.meta)}</span></div>`).join("");
+    document.getElementById("presentation-list").innerHTML = (d.presentations || []).map(x => `
+      <article class="presentation reveal">
+        <div class="presentation-year">${esc(getYear(x.meta))}</div>
+        <div>
+          <strong>${esc(x.title)}</strong>
+          <div class="presentation-meta">${esc(x.meta)}</div>
+        </div>
+        <span class="presentation-type">${esc(getType(x.meta))}</span>
+      </article>
+    `).join("");
 
-    document.getElementById("resources-intro").textContent = d.resourcesIntro;
-    document.getElementById("toolkit-list").innerHTML = d.toolkit.map(x => `<li>${esc(x)}</li>`).join("");
-    document.getElementById("interests-list").innerHTML = d.interests.map(x => `<li>${esc(x)}</li>`).join("");
-    document.getElementById("resource-grid").innerHTML = d.resources.map(x => `
-      <div class="resource"><div class="label">${esc(x.label)}</div><h3>${esc(x.title)}</h3>
-        <p>${esc(x.text)}</p><a class="btn secondary" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.button)}</a>
-      </div>`).join("");
+    document.getElementById("resources-intro").textContent = d.resourcesIntro || "";
+    document.getElementById("toolkit-list").innerHTML = (d.toolkit || []).map(x => `<li>${esc(x)}</li>`).join("");
+    document.getElementById("interests-list").innerHTML = (d.interests || []).map(x => `<li>${esc(x)}</li>`).join("");
+    document.getElementById("resource-grid").innerHTML = (d.resources || []).map(x => `
+      <article class="resource reveal">
+        <div class="eyebrow">${esc(x.label)}</div>
+        <h3>${esc(x.title)}</h3>
+        <p>${esc(x.text)}</p>
+        <a class="btn ghost" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.button)} <span class="arrow">↗</span></a>
+      </article>
+    `).join("");
 
-    const gallery = d.gallery || { headline: "Photos", intro: "", items: [] };
-    document.getElementById("gallery-headline").textContent = gallery.headline;
-    document.getElementById("gallery-intro").textContent = gallery.intro;
-    document.getElementById("gallery-grid").innerHTML = (gallery.items || []).map(x => `
-      <figure class="gallery-item">${img(x.image, "", x.alt || x.caption || "Gallery image")}
-        ${x.caption ? `<figcaption>${esc(x.caption)}</figcaption>` : ""}
-      </figure>`).join("");
-    if (!(gallery.items || []).length) document.getElementById("gallery").style.display = "none";
+    const gallery = d.gallery || {headline:"Research & academic moments",intro:"",items:[]};
+    const gallerySection = document.getElementById("gallery");
+    const galleryNav = document.getElementById("gallery-nav");
+    const items = gallery.items || [];
+    if (!items.length) {
+      gallerySection.style.display = "none";
+      galleryNav.style.display = "none";
+    } else {
+      document.getElementById("gallery-headline").textContent = gallery.headline || "Research & academic moments";
+      document.getElementById("gallery-intro").textContent = gallery.intro || "";
+      document.getElementById("gallery-grid").innerHTML = items.map(x => `
+        <figure class="gallery-item reveal">
+          <img src="${esc(x.image)}" alt="${esc(x.alt || x.caption || "Gallery image")}" loading="lazy">
+          ${x.caption ? `<figcaption>${esc(x.caption)}</figcaption>` : ""}
+        </figure>
+      `).join("");
+    }
 
     document.getElementById("contact-headline").textContent = d.contact.headline;
     document.getElementById("contact-text").textContent = d.contact.text;
@@ -289,12 +1011,36 @@
     document.getElementById("footer-name").textContent = d.hero.name;
     document.getElementById("footer-location").textContent = d.profile.location;
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    initReveal();
+  }
+
+  function initReveal(){
+    const els = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      els.forEach(el => el.classList.add("visible"));
+      return;
+    }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold:.12 });
+    els.forEach(el => observer.observe(el));
   }
 
   loadSite().catch(err => {
     console.error(err);
-    document.body.insertAdjacentHTML("afterbegin", '<div class="load-error">Website data could not be loaded. Check that data.json is in the repository root.</div>');
+    document.body.insertAdjacentHTML(
+      "afterbegin",
+      '<div style="padding:13px 18px;text-align:center;background:#fff2d8;color:#6e511d;font-weight:700">Website data could not be loaded. Check that <code>data.json</code> exists in the repository root.</div>'
+    );
+    initReveal();
   });
+})();
 </script>
 </body>
 </html>
