@@ -1,30 +1,22 @@
 {
-  "design": {
-    "overallFontScale": 1,
-    "navScale": 1,
-    "heroNameScale": 1,
-    "heroSummaryScale": 1,
-    "aboutHeadingScale": 1,
-    "aboutTextScale": 1,
-    "researchHeadingScale": 1,
-    "researchCardTitleScale": 1,
-    "researchCardTextScale": 1,
-    "workHeadingScale": 1,
-    "workTitleScale": 0.2,
-    "workTextScale": 1,
-    "trajectoryHeadingScale": 1,
-    "trajectoryTitleScale": 1,
-    "trajectoryTextScale": 1,
-    "presentationHeadingScale": 1,
-    "presentationTitleScale": 1,
-    "presentationMetaScale": 1,
-    "methodsHeadingScale": 1,
-    "methodsTitleScale": 1,
-    "methodsTextScale": 1,
-    "galleryHeadingScale": 1,
-    "galleryCaptionScale": 1,
-    "contactHeadingScale": 1,
-    "contactTextScale": 1
+  "siteStyle": {
+    "themePreset": "ocean",
+    "contentWidth": "standard",
+    "sectionSpacing": "standard",
+    "cornerStyle": "rounded",
+    "bodyFont": "modern",
+    "headingFont": "editorial",
+    "heroLayout": "split",
+    "stickyNav": true,
+    "animations": true,
+    "overallFontScale": 0.8,
+    "navScale": 0.7,
+    "sections": [
+      {
+        "section": "about",
+        "visible": true
+      }
+    ]
   },
   "meta": {
     "title": "KyuTae Hwang | Cancer Immunology & Genomics",
@@ -37,7 +29,14 @@
     "summary": "PhD student and computational cancer immunology researcher studying how systemic and intratumoral immune states shape response to immunotherapy, with a focus on longitudinal single-cell genomics, T-cell receptor biology, and spatial tumor–immune organization.",
     "email": "khwang@coh.org",
     "profileImage": "media/images/kyutaeking.jpg",
-    "cv": "media/files/KyuTae_Hwang_CV.docx"
+    "cv": "media/files/KyuTae_Hwang_CV.docx",
+    "primaryButtonLabel": "Explore research",
+    "primaryButtonTarget": "#research",
+    "cvButtonLabel": "CV",
+    "emailButtonLabel": "Email",
+    "showProfileCard": true,
+    "nameScale": 0.7,
+    "summaryScale": 0.7
   },
   "profile": {
     "position": "PhD Student · Biological Sciences",
@@ -47,8 +46,24 @@
     "location": "Duarte, California"
   },
   "about": {
+    "navLabel": "About",
+    "sectionLabel": "About",
     "headline": "I study immunotherapy response as a dynamic, multi-compartment immune-system problem.",
-    "text": "My work connects peripheral blood and tumor immune states to identify cellular programs, clonal behavior, and spatial organization associated with treatment response. I am especially interested in translational questions where high-dimensional genomic measurements can be distilled into biologically interpretable and clinically testable signals."
+    "text": "My work connects peripheral blood and tumor immune states to identify cellular programs, clonal behavior, and spatial organization associated with treatment response. I am especially interested in translational questions where high-dimensional genomic measurements can be distilled into biologically interpretable and clinically testable signals.",
+    "headingScale": 0.65,
+    "textScale": 0.65
+  },
+  "researchSettings": {
+    "navLabel": "Research",
+    "sectionLabel": "Research",
+    "sectionHeading": "Questions that organize my work.",
+    "sectionLead": "A multi-compartment view of cancer immunology, from circulating immune dynamics to clonotype behavior and spatial tumor–immune organization.",
+    "columns": "3",
+    "cardLimit": 0,
+    "showImages": true,
+    "headingScale": 0.65,
+    "cardTitleScale": 0.65,
+    "cardTextScale": 0.65
   },
   "researchThemes": [
     {
@@ -83,6 +98,9 @@
     }
   ],
   "selectedWork": {
+    "navLabel": "Work",
+    "sectionLabel": "Selected Work",
+    "sectionHeading": "Current manuscript.",
     "label": "Metastatic renal cell carcinoma",
     "title": "Early peripheral T-cell dynamics and pretreatment intratumoral stress-adapted exhausted T cells",
     "paragraphs": [
@@ -100,7 +118,18 @@
     "citation": "Hwang K, et al. Early peripheral T cell dynamics and pretreatment intratumoral stress-adapted exhausted T cells associated with ICI response in metastatic renal cell carcinoma.",
     "journalText": "Manuscript under revision at Nature Communications.",
     "badge": "Sole First-author manuscript",
-    "image": "media/images/natruecomm.png"
+    "image": "media/images/natruecomm.png",
+    "showImage": true,
+    "headingScale": 0.65,
+    "titleScale": 0.65,
+    "textScale": 0.65
+  },
+  "trajectorySettings": {
+    "navLabel": "Trajectory",
+    "sectionLabel": "Trajectory",
+    "headingScale": 0.65,
+    "titleScale": 0.65,
+    "textScale": 0.65
   },
   "trajectoryHeadline": "Research training across Korea, UNC Lineberger, and City of Hope.",
   "trajectory": [
@@ -135,6 +164,15 @@
       "text": "B.S., Biology · Undergraduate thesis on immunotherapy efficacy and the gut microbiome."
     }
   ],
+  "presentationSettings": {
+    "navLabel": "Talks",
+    "sectionLabel": "Presentations",
+    "sectionHeading": "Selected talks & posters.",
+    "itemLimit": 0,
+    "headingScale": 0.65,
+    "titleScale": 0.65,
+    "metaScale": 0.65
+  },
   "presentations": [
     {
       "title": "Pretreatment intratumoral stress-adapted exhausted T cells predict ICI response in metastatic renal cell carcinoma.",
@@ -157,6 +195,18 @@
       "meta": "Korean Urological Association Annual Meeting · 2023 · Seoul · Oral presentation"
     }
   ],
+  "methodsSettings": {
+    "navLabel": "Methods",
+    "sectionLabel": "Data & Methods",
+    "sectionHeading": "Tools behind the biology.",
+    "toolkitHeading": "Computational toolkit",
+    "interestsHeading": "Scientific interests",
+    "resourceColumns": "2",
+    "resourceLimit": 0,
+    "headingScale": 0.65,
+    "panelTitleScale": 0.65,
+    "listTextScale": 0.65
+  },
   "resourcesIntro": "Computational workflows spanning single-cell, spatial, genomic, and clinical analysis.",
   "toolkit": [
     "Single-cell RNA-seq: Seurat, Monocle3, CellChat, inferCNV, DoubletFinder",
@@ -193,11 +243,22 @@
     }
   ],
   "gallery": {
+    "navLabel": "Photos",
+    "sectionLabel": "Photos",
     "headline": "Research & academic moments",
-    "intro": "Selected images from research, presentations, and academic activities."
+    "intro": "Selected images from research, presentations, and academic activities.",
+    "photoLimit": 0,
+    "showCaptions": true,
+    "headingScale": 0.65,
+    "captionScale": 0.65
   },
   "contact": {
+    "navLabel": "Contact",
+    "sectionLabel": "Contact",
     "headline": "Interested in cancer immunology, single-cell genomics, or translational oncology?",
-    "text": "I am interested in scientific discussions and collaborations at the intersection of immunotherapy, patient-derived genomic data, T-cell biology, and spatial tumor immunology."
+    "text": "I am interested in scientific discussions and collaborations at the intersection of immunotherapy, patient-derived genomic data, T-cell biology, and spatial tumor immunology.",
+    "cvButtonLabel": "Download CV",
+    "headingScale": 0.65,
+    "textScale": 0.65
   }
 }
