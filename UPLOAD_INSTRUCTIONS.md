@@ -1,61 +1,46 @@
-# Design controls + CV sync patch
+# Website Content font controls patch
 
-Upload the CONTENTS of this folder to the repository root.
+This version moves all typography controls into **Website Content**.
 
-## Files to overwrite/add
+## Upload / overwrite
 
-- `index.html` — overwrite the current root file
-- `.pages.yml` — overwrite the current root file
-- `design.json` — new file in the root
-- `.github/workflows/cv-sync.yml` — new workflow
-- `scripts/sync_cv.py` — new parser
+Upload these paths to the repository root:
 
-Do not overwrite or delete your current `data.json`.
-Do not replace your photos or CV while installing this patch.
+- `index.html` — overwrite
+- `.pages.yml` — overwrite
+- `.github/workflows/cv-sync.yml` — overwrite/add if needed
+- `scripts/sync_cv.py` — overwrite/add if needed
 
-## Font-size controls
+Do NOT overwrite `data.json`.
 
-In Pages CMS, open **Design Settings**.
+The old `design.json` can stay in the repository. It is only used as a fallback until you save values inside Website Content.
 
-Recommended ranges:
+## Where to change font sizes
 
-- Overall text size: `0.90`–`1.10`
-- Main name size: `0.85`–`1.10`
-- Section heading size: `0.90`–`1.10`
+Pages CMS → Website Content → Display / Font Sizes
 
-`1.00` means the current redesign size.
+Each value is a scale:
 
-## CV → website semi-automatic sync
+- `1.00` = default
+- `0.90` = about 10% smaller
+- `1.10` = about 10% larger
 
-1. In Pages CMS, update **Website Content → Hero → CV file** with a `.docx` CV.
-2. Save it.
-3. Click the repository-level action **Sync website from CV**.
-4. Confirm **Create review PR**.
-5. GitHub Actions parses the CV and opens a Pull Request.
-6. Open the Pull Request and review the `data.json` diff.
-7. Merge only if the suggested updates are correct.
+You can independently adjust:
 
-The sync intentionally reads only structured public information:
+- overall text
+- navigation
+- hero name and intro
+- About heading/body
+- Research heading/card title/card body
+- Selected Work heading/title/body
+- Trajectory heading/title/body
+- Presentations heading/title/meta
+- Methods heading/panel title/list
+- Photos heading/caption
+- Contact heading/body
 
-- email
-- current manuscript citation/status/year
-- presentations
-- computational toolkit
-- GEO / Zenodo identifiers
-- matching trajectory date ranges
+Blank fields behave as `1.00`, so you do not need to fill every setting.
 
-It intentionally ignores phone number, references, reference emails, leadership/military service, grants, academic service, and manually curated narrative text.
+## CV sync
 
-## One-time GitHub setting if PR creation is blocked
-
-If the workflow can push the review branch but cannot open a Pull Request:
-
-GitHub repository → Settings → Actions → General → Workflow permissions
-
-Enable **Allow GitHub Actions to create and approve pull requests** and save.
-
-Then run **Sync website from CV** again.
-
-## Current parser format
-
-The included parser supports `.docx` CV files. PDF can still be used as the downloadable CV, but automatic CV parsing is not enabled for PDF in this patch.
+The CV → website review workflow is unchanged and still preserves the `design` object in `data.json`.
