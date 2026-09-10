@@ -9,7 +9,7 @@
     "name": "KyuTae Hwang",
     "summary": "PhD student and computational cancer immunology researcher studying how systemic and intratumoral immune states shape response to immunotherapy, with a focus on longitudinal single-cell genomics, T-cell receptor biology, and spatial tumor–immune organization.",
     "email": "khwang@coh.org",
-    "profileImage": "",
+    "profileImage": "media/images/kyutaeking.jpg",
     "cv": "media/files/KyuTae_Hwang_CV.docx"
   },
   "profile": {
@@ -32,8 +32,7 @@
         "PBMC",
         "Longitudinal",
         "ICI"
-      ],
-      "image": ""
+      ]
     },
     {
       "label": "T-cell biology",
@@ -43,8 +42,7 @@
         "scRNA-seq",
         "scTCR-seq",
         "CD8 T cells"
-      ],
-      "image": ""
+      ]
     },
     {
       "label": "Tumor ecosystem",
@@ -54,8 +52,7 @@
         "Xenium",
         "Visium",
         "TME"
-      ],
-      "image": ""
+      ]
     }
   ],
   "selectedWork": {
@@ -75,8 +72,7 @@
     "year": "2026",
     "citation": "Hwang K, et al. Early peripheral T cell dynamics and pretreatment intratumoral stress-adapted exhausted T cells associated with ICI response in metastatic renal cell carcinoma.",
     "journalText": "Manuscript under revision at Nature Communications.",
-    "badge": "First-author manuscript",
-    "image": ""
+    "badge": "First-author manuscript"
   },
   "trajectoryHeadline": "Research training across Korea, UNC Lineberger, and City of Hope.",
   "trajectory": [
@@ -165,8 +161,7 @@
   ],
   "gallery": {
     "headline": "Research & academic moments",
-    "intro": "Selected images from research, presentations, and academic activities.",
-    "items": []
+    "intro": "Selected images from research, presentations, and academic activities."
   },
   "contact": {
     "headline": "Interested in cancer immunology, single-cell genomics, or translational oncology?",
