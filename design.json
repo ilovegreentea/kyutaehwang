@@ -1,5 +1,5 @@
 {
-  "overallFontScale": 1.0,
-  "heroNameScale": 1.0,
-  "sectionHeadingScale": 1.0
+  "overallFontScale": 0.8,
+  "heroNameScale": 0.7,
+  "sectionHeadingScale": 0.75
 }
