@@ -1,3 +1,6 @@
+IMPORTANT: This file is only a visible backup.
+The actual CMS config filename must be exactly: .pages.yml
+
 media:
   - name: images
     label: Images
