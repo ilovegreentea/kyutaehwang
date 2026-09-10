@@ -15,7 +15,50 @@ media:
     extensions: [pdf, doc, docx]
     rename: false
 
+actions:
+  - name: sync-cv-to-website
+    label: Sync website from CV
+    workflow: cv-sync.yml
+    ref: current
+    cancelable: false
+    confirm:
+      title: Create website update suggestions from CV?
+      message: The workflow reads the DOCX CV, updates selected structured fields, and creates a Pull Request for review. It does not publish the suggestions until you merge the Pull Request.
+      button: Create review PR
+
 content:
+
+  - name: design
+    label: Design Settings
+    type: file
+    path: design.json
+    format: json
+    operations:
+      delete: false
+      rename: false
+    fields:
+      - name: overallFontScale
+        label: Overall text size
+        type: number
+        description: 1.00 is the current size. Try 0.90 for smaller text or 1.10 for larger text.
+        options:
+          min: 0.8
+          max: 1.3
+      - name: heroNameScale
+        label: Main name size
+        type: number
+        description: Controls only the large KyuTae Hwang heading on the first screen. 1.00 is the default.
+        options:
+          min: 0.7
+          max: 1.3
+      - name: sectionHeadingScale
+        label: Section heading size
+        type: number
+        description: Controls large headings such as Current manuscript and Selected talks. 1.00 is the default.
+        options:
+          min: 0.75
+          max: 1.3
+
   - name: website
     label: Website Content
     type: file
@@ -68,6 +111,7 @@ content:
             label: CV file
             type: file
             required: false
+            description: Upload DOCX if you want to use the CV-to-website sync action. PDF can still be used for download, but the included sync parser reads DOCX.
             options:
               media: documents
               extensions: [pdf, doc, docx]
