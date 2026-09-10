@@ -78,6 +78,11 @@
   "trajectoryHeadline": "Research training across Korea, UNC Lineberger, and City of Hope.",
   "trajectory": [
     {
+      "when": "Aug 2026 — Present — Beckman Research Institute of City of Hope",
+      "title": "Grad student",
+      "text": "Advisor: William Y. Kim, M.D"
+    },
+    {
       "when": "Aug 2026 — Present",
       "title": "City of Hope · Irell & Manella Graduate School of Biological Sciences",
       "text": "PhD Student, Biological Sciences · Graduate Student Researcher, Beckman Research Institute · Advisor: William Y. Kim, M.D."
@@ -89,7 +94,7 @@
     },
     {
       "when": "Mar 2023 — Jul 2026",
-      "title": "SAIHST, Sungkyunkwan University",
+      "title": "SAIHST, Sungkyunkwan University at Samsung Medical Center",
       "text": "Integrated M.S.-Ph.D. training in Health Sciences and Technology with emphasis on translational genomics and clinical cohort analysis."
     },
     {
