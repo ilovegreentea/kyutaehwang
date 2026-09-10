@@ -85,3 +85,41 @@ Pages CMS remains available as a backup/advanced editor. Its native numeric fiel
 ## CV sync
 
 The existing CV sync workflow is preserved. Use the previous Pages CMS/GitHub Actions workflow when you want to generate structured update suggestions from a DOCX CV.
+
+
+## Visitor statistics dashboard
+
+The `/admin/` editor now opens on **Website Overview**.
+
+It can show:
+
+- Today
+- Last 7 days
+- Last 30 days
+- Total homepage views
+- A 7-day bar chart
+
+This uses GoatCounter because it is lightweight, privacy-friendly, and free for reasonable public usage.
+
+### One-time analytics setup
+
+1. Create a GoatCounter account at `https://www.goatcounter.com/signup`
+2. Use `kyutaehwang.com` as the site domain.
+3. Note your account code. For example, if the dashboard URL is `https://example.goatcounter.com`, the code is `example`.
+4. In your visual editor, open **Overview**.
+5. Enter the account code.
+6. Turn on **Count public website visits**.
+7. Click **Save website**.
+8. In GoatCounter settings, enable **Allow adding visitor counts on your website** so the four summary cards can read the counts.
+
+No GoatCounter password or API token is stored in the repository.
+
+The public site tracking script is not loaded inside `/admin/` live preview frames, so editing should not inflate the visitor count.
+
+### Excluding your own browser
+
+In the Overview screen, use **Do not count this browser**. GoatCounter supports the `#toggle-goatcounter` URL fragment for excluding a browser from counting.
+
+### Accuracy note
+
+Client-side analytics can be blocked by ad blockers, so the numbers are useful website analytics rather than a perfect server-log count.

@@ -1496,11 +1496,35 @@
     initReveal();
   }
 
+
+  function initAnalytics(analytics = {}) {
+    const enabled = analytics.enabled === true;
+    const code = String(analytics.goatcounterCode || "").trim().toLowerCase();
+    const isEditorPreview =
+      new URLSearchParams(location.search).has("editorPreview") ||
+      window.self !== window.top;
+
+    if (!enabled || !code || isEditorPreview) return;
+    if (!/^[a-z0-9-]+$/.test(code)) {
+      console.warn("Analytics code contains unsupported characters.");
+      return;
+    }
+    if (document.querySelector('script[data-kyt-analytics="goatcounter"]')) return;
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://gc.zgo.at/count.js";
+    script.dataset.goatcounter = `https://${code}.goatcounter.com/count`;
+    script.dataset.kytAnalytics = "goatcounter";
+    document.head.appendChild(script);
+  }
+
   async function loadSite() {
     const response = await fetch("data.json", { cache:"no-store" });
     if (!response.ok) throw new Error("Could not load data.json");
     const d = await response.json();
     renderSite(d);
+    initAnalytics(d.analytics || {});
   }
 
   window.addEventListener("message", event => {
