@@ -9,14 +9,13 @@
     "heroLayout": "split",
     "stickyNav": true,
     "animations": true,
-    "overallFontScale": 0.8,
-    "navScale": 0.7,
     "sections": [
       {
         "section": "about",
         "visible": true
       }
-    ]
+    ],
+    "navFontSize": 15
   },
   "meta": {
     "title": "KyuTae Hwang | Cancer Immunology & Genomics",
@@ -35,8 +34,8 @@
     "cvButtonLabel": "CV",
     "emailButtonLabel": "Email",
     "showProfileCard": true,
-    "nameScale": 0.7,
-    "summaryScale": 0.7
+    "nameSize": 112,
+    "summarySize": 19
   },
   "profile": {
     "position": "PhD Student · Biological Sciences",
@@ -50,8 +49,8 @@
     "sectionLabel": "About",
     "headline": "I study immunotherapy response as a dynamic, multi-compartment immune-system problem.",
     "text": "My work connects peripheral blood and tumor immune states to identify cellular programs, clonal behavior, and spatial organization associated with treatment response. I am especially interested in translational questions where high-dimensional genomic measurements can be distilled into biologically interpretable and clinically testable signals.",
-    "headingScale": 0.65,
-    "textScale": 0.65
+    "headingSize": 58,
+    "textSize": 18
   },
   "researchSettings": {
     "navLabel": "Research",
@@ -61,9 +60,9 @@
     "columns": "3",
     "cardLimit": 0,
     "showImages": true,
-    "headingScale": 0.65,
-    "cardTitleScale": 0.65,
-    "cardTextScale": 0.65
+    "headingSize": 58,
+    "cardTitleSize": 20,
+    "cardTextSize": 16
   },
   "researchThemes": [
     {
@@ -120,16 +119,16 @@
     "badge": "Sole First-author manuscript",
     "image": "media/images/natruecomm.png",
     "showImage": true,
-    "headingScale": 0.65,
-    "titleScale": 0.65,
-    "textScale": 0.65
+    "headingSize": 58,
+    "titleSize": 30,
+    "textSize": 16
   },
   "trajectorySettings": {
     "navLabel": "Trajectory",
     "sectionLabel": "Trajectory",
-    "headingScale": 0.65,
-    "titleScale": 0.65,
-    "textScale": 0.65
+    "headingSize": 58,
+    "titleSize": 18,
+    "textSize": 16
   },
   "trajectoryHeadline": "Research training across Korea, UNC Lineberger, and City of Hope.",
   "trajectory": [
@@ -169,9 +168,9 @@
     "sectionLabel": "Presentations",
     "sectionHeading": "Selected talks & posters.",
     "itemLimit": 0,
-    "headingScale": 0.65,
-    "titleScale": 0.65,
-    "metaScale": 0.65
+    "headingSize": 58,
+    "titleSize": 16,
+    "metaSize": 14
   },
   "presentations": [
     {
@@ -203,9 +202,9 @@
     "interestsHeading": "Scientific interests",
     "resourceColumns": "2",
     "resourceLimit": 0,
-    "headingScale": 0.65,
-    "panelTitleScale": 0.65,
-    "listTextScale": 0.65
+    "headingSize": 58,
+    "panelTitleSize": 19,
+    "listTextSize": 16
   },
   "resourcesIntro": "Computational workflows spanning single-cell, spatial, genomic, and clinical analysis.",
   "toolkit": [
@@ -249,8 +248,8 @@
     "intro": "Selected images from research, presentations, and academic activities.",
     "photoLimit": 0,
     "showCaptions": true,
-    "headingScale": 0.65,
-    "captionScale": 0.65
+    "headingSize": 58,
+    "captionSize": 14
   },
   "contact": {
     "navLabel": "Contact",
@@ -258,7 +257,7 @@
     "headline": "Interested in cancer immunology, single-cell genomics, or translational oncology?",
     "text": "I am interested in scientific discussions and collaborations at the intersection of immunotherapy, patient-derived genomic data, T-cell biology, and spatial tumor immunology.",
     "cvButtonLabel": "Download CV",
-    "headingScale": 0.65,
-    "textScale": 0.65
+    "headingSize": 64,
+    "textSize": 17
   }
 }
