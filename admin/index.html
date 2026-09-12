@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
   <title>KyuTae Website Editor</title>
   <style>
     :root{
@@ -260,6 +261,7 @@
     <div class="top-spacer"></div>
     <button class="btn mobile-preview" id="openPreview">Preview</button>
     <button class="btn" id="connectBtn">GitHub 연결</button>
+    <button class="btn" id="accessLogoutBtn" title="Sign out of the protected admin area">관리자 로그아웃</button>
     <button class="btn primary" id="saveBtn">Save website</button>
   </header>
 
@@ -287,7 +289,8 @@
       <div class="token-note">
         권장 권한: <strong>ilovegreentea/kyutaehwang</strong> repository만 선택하고
         <strong>Contents → Read and write</strong>만 허용하세요.
-        토큰은 repository나 웹사이트에 업로드되지 않고 이 브라우저의 localStorage에만 저장됩니다.
+        토큰은 repository나 웹사이트에 업로드되지 않습니다. 이 탭의 sessionStorage에만 임시 저장되며 브라우저 탭을 닫으면 사라집니다.
+        Cloudflare Access가 적용되면 이 편집기 화면 자체도 로그인한 사용자에게만 표시됩니다.
       </div>
     </div>
     <div class="modal-foot">
@@ -304,7 +307,7 @@
 <script>
 (() => {
   const CFG = window.KYT_EDITOR_CONFIG;
-  const TOKEN_KEY = "kyt_visual_editor_github_token_v1";
+  const TOKEN_KEY = "kyt_visual_editor_github_token_v2_session";
   const SECTION_META = [
     ["overview","Overview"],
     ["hero","Home"],
@@ -323,7 +326,7 @@
     data: null,
     original: null,
     section: "overview",
-    token: localStorage.getItem(TOKEN_KEY) || "",
+    token: sessionStorage.getItem(TOKEN_KEY) || "",
     pendingFiles: new Map(),
     localImages: new Map(),
     dirty: false
@@ -1339,7 +1342,7 @@
       $("#status").className = "status bad";
       toast(`Save failed: ${err.message}`);
       if (/credentials|Bad credentials|401/i.test(err.message)) {
-        localStorage.removeItem(TOKEN_KEY);
+        sessionStorage.removeItem(TOKEN_KEY);
         state.token = "";
       }
     } finally {
@@ -1372,7 +1375,7 @@
     $("#closeToken").addEventListener("click", () => $("#tokenModal").classList.remove("open"));
     $("#saveToken").addEventListener("click", connectToken);
     $("#disconnectBtn").addEventListener("click", () => {
-      localStorage.removeItem(TOKEN_KEY);
+      sessionStorage.removeItem(TOKEN_KEY);
       state.token = "";
       $("#tokenModal").classList.remove("open");
       $("#status").textContent = "GitHub disconnected";

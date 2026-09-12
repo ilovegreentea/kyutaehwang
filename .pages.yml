@@ -44,6 +44,21 @@ content:
     delete: false
     rename: false
   fields:
+  - name: analytics
+    label: Visitor Statistics
+    type: object
+    required: false
+    description: Optional GoatCounter tracking. The visual /admin/ editor is easier for day-to-day use.
+    fields:
+    - name: enabled
+      label: Count public website visits
+      type: boolean
+      default: false
+    - name: goatcounterCode
+      label: GoatCounter account code
+      type: string
+      required: false
+      description: If your dashboard is https://myname.goatcounter.com, enter myname.
   - name: siteStyle
     label: Site Design & Layout
     type: object
