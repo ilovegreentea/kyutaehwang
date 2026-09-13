@@ -104,10 +104,10 @@
     "sectionLabel": "Selected Work",
     "sectionHeading": "Current manuscript.",
     "label": "Metastatic renal cell carcinoma",
-    "title": "Early peripheral T-cell dynamics and pretreatment intratumoral stress-adapted exhausted T cells",
+    "title": "",
     "paragraphs": [
       "Longitudinal single-cell multi-omics profiling of paired tumor and peripheral blood samples from patients with metastatic renal cell carcinoma treated with immune checkpoint inhibitor–based therapy.",
-      "The study integrates scRNA-seq, scTCR-seq, independent cohort validation, and spatial transcriptomics to examine early peripheral T/NK-cell activation, an ATF3-linked stress-adapted exhausted CD8 T-cell program, clonotype dynamics, and macrophage–T-cell niches."
+      "The study integrates scRNA-seq, scTCR-seq, independent cohort validation, and spatial transcriptomics"
     ],
     "tags": [
       "mRCC",
@@ -115,12 +115,12 @@
       "Single-cell multi-omics",
       "Spatial genomics"
     ],
-    "status": "Under revision · Nature Communications",
+    "status": "Under revision",
     "year": "2026",
-    "citation": "Hwang K, et al. Early peripheral T cell dynamics and pretreatment intratumoral stress-adapted exhausted T cells associated with ICI response in metastatic renal cell carcinoma.",
-    "journalText": "Manuscript under revision at Nature Communications.",
+    "citation": "Hwang K, et al.",
+    "journalText": "Manuscript under revision",
     "badge": "Sole First-author manuscript",
-    "image": "media/images/natruecomm.png",
+    "image": "",
     "showImage": true,
     "headingSize": 58,
     "titleSize": 30,
