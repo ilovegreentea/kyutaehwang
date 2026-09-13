@@ -74,7 +74,7 @@
         "Longitudinal",
         "ICI"
       ],
-      "image": "media/images/2026-09-10-155053.png"
+      "image": ""
     },
     {
       "label": "T-cell biology",
@@ -85,7 +85,7 @@
         "scTCR-seq",
         "CD8 T cells"
       ],
-      "image": "media/images/2026-09-10-155317.png"
+      "image": ""
     },
     {
       "label": "Tumor ecosystem",
@@ -96,7 +96,7 @@
         "Visium",
         "TME"
       ],
-      "image": "media/images/2026-09-05-123121.png"
+      "image": ""
     }
   ],
   "selectedWork": {
