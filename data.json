@@ -253,7 +253,37 @@
     "showCaptions": true,
     "headingSize": 58,
     "captionSize": 14,
-    "items": []
+    "items": [],
+    "albums": [
+      {
+        "title": "2026 AACR Annual Meeting",
+        "date": "2026",
+        "location": "San Diego",
+        "description": "",
+        "photos": [
+          {
+            "image": "media/gallery/1789492319960-0-KakaoTalk_20260915_092604171_02.jpg",
+            "caption": "",
+            "alt": ""
+          },
+          {
+            "image": "media/gallery/1789492319960-1-KakaoTalk_20260915_092604171_01.jpg",
+            "caption": "",
+            "alt": ""
+          },
+          {
+            "image": "media/gallery/1789492319960-2-KakaoTalk_20260915_092604171.jpg",
+            "caption": "",
+            "alt": ""
+          },
+          {
+            "image": "media/gallery/1789492319960-3-AACR_badge.jpg",
+            "caption": "",
+            "alt": ""
+          }
+        ]
+      }
+    ]
   },
   "contact": {
     "navLabel": "Contact",
