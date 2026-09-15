@@ -256,29 +256,24 @@
     "items": [],
     "albums": [
       {
-        "title": "2026 AACR Annual Meeting",
+        "title": "2026 AACR Annual meeting",
         "date": "2026",
         "location": "San Diego",
-        "description": "",
+        "description": "AACR Annual meeting ",
         "photos": [
           {
-            "image": "media/gallery/1789492319960-0-KakaoTalk_20260915_092604171_02.jpg",
-            "caption": "",
+            "image": "media/gallery/1789492453437-0-KakaoTalk_20260915_092604171_02.jpg",
+            "caption": "Poster1",
             "alt": ""
           },
           {
-            "image": "media/gallery/1789492319960-1-KakaoTalk_20260915_092604171_01.jpg",
-            "caption": "",
+            "image": "media/gallery/1789492453437-1-KakaoTalk_20260915_092604171_01.jpg",
+            "caption": "Poster2",
             "alt": ""
           },
           {
-            "image": "media/gallery/1789492319960-2-KakaoTalk_20260915_092604171.jpg",
-            "caption": "",
-            "alt": ""
-          },
-          {
-            "image": "media/gallery/1789492319960-3-AACR_badge.jpg",
-            "caption": "",
+            "image": "media/gallery/1789492453437-2-KakaoTalk_20260915_092604171.jpg",
+            "caption": "Badge",
             "alt": ""
           }
         ]
