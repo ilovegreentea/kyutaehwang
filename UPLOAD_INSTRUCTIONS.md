@@ -134,3 +134,10 @@ The `/admin/` Overview uses GoatCounter's official visitor-counter HTML endpoint
 If `https://YOURCODE.goatcounter.com/counter/%2F.json` opens successfully in a browser and `Allow adding visitor counts on your website` is enabled, the Overview counters should render without requiring the dashboard to be public.
 
 Visitor-counter responses may be cached by GoatCounter for up to four hours.
+
+## Gallery albums
+- The public gallery is available at `/gallery/`.
+- In `/admin/`, open **Gallery**, click **+ Add album**, then select multiple images at once.
+- Each selected image must be smaller than 8 MB.
+- Photos are stored under `media/gallery/` and album metadata is saved in `data.json`.
+- Older single-photo `gallery.items` data is automatically shown/migrated into an "Academic Moments" album in the editor.

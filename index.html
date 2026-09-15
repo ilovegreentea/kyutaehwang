@@ -843,7 +843,7 @@
       <a href="#trajectory">Trajectory</a>
       <a href="#presentations">Talks</a>
       <a href="#resources">Methods</a>
-      <a href="#gallery" id="gallery-nav">Photos</a>
+      <a href="gallery/" id="gallery-nav">Gallery</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -1311,10 +1311,13 @@
         if (indexNode) {
           indexNode.textContent = `${String(visibleIndex).padStart(2, "0")} · ${labels[item.section].label}`;
         }
-        nav.push(`<a href="#${esc(item.section)}">${esc(labels[item.section].nav)}</a>`);
+        if (item.section !== "gallery") nav.push(`<a href="#${esc(item.section)}">${esc(labels[item.section].nav)}</a>`);
       }
     });
 
+    const contactIndex = nav.findIndex(x => x.includes('href="#contact"'));
+    const galleryLink = `<a href="gallery/">${esc(data.gallery?.navLabel || "Gallery")}</a>`;
+    if (contactIndex >= 0) nav.splice(contactIndex,0,galleryLink); else nav.push(galleryLink);
     navLinks.innerHTML = nav.join("");
   }
 
@@ -1492,7 +1495,7 @@
     document.getElementById("footer-location").textContent = d.profile.location;
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    applySectionLayout(d, { gallery: galleryHasContent });
+    applySectionLayout(d, { gallery: false });
     initReveal();
   }
 
